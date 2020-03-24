@@ -14,11 +14,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface DNADEMOTests : XCTestCase
+@interface dnademoTests : XCTestCase
 
 @end
 
-@implementation DNADEMOTests
+@implementation dnademoTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {
