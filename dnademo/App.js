@@ -17,6 +17,7 @@ import {
 
  import { DrawingBoard } from './Components/DrawingBoard';
  import { AnalyzeButton } from './Components/AnalyzeButton';
+ import { NavigationDrawer } from './Components/NavigationDrawer';
 
 const App: () => React$Node = () => {
   return (
@@ -26,6 +27,7 @@ const App: () => React$Node = () => {
     </Text>
     <DrawingBoard></DrawingBoard>
     <AnalyzeButton />
+    {/* <NavigationDrawer></NavigationDrawer> */}
     </View>
   );
 };

@@ -12,7 +12,17 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import App from '../App';
 
-export const NavDrawer = createDrawerNavigator ();
+const NavDrawer = createDrawerNavigator ();
+
+export default function NavigationDrawer() {
+    return (
+      <NavigationContainer independent="true">
+        <NavDrawer.Navigator initialRouteName="Home">
+          <NavDrawer.Screen name="Home" component={App} />
+        </NavDrawer.Navigator>
+      </NavigationContainer>
+    );
+  }
 
 const styles = StyleSheet.create({
     analyzeButton: {
