@@ -29,7 +29,7 @@ import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 const App: () => React$Node = () => {
   return (
     <View style={styles.container}>
-    <Text>
+    <Text style={styles.appHeading}>
       DNA DEMO
     </Text>
         <View style={{ flex: 1, flexDirection: 'row' }}>
@@ -44,6 +44,16 @@ const App: () => React$Node = () => {
 };
 
 const styles = StyleSheet.create({
+  appHeading: {
+    position: 'relative',
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign: 'center',
+    color: Colors.black,
+  },
+  container: {
+    flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#F5FCFF',
+  },
   scrollView: {
     backgroundColor: Colors.lighter,
   },
@@ -79,9 +89,6 @@ const styles = StyleSheet.create({
     padding: 4,
     paddingRight: 12,
     textAlign: 'right',
-  },
-  container: {
-    flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#F5FCFF',
   },
 });
 
