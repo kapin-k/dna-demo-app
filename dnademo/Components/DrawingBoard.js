@@ -9,7 +9,7 @@ import {
 
 import RNSketchCanvas from '@terrylinla/react-native-sketch-canvas';
 
-export default class DrawingBoard extends Component {
+export class DrawingBoard extends Component {
   render() {
     return (
         <View style={{ flex: 1, flexDirection: 'row' }}>
