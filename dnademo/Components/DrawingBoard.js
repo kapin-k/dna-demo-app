@@ -55,7 +55,7 @@ export default class DrawingBoard extends Component {
 
 const styles = StyleSheet.create({
   strokeColorButton: {
-    marginHorizontal: 2.5, marginVertical: 20, width: 40, height: 40, borderRadius: 20,
+    marginHorizontal: 15, justifyContent: 'center', marginVertical: 20, width: 40, height: 40, borderRadius: 20,
   },
   strokeWidthButton: {
     marginHorizontal: 2.5, marginVertical: 8, width: 40, height: 40, borderRadius: 25,

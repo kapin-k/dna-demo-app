@@ -24,6 +24,7 @@ const App: () => React$Node = () => {
     DNA DEMO
     </Text>
     <DrawingBoard></DrawingBoard>
+    <View style={{width: 300, marginBottom: 8, marginRight: 8, borderRadius: 40, height: 60, alignSelf: 'flex-end', backgroundColor: '#ccffdd'}} />
     </View>
   );
 };
