@@ -29,7 +29,7 @@ import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 const App: () => React$Node = () => {
   return (
     <View style={styles.container}>
-    <Text style={{flex: 1, marginTop: 50}}>
+    <Text>
       DNA DEMO
     </Text>
         <View style={{ flex: 1, flexDirection: 'row' }}>
