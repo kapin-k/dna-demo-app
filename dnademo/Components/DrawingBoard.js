@@ -12,7 +12,7 @@ import RNSketchCanvas from '@terrylinla/react-native-sketch-canvas';
 export class DrawingBoard extends Component {
   render() {
     return (
-        <View style={{ flex: 1, flexDirection: 'row', marginLeft: 5, }}>
+        <View style={{ flex: 1, flexDirection: 'row', marginLeft: 5, marginRight: 5 }}>
           <RNSketchCanvas
             containerStyle={{ backgroundColor: 'transparent', flex: 1 }}
             canvasStyle={{ backgroundColor: 'transparent', flex: 1 }}
