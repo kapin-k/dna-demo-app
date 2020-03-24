@@ -18,7 +18,7 @@ import {
  import { DrawingBoard } from './Components/DrawingBoard';
  import { AnalyzeButton } from './Components/AnalyzeButton';
 
-//  import { createDrawerNavigator } from '@react-navigation/drawer';
+ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const App: () => React$Node = () => {
   return (
