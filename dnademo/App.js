@@ -32,7 +32,9 @@ const styles = StyleSheet.create({
   appHeading: {
     position: 'relative',
     fontWeight: 'bold',
-    fontSize: 20,
+    fontStyle: 'italic',
+    fontSize: 15,
+    fontFamily: 'Trebuchet-BoldItalic',
     textAlign: 'center',
     color: Colors.black,
   },

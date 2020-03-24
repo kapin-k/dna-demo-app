@@ -19,15 +19,15 @@ export default class DrawingBoard extends Component {
             defaultStrokeIndex={0}
             defaultStrokeWidth={7}
             // closeComponent={<View style={styles.functionButton}><Text style={{color: 'white'}}>Close</Text></View>}
-            undoComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontSize: 15}}>Undo</Text></View>}
-            eraseComponent={<View style={styles.functionButton}><Text style={{color: 'white'}}>Eraser</Text></View>}
-            clearComponent={<View style={styles.functionButton}><Text style={{color: 'white'}}>Clear</Text></View>}
+            undoComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>Undo</Text></View>}
+            eraseComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>Eraser</Text></View>}
+            clearComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>Clear</Text></View>}
             strokeComponent={color => (
               <View style={[{ backgroundColor: color }, styles.strokeColorButton]} />
             )}
             strokeSelectedComponent={(color, index, changed) => {
               return (
-                <View style={[{ backgroundColor: color, borderWidth: 2 }, styles.strokeColorButton]} />
+                <View style={[{ backgroundColor: color, borderWidth: 5 }, styles.strokeColorButton]} />
               )
             }}
             strokeWidthComponent={(w) => {
@@ -55,15 +55,15 @@ export default class DrawingBoard extends Component {
 
 const styles = StyleSheet.create({
   strokeColorButton: {
-    marginHorizontal: 5, marginVertical: 20, width: 30, height: 30, borderRadius: 15,
+    marginHorizontal: 2.5, marginVertical: 20, width: 40, height: 40, borderRadius: 20,
   },
   strokeWidthButton: {
-    marginHorizontal: 2.5, marginVertical: 8, width: 30, height: 30, borderRadius: 15,
-    justifyContent: 'center', alignItems: 'center', backgroundColor: '#39579A'
+    marginHorizontal: 2.5, marginVertical: 8, width: 40, height: 40, borderRadius: 25,
+    justifyContent: 'center', alignItems: 'center', backgroundColor: '#8e8e93'
   },
   functionButton: {
-    marginHorizontal: 2.5, marginVertical: 8, height: 30, width: 60,
-    backgroundColor: '#39579A', justifyContent: 'center', alignItems: 'center', borderRadius: 5,
+    marginHorizontal: 2.5, marginVertical: 8, height: 40, width: 70,
+    backgroundColor: '#8e8e93', justifyContent: 'center', alignItems: 'center', borderRadius: 25,
   }
 });
 
