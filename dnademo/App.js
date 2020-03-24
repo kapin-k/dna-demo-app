@@ -14,8 +14,8 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
  import DrawingBoard from './Components/DrawingBoard';
-import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 
 const App: () => React$Node = () => {
   return (
