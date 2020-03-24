@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
       marginBottom: 15, marginRight: 8, height: 60, width: 200, alignSelf: 'center', backgroundColor: '#ccffdd', justifyContent: 'center', alignItems: 'center', borderRadius: 45,
     },
     textFill: {
-        color: 'white', fontWeight: 'bold', fontSize: 15
+        color: 'black', fontWeight: 'bold', fontSize: 15
     },
   });
 

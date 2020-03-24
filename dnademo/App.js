@@ -18,6 +18,8 @@ import {
  import { DrawingBoard } from './Components/DrawingBoard';
  import { AnalyzeButton } from './Components/AnalyzeButton';
 
+//  import { createDrawerNavigator } from '@react-navigation/drawer';
+
 const App: () => React$Node = () => {
   return (
     <View style={styles.container}>
