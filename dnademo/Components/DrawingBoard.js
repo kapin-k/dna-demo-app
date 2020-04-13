@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   functionButton: {
     marginHorizontal: 2.5, marginVertical: 8, height: 30, width: 30,
-    backgroundColor: '#8e8e93', justifyContent: 'center', alignItems: 'center', borderRadius: 25,
+    backgroundColor: '#f05454', justifyContent: 'center', alignItems: 'center', borderRadius: 25,
   }
 });
 
