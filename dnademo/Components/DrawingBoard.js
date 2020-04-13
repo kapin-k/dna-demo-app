@@ -18,26 +18,27 @@ export class DrawingBoard extends Component {
             canvasStyle={{ backgroundColor: 'transparent', flex: 1 }}
             defaultStrokeIndex={0}
             defaultStrokeWidth={7}
+            clearComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>Clear</Text></View>}
+            clearComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>Clear</Text></View>}
             // closeComponent={<View style={styles.functionButton}><Text style={{color: 'white'}}>Close</Text></View>}
             // undoComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>Undo</Text></View>}
             // eraseComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>Eraser</Text></View>}
-            clearComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>Clear</Text></View>}
-            strokeComponent={color => (
-              <View style={[{ backgroundColor: color }, styles.strokeColorButton]} />
-            )}
-            strokeSelectedComponent={(color, index, changed) => {
-              return (
-                <View style={[{ backgroundColor: color, borderWidth: 5 }, styles.strokeColorButton]} />
-              )
-            }}
-            strokeWidthComponent={(w) => {
-              return (<View style={styles.strokeWidthButton}>
-                <View  style={{
-                  backgroundColor: 'white', marginHorizontal: 2.5,
-                  width: Math.sqrt(w / 3) * 10, height: Math.sqrt(w / 3) * 10, borderRadius: Math.sqrt(w / 3) * 10 / 2
-                }} />
-              </View>
-            )}}
+            // strokeComponent={color => (
+            //   <View style={[{ backgroundColor: color }, styles.strokeColorButton]} />
+            // )}
+            // strokeSelectedComponent={(color, index, changed) => {
+            //   return (
+            //     <View style={[{ backgroundColor: color, borderWidth: 5 }, styles.strokeColorButton]} />
+            //   )
+            // }}
+            // strokeWidthComponent={(w) => {
+            //   return (<View style={styles.strokeWidthButton}>
+            //     <View  style={{
+            //       backgroundColor: 'white', marginHorizontal: 2.5,
+            //       width: Math.sqrt(w / 3) * 10, height: Math.sqrt(w / 3) * 10, borderRadius: Math.sqrt(w / 3) * 10 / 2
+            //     }} />
+            //   </View>
+            // )}}
             // saveComponent={<View style={styles.functionButton}><Text style={{color: 'white'}}>Save</Text></View>}
             // savePreference={() => {
             //   return {
