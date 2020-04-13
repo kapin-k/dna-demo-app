@@ -1,20 +1,17 @@
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, Button, View, Alert} from 'react-native';
-import { Icon } from 'react-native-elements'; 
+import {AppRegistry, StyleSheet, Text, View, Alert} from 'react-native';
+import {Button} from 'react-native-elements';
 // import Icon from 'react-native-vector-icons/FontAwesome';
 
 export class SampleButton extends Component {
   render() {
     return (
       <View>
-      {/* <Icon
+        {/* <Icon
   name='rowing' /> */}
         {/* <Text style={styles.textFill}>SampleButton</Text> */}
         {/* <Icon name="sc-telegram" color="#517fa4" /> */}
         <Button
-          icon={<Icon
-  name='rowing' />}
-          // title= "Hi"
           onPress={() => {
             alert('You tapped the button!');
           }}
