@@ -17,7 +17,7 @@ import {
 
  import { DrawingBoard } from './Components/DrawingBoard';
  import { AnalyzeButton } from './Components/AnalyzeButton';
- import { NavigationDrawer } from './Components/NavigationDrawer';
+ import { SampleButton } from './Components/SampleButton';
 
 const App: () => React$Node = () => {
   return (
@@ -26,8 +26,10 @@ const App: () => React$Node = () => {
     DNA DEMO
     </Text>
     <DrawingBoard></DrawingBoard>
+    <View style={{justifyContent: 'space-between', width: 1000 ,flexDirection: 'row', }}>
+    <SampleButton />
     <AnalyzeButton />
-    {/* <NavigationDrawer></NavigationDrawer> */}
+    </View>
     </View>
   );
 };

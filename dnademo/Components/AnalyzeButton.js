@@ -18,7 +18,7 @@ export class AnalyzeButton extends Component{
 }
 const styles = StyleSheet.create({
     analyzeButton: {
-      marginBottom: 15, marginRight: 8, height: 60, width: 200, alignSelf: 'center', backgroundColor: '#ccffdd', justifyContent: 'center', alignItems: 'center', borderRadius: 45,
+      marginBottom: 10, marginRight: 8, height: 60, width: 200, alignSelf: 'center', backgroundColor: '#ccffdd', justifyContent: 'center', alignItems: 'center', borderRadius: 45,
     },
     textFill: {
         color: 'black', fontWeight: 'bold', fontSize: 15

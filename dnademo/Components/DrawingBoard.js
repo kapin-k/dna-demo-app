@@ -18,8 +18,8 @@ export class DrawingBoard extends Component {
             canvasStyle={{ backgroundColor: 'transparent', flex: 1 }}
             defaultStrokeIndex={0}
             defaultStrokeWidth={7}
-            clearComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>Clear</Text></View>}
-            clearComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>Clear</Text></View>}
+            clearComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>X</Text></View>}
+            // clearComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>Clear</Text></View>}
             // closeComponent={<View style={styles.functionButton}><Text style={{color: 'white'}}>Close</Text></View>}
             // undoComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>Undo</Text></View>}
             // eraseComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>Eraser</Text></View>}
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center', alignItems: 'center', backgroundColor: '#8e8e93'
   },
   functionButton: {
-    marginHorizontal: 2.5, marginVertical: 8, height: 40, width: 70,
+    marginHorizontal: 2.5, marginVertical: 8, height: 30, width: 30,
     backgroundColor: '#8e8e93', justifyContent: 'center', alignItems: 'center', borderRadius: 25,
   }
 });
