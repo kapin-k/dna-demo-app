@@ -59,7 +59,7 @@ export class DrawingBoard extends Component {
           //     imageType: 'png'
           //   }
           // }}
-        />
+        ></RNSketchCanvas>
       </View>
     );
   }

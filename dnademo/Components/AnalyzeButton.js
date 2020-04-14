@@ -8,7 +8,7 @@ export class AnalyzeButton extends Component {
     return (
       <View>
         <Button
-        type = "clear"
+          type="clear"
           onPress={() => {
             alert('You tapped the button!');
           }}
