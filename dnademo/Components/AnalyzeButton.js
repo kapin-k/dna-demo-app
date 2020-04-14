@@ -3,6 +3,10 @@ import {AppRegistry, StyleSheet, Text, View, Alert} from 'react-native';
 import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import RNSketchCanvas from '@terrylinla/react-native-sketch-canvas';
+
+
+
 export class AnalyzeButton extends Component {
   render() {
     return (
@@ -10,7 +14,7 @@ export class AnalyzeButton extends Component {
         <Button
           type="clear"
           onPress={() => {
-            alert('You tapped the button!');
+            alert('Server taking too long to respond!');
           }}
           // title="Checkout these samples!"
           icon={<Icon name="play-circle" size={60} color="#34C759" />}

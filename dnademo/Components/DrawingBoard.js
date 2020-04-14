@@ -17,17 +17,14 @@ export class DrawingBoard extends Component {
           defaultStrokeWidth={7}
           clearComponent={
             <View style={styles.functionButton}>
-              {/* <Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>
-                X
-              </Text> */}
-              <Button
+              <Text style={{color: 'black', fontWeight: 'bold', fontSize: 20}}>
+              <Icon name="eraser" size={40} color="#8E8E93" />
+              </Text>
+              {/* <Button
                 type="clear"
-                onPress={() => {
-                  alert('You tapped the button!');
-                }}
                 //   title={<Text style = {styles.buttonText} > Checkout these samples!</Text>}
                 icon={<Icon name="eraser" size={40} color="#8E8E93" />}
-              />
+              /> */}
             </View>
           }
           // clearComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>Clear</Text></View>}
@@ -87,8 +84,8 @@ const styles = StyleSheet.create({
   functionButton: {
     marginHorizontal: 2.5,
     marginVertical: 8,
-    // height: 30,
-    // width: 30,
+    height: 50,
+    width: 50,
     // backgroundColor: '#f05454',
     justifyContent: 'center',
     alignItems: 'center',
