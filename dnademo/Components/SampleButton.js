@@ -1,21 +1,19 @@
 import React, {Component} from 'react';
 import {AppRegistry, StyleSheet, Text, View, Alert} from 'react-native';
 import {Button} from 'react-native-elements';
-// import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export class SampleButton extends Component {
   render() {
     return (
       <View>
-        {/* <Icon
-  name='rowing' /> */}
-        {/* <Text style={styles.textFill}>SampleButton</Text> */}
-        {/* <Icon name="sc-telegram" color="#517fa4" /> */}
         <Button
+        type = "clear"
           onPress={() => {
             alert('You tapped the button!');
           }}
-          title="Press Me"
+        //   title={<Text style = {styles.buttonText} > Checkout these samples!</Text>}
+          icon={<Icon name="book" size={60} color="#007AFF" />}
         />
       </View>
     );
@@ -37,6 +35,11 @@ const styles = StyleSheet.create({
     color: 'black',
     fontWeight: 'bold',
     fontSize: 15,
+  },
+  buttonText: {
+      color: 'blue',
+      fontSize: 15,
+      fontWeight: 'bold',
   },
 });
 
