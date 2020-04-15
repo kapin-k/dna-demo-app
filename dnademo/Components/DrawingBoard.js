@@ -132,7 +132,7 @@ export class DrawingBoard extends Component {
               onPress={() => {
                 var RNFS = require('react-native-fs');
                 const sample = JSON.stringify(this.canvas.getPaths(), null, 2);
-                console.log('Sample' + sample);
+                // console.log('Sample' + sample);
                 RNFS.writeFile('/Users/invenstphonethree/Documents/dna-demo-app/dnademo/Components/Request.json', sample , 'utf8')
                   .then(success => {
                     console.log('FILE WRITTEN!');
