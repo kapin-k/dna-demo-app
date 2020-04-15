@@ -131,7 +131,7 @@ export class DrawingBoard extends Component {
               icon={<Icon name="play-circle" size={60} color="#34C759" />}
               onPress={() => {
                 var RNFS = require('react-native-fs');
-                const sample = JSON.stringify(this.canvas.getPaths());
+                const sample = JSON.stringify(this.canvas.getPaths(), null, 2);
                 console.log('Sample' + sample);
                 RNFS.writeFile('/Users/invenstphonethree/Documents/dna-demo-app/dnademo/Components/Request.json', sample , 'utf8')
                   .then(success => {
