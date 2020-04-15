@@ -11,6 +11,8 @@ import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AnalyzeButton} from './AnalyzeButton';
 
+import Request from './Request.json';
+
 import RNSketchCanvas from '@terrylinla/react-native-sketch-canvas';
 import {SketchCanvas} from '@terrylinla/react-native-sketch-canvas';
 import {SampleButton} from './SampleButton';
@@ -32,7 +34,8 @@ export class DrawingBoard extends Component {
     // let pathChange = JSON.stringify(this.canvas.getPaths());
     this.setState(previousState => {
       return {
-        path: JSON.stringify(this.canvas.getPaths())};
+        path: JSON.stringify(this.canvas.getPaths()),
+      };
     });
   };
 
@@ -127,17 +130,24 @@ export class DrawingBoard extends Component {
               type="clear"
               icon={<Icon name="play-circle" size={60} color="#34C759" />}
               onPress={() => {
+                var RNFS = require('react-native-fs');
                 const sample = JSON.stringify(this.canvas.getPaths());
                 console.log('Sample' + sample);
+                RNFS.writeFile('/Users/invenstphonethree/Documents/dna-demo-app/dnademo/Components/Request.json', sample , 'utf8')
+                  .then(success => {
+                    console.log('FILE WRITTEN!');
+                  })
+                  .catch(err => {
+                    console.log(err.message);
+                  });
                 this.setState(
                   {
                     path: sample,
                   },
                   () => {
-                    console.log('Path after update:' + this.state.path)
+                    console.log('Path after update:' + this.state.path);
                   },
                 );
-                
               }}
             />
 
