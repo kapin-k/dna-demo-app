@@ -2,32 +2,9 @@ import React, {Component} from 'react';
 import {AppRegistry, StyleSheet, Text, View, Alert} from 'react-native';
 import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Overlay from 'react-native-modal-overlay';
+// import Overlay from './Overlay';
 
 export class SampleButton extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modalVisible: true,
-    };
-  }
-
-  onClose = () => this.setState({modalVisible: false});
-
-  changeState = () => {
-    if (this.state.overlayVisible) {
-      console.log("I'm here");
-      this.setState(state => ({
-        overlayVisible: false,
-      }));
-    } else {
-      // this.setState({overlayVisible: true});
-      this.setState(state => ({
-        overlayVisible: true,
-      }));
-    }
-  };
-
   render() {
     return (
       <View>
@@ -35,12 +12,7 @@ export class SampleButton extends Component {
           type="clear"
           icon={<Icon name="book" size={60} color="#007AFF" />}
           onPress={() => {
-            <Overlay
-              visible={this.state.modalVisible}
-              onClose={this.onClose}
-              closeOnTouchOutside>
-              <Text>Some Modal Content</Text>
-            </Overlay>
+            //  <Overlay></Overlay>
           }}
           //   title={<Text style = {styles.buttonText} > Checkout these samples!</Text>}
         />

@@ -1,15 +1,7 @@
 import React, {Component} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {StyleSheet, View, Text, StatusBar} from 'react-native';
 import {
   Header,
-  LearnMoreLinks,
   Colors,
   DebugInstructions,
   ReloadInstructions,
@@ -20,32 +12,35 @@ import {AnalyzeButton} from './Components/AnalyzeButton';
 import {SampleButton} from './Components/SampleButton';
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      modalVisible: true,
+      dnaPath: 'app.js',
     };
   }
 
-  onClose = () => this.setState({modalVisible: false});
+  onPathChange(newname) {
+    this.setState({dnaPath: newname});
+  }
 
-  render () {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.appHeading}>DNA DEMO</Text>
-      <DrawingBoard></DrawingBoard>
-      <View
-        style={{
-          justifyContent: 'space-between',
-          width: 1000,
-          flexDirection: 'row',
-        }}>
-        <SampleButton onPress={this.state.modalVisible}/>
-        <AnalyzeButton />
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.appHeading}>DNA DEMO</Text>
+        {/* <DrawingBoard onChangeinPath={this.onPathChange.bind(this)} /> */}
+        <DrawingBoard></DrawingBoard>
+        {/* <View
+          style={{
+            justifyContent: 'space-between',
+            width: 1000,
+            flexDirection: 'row',
+          }}>
+          <SampleButton />
+          <AnalyzeButton />
+        </View> */}
       </View>
-    </View>
-  );
-};
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -62,7 +57,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    // backgroundColor: '#F5FCFF',
   },
 });
 

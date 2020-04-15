@@ -1,66 +1,166 @@
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View, Alert} from 'react-native';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+  Alert,
+  TouchableOpacity,
+} from 'react-native';
 import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {AnalyzeButton} from './AnalyzeButton';
 
 import RNSketchCanvas from '@terrylinla/react-native-sketch-canvas';
+import {SketchCanvas} from '@terrylinla/react-native-sketch-canvas';
+import {SampleButton} from './SampleButton';
 
 export class DrawingBoard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      color: '#1C1C1E',
+      thickness: 8,
+      message: '',
+      photoPath: null,
+      scrollEnabled: true,
+      path: null,
+    };
+  }
+  updateState = () => {
+    console.log('updateState called');
+    // let pathChange = JSON.stringify(this.canvas.getPaths());
+    this.setState(previousState => {
+      return {
+        path: JSON.stringify(this.canvas.getPaths())};
+    });
+  };
+
   render() {
+    // console.log('Checking state.path ' + this.state.path)
     return (
-      <View
-        style={{flex: 1, flexDirection: 'row', marginLeft: 5, marginRight: 5}}>
-        <RNSketchCanvas
-          containerStyle={{backgroundColor: 'transparent', flex: 1}}
-          canvasStyle={{backgroundColor: 'transparent', flex: 1}}
-          defaultStrokeIndex={0}
-          defaultStrokeWidth={7}
-          clearComponent={
-            <View style={styles.functionButton}>
-              <Text style={{color: 'black', fontWeight: 'bold', fontSize: 20}}>
-              <Icon name="eraser" size={40} color="#8E8E93" />
-              </Text>
-              {/* <Button
-                type="clear"
-                //   title={<Text style = {styles.buttonText} > Checkout these samples!</Text>}
-                icon={<Icon name="eraser" size={40} color="#8E8E93" />}
-              /> */}
-            </View>
-          }
-          // clearComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>Clear</Text></View>}
-          // closeComponent={<View style={styles.functionButton}><Text style={{color: 'white'}}>Close</Text></View>}
-          // undoComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>Undo</Text></View>}
-          // eraseComponent={<View style={styles.functionButton}><Text style={{color: 'white', fontWeight: 'bold', fontSize: 15}}>Eraser</Text></View>}
-          // strokeComponent={color => (
-          //   <View style={[{ backgroundColor: color }, styles.strokeColorButton]} />
-          // )}
-          // strokeSelectedComponent={(color, index, changed) => {
-          //   return (
-          //     <View style={[{ backgroundColor: color, borderWidth: 5 }, styles.strokeColorButton]} />
-          //   )
-          // }}
-          // strokeWidthComponent={(w) => {
-          //   return (<View style={styles.strokeWidthButton}>
-          //     <View  style={{
-          //       backgroundColor: 'white', marginHorizontal: 2.5,
-          //       width: Math.sqrt(w / 3) * 10, height: Math.sqrt(w / 3) * 10, borderRadius: Math.sqrt(w / 3) * 10 / 2
-          //     }} />
-          //   </View>
-          // )}}
-          // saveComponent={<View style={styles.functionButton}><Text style={{color: 'white'}}>Save</Text></View>}
-          // savePreference={() => {
-          //   return {
-          //     folder: 'SavedSketches',
-          //     filename: String(Math.ceil(Math.random() * 100000000)),
-          //     transparent: false,
-          //     imageType: 'png'
-          //   }
-          // }}
-        ></RNSketchCanvas>
+      <View style={{flex: 1, flexDirection: 'row'}}>
+        <View style={{flex: 1, flexDirection: 'column'}}>
+          {/* Place eraser component */}
+          <SketchCanvas
+            localSourceImage={{
+              filename: 'background.jpg',
+              directory: '',
+              mode: 'ScaleToFill',
+            }}
+            text={[
+              {
+                text: '<----------- Time (milliseconds) ----------->',
+                font: 'Zapfino',
+                fontSize: 15,
+                position: {x: 441, y: 880},
+                anchor: {x: 0, y: 0},
+                overlay: 'SketchOnText',
+                coordinate: 'Absolute',
+                alignment: 'Center',
+                fontColor: 'grey',
+              },
+              {
+                text: '2000',
+                font: 'Zapfino',
+                fontSize: 12,
+                position: {x: 1300, y: 888},
+                anchor: {x: 0, y: 0},
+                overlay: 'SketchOnText',
+                coordinate: 'Absolute',
+                alignment: 'Center',
+                fontColor: 'grey',
+              },
+              {
+                text: '0',
+                font: 'Zapfino',
+                fontSize: 12,
+                position: {x: 10, y: 888},
+                anchor: {x: 0, y: 0},
+                overlay: 'SketchOnText',
+                coordinate: 'Absolute',
+                alignment: 'Center',
+                fontColor: 'grey',
+              },
+              // { text: '-2', font: 'Zapfino', fontSize: 12, position: { x: 10, y: 838 }, anchor: { x: 0, y: 0 }, overlay: 'SketchOnText', coordinate: 'Absolute', alignment: 'Center', fontColor: 'grey' },
+              // { text: '2', font: 'Zapfino', fontSize: 12, position: { x: 10, y: 10 }, anchor: { x: 0, y: 0 }, overlay: 'SketchOnText', coordinate: 'Absolute', alignment: 'Center', fontColor: 'grey' },
+            ]}
+            ref={ref => (this.canvas = ref)}
+            style={{flex: 1}}
+            strokeColor={this.state.color}
+            strokeWidth={this.state.thickness}
+            onStrokeStart={(x, y) => {
+              console.log('x: ', x, ', y: ', y);
+              this.setState({message: 'Start'});
+            }}
+            onStrokeChanged={(x, y) => {
+              console.log('x: ', x, ', y: ', y);
+              this.setState({message: 'Changed'});
+            }}
+            onStrokeEnd={() => {
+              this.setState({message: 'End'});
+              // this.setState({path: JSON.stringify(this.canvas.getPaths())});
+              // this.props.onChangeinPath(JSON.stringify(this.canvas.getPaths()));
+            }}
+            onPathsChange={pathsCount => {
+              console.log('pathsCount', pathsCount);
+            }}
+          />
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+              alignItems: 'center',
+            }}>
+            {/* <Button
+              type="clear"
+              icon={<Icon name="book" size={60} color="#007AFF" />}
+              onPress={() => {
+                console.log('This is the output' + JSON.stringify(this.canvas.getPaths()));
+                this.setState({path: JSON.stringify(this.canvas.getPaths())});
+                //  <Overlay></Overlay>
+              }}
+            /> */}
+            <SampleButton />
+
+            <Button
+              type="clear"
+              icon={<Icon name="play-circle" size={60} color="#34C759" />}
+              onPress={() => {
+                const sample = JSON.stringify(this.canvas.getPaths());
+                console.log('Sample' + sample);
+                this.setState(
+                  {
+                    path: sample,
+                  },
+                  () => {
+                    console.log('Path after update:' + this.state.path)
+                  },
+                );
+                
+              }}
+            />
+
+            {/* <TouchableOpacity
+              style={[
+                styles.functionButton,
+                {backgroundColor: 'black', width: 90},
+              ]}
+              onPress={() => {
+                console.log(JSON.stringify(this.canvas.getPaths()));
+              }}>
+              <Text style={{color: 'white'}}>Get Paths</Text>
+            </TouchableOpacity> */}
+          </View>
+        </View>
       </View>
     );
   }
 }
+
+// getOutput = canvas => {
+//   this.state.path = JSON.stringify(this.canvas.getPaths());
+// };
 
 const styles = StyleSheet.create({
   strokeColorButton: {

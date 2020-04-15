@@ -4,22 +4,31 @@ import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import RNSketchCanvas from '@terrylinla/react-native-sketch-canvas';
-
-
+import {SketchCanvas} from '@terrylinla/react-native-sketch-canvas';
 
 export class AnalyzeButton extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dnapath: this.props.dnaPath,
+    };
+  }
   render() {
+    console.log('Analaze button data: ' + this.state.dnapath)
     return (
       <View>
-        <Button
+        {/* <Button
           type="clear"
           onPress={() => {
-            alert('Server taking too long to respond!');
+            console.log('Check');
           }}
+          // onPress={() => {
+          //   alert('Server taking too long to respond!');
+          // }}
           // title="Checkout these samples!"
           icon={<Icon name="play-circle" size={60} color="#34C759" />}
           // icon={<Icon name="play-circle" size={70} color="#30D158" />}
-        />
+        /> */}
       </View>
     );
   }
