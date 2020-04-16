@@ -130,32 +130,24 @@ export class DrawingBoard extends Component {
               type="clear"
               icon={<Icon name="play-circle" size={60} color="#34C759" />}
               onPress={() => {
-                var RNFS = require('react-native-fs')
-                var filePath = RNFS.DocumentDirectoryPath + '/Request_File.json';
-                var userInput = JSON.stringify(this.canvas.getPaths(), null, 2);
-                console.log('User Input : ' + userInput );
-
-                //Just for testing (Change per user)
-                RNFS.writeFile('/Users/invenstphonethree/Documents/dna-demo-app/dnademo/Components/Request.json', userInput , 'utf8')
-                
-                RNFS.writeFile(filePath, userInput , 'utf8')
+                var RNFS = require('react-native-fs');
+                const sample = JSON.stringify(this.canvas.getPaths(), null, 2);
+                // console.log('Sample' + sample);
+                RNFS.writeFile('/Users/invenstphonethree/Documents/dna-demo-app/dnademo/Components/Request.json', sample , 'utf8')
                   .then(success => {
                     console.log('FILE WRITTEN!');
                   })
                   .catch(err => {
                     console.log(err.message);
                   });
-
                 this.setState(
                   {
-                    path: userInput,
+                    path: sample,
                   },
                   () => {
-                    // console.log('Path after update:' + this.state.path);
+                    console.log('Path after update:' + this.state.path);
                   },
                 );
-                //ADD BACKEND CODE
-                // Connect code
               }}
             />
 
