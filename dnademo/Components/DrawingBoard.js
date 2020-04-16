@@ -132,24 +132,26 @@ export class DrawingBoard extends Component {
               onPress={() => {
                 var RNFS = require('react-native-fs')
                 var filePath = RNFS.DocumentDirectoryPath + '/Request_File.json';
-                var sample = JSON.stringify(this.canvas.getPaths(), null, 2);
-                var data = JSON.parse(sample);
-                console.log('DATA' + data.path );
-                // console.log('Sample' + sample);
-                RNFS.writeFile('/Users/invenstphonethree/Documents/dna-demo-app/dnademo/Components/Request.json', sample , 'utf8')
-                RNFS.writeFile(filePath, sample , 'utf8')
+                var userInput = JSON.stringify(this.canvas.getPaths(), null, 2);
+                console.log('User Input : ' + userInput );
+
+                //Just for testing (Change per user)
+                RNFS.writeFile('/Users/invenstphonethree/Documents/dna-demo-app/dnademo/Components/Request.json', userInput , 'utf8')
+                
+                RNFS.writeFile(filePath, userInput , 'utf8')
                   .then(success => {
                     console.log('FILE WRITTEN!');
                   })
                   .catch(err => {
                     console.log(err.message);
                   });
+
                 this.setState(
                   {
-                    path: sample,
+                    path: userInput,
                   },
                   () => {
-                    console.log('Path after update:' + this.state.path);
+                    // console.log('Path after update:' + this.state.path);
                   },
                 );
                 //ADD BACKEND CODE
