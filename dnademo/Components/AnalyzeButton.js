@@ -12,11 +12,18 @@ export class AnalyzeButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
     };
   }
+
   render() {
-    // console.log('Analaze button data: ' + this.state.dnapath)
+    var RNFS = require('react-native-fs')
+    var filePath = RNFS.DocumentDirectoryPath + '/Request_File.json';
+    if(RNFS.exists(filePath)){
+      var fileData = RNFS.readFile(filePath, 'utf8');
+    }
+    var checkParse = JSON.parse(Request)
+    console.log('ParseCheck:' + checkParse.id);
+    console.log('Analaze button data: ' + this.state.dnapath)
     return (
       <View>
         
