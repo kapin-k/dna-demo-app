@@ -130,15 +130,34 @@ export class DrawingBoard extends Component {
               type="clear"
               icon={<Icon name="play-circle" size={60} color="#34C759" />}
               onPress={() => {
-                var RNFS = require('react-native-fs')
-                var filePath = RNFS.DocumentDirectoryPath + '/Request_File.json';
-                var userInput = JSON.stringify(this.canvas.getPaths(), null, 2);
-                console.log('User Input : ' + userInput );
+                var RNFS = require('react-native-fs');
+                var _ = require('lodash');
+                var filePath =
+                  RNFS.DocumentDirectoryPath + '/Response.json';
+                var split2 = '';
+                var userInput = JSON.stringify(this.canvas.getPaths());
+                console.log('userInput : ' + userInput);
+                var split1 = userInput.split('data":');
+                // console.log('split1 : ' + split1);
+                // console.log('length of split1: ' + split1.length);
+                for (var i = 1; i < split1.length; i++) {
+                  var temp_split = split1[i].split('},"s');
+                  split2 = split2.concat(temp_split[0]);
+                  split2 = split2.replace(/",/g, '],');
+                  split2 = split2.replace(/"/g, '[');
+                  split2 = split2.replace('[]', ']]');
+                  split2 = split2.replace('][', '],[');
+                }
+                // console.log('split2 : ' + split2);
+                var readSplit = '"Read":' + split2;
+                var dataToServer = "'{".concat(readSplit).concat("}'");
+                console.log('dataToServer : ' + dataToServer);
 
-                //Just for testing (Change per user)
-                RNFS.writeFile('/Users/invenstphonethree/Documents/dna-demo-app/dnademo/Components/Request.json', userInput , 'utf8')
-                
-                RNFS.writeFile(filePath, userInput , 'utf8')
+                // Just for testing (Change per user)
+                // RNFS.writeFile('/Users/invenstphonethree/Documents/dna-demo-app/dnademo/Components/Request.json',userInput,'utf8',);
+
+                //Incase we need to write a json file for the output recieved from the Server
+                RNFS.writeFile(filePath, userInput, 'utf8')
                   .then(success => {
                     console.log('FILE WRITTEN!');
                   })
@@ -151,11 +170,10 @@ export class DrawingBoard extends Component {
                     path: userInput,
                   },
                   () => {
-                    // console.log('Path after update:' + this.state.path);
                   },
                 );
-                //ADD BACKEND CODE
-                // Connect code
+
+                //ADD BACKEND CODE HERE
               }}
             />
 
