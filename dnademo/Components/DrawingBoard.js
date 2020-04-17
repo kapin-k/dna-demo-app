@@ -12,6 +12,7 @@ import {
   Modal,
 } from 'react-native';
 import {Button} from 'react-native-elements';
+import AwesomeButtonRick from 'react-native-really-awesome-button/src/themes/rick';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AnalyzeButton} from './AnalyzeButton';
 import {SampleButton} from './SampleButton';
@@ -82,7 +83,14 @@ export class DrawingBoard extends Component {
                       source={require('./Sample_Screens/Sample1.png')}
                       style={{width: 370, height: 330}}
                     />
-                    <TouchableHighlight
+                    <View style={{marginTop: 10}}>
+                     <AwesomeButtonRick type="secondary" height={30} borderRadius={30} padding={10} paddingTop={5} elevation={3} onPress={() => {
+                        this.setState({
+                          overlayVisibility: false,
+                          chosenSample: 1,
+                        });
+                      }}>SAMPLE 1</AwesomeButtonRick></View>
+                    {/* <TouchableHighlight
                       style={{...styles.openButton}}
                       onPress={() => {
                         this.setState({
@@ -91,7 +99,7 @@ export class DrawingBoard extends Component {
                         });
                       }}>
                       <Text style={styles.textStyle}>SAMPLE 1</Text>
-                    </TouchableHighlight>
+                    </TouchableHighlight> */}
                   </View>
                 </TouchableWithoutFeedback>
 
@@ -103,16 +111,13 @@ export class DrawingBoard extends Component {
                       source={require('./Sample_Screens/Sample2.png')}
                       style={{width: 370, height: 330}}
                     />
-                    <TouchableHighlight
-                      style={{...styles.openButton}}
-                      onPress={() => {
+                    <View style={{marginTop: 10}}>
+                     <AwesomeButtonRick type="secondary" height={30} borderRadius={30} padding={10} paddingTop={5} elevation={3} onPress={() => {
                         this.setState({
                           overlayVisibility: false,
                           chosenSample: 2,
                         });
-                      }}>
-                      <Text style={styles.textStyle}>SAMPLE 2</Text>
-                    </TouchableHighlight>
+                      }}>SAMPLE 2</AwesomeButtonRick></View>
                   </View>
                 </TouchableWithoutFeedback>
 
@@ -124,16 +129,13 @@ export class DrawingBoard extends Component {
                       source={require('./Sample_Screens/Sample3.png')}
                       style={{width: 370, height: 330}}
                     />
-                    <TouchableHighlight
-                      style={{...styles.openButton}}
-                      onPress={() => {
+                    <View style={{marginTop: 10}}>
+                     <AwesomeButtonRick type="secondary" height={30} borderRadius={30} padding={10} paddingTop={5} elevation={3} onPress={() => {
                         this.setState({
                           overlayVisibility: false,
                           chosenSample: 3,
                         });
-                      }}>
-                      <Text style={styles.textStyle}>SAMPLE 3</Text>
-                    </TouchableHighlight>
+                      }}>SAMPLE 3</AwesomeButtonRick></View>
                   </View>
                 </TouchableWithoutFeedback>
               </View>
@@ -147,16 +149,13 @@ export class DrawingBoard extends Component {
                       source={require('./Sample_Screens/Sample4.png')}
                       style={{width: 370, height: 330}}
                     />
-                    <TouchableHighlight
-                      style={{...styles.openButton}}
-                      onPress={() => {
+                    <View style={{marginTop: 10}}>
+                     <AwesomeButtonRick type="secondary" height={30} borderRadius={30} padding={10} paddingTop={5} elevation={3} onPress={() => {
                         this.setState({
                           overlayVisibility: false,
                           chosenSample: 4,
                         });
-                      }}>
-                      <Text style={styles.textStyle}>SAMPLE 4</Text>
-                    </TouchableHighlight>
+                      }}>SAMPLE 4</AwesomeButtonRick></View>
                   </View>
                 </TouchableWithoutFeedback>
 
@@ -168,16 +167,13 @@ export class DrawingBoard extends Component {
                       source={require('./Sample_Screens/Sample5.png')}
                       style={{width: 370, height: 330}}
                     />
-                    <TouchableHighlight
-                      style={{...styles.openButton}}
-                      onPress={() => {
+                    <View style={{marginTop: 10}}>
+                     <AwesomeButtonRick type="secondary" height={30} borderRadius={30} padding={10} paddingTop={5} elevation={3} onPress={() => {
                         this.setState({
                           overlayVisibility: false,
                           chosenSample: 5,
                         });
-                      }}>
-                      <Text style={styles.textStyle}>SAMPLE 5</Text>
-                    </TouchableHighlight>
+                      }}>SAMPLE 5</AwesomeButtonRick></View>
                   </View>
                 </TouchableWithoutFeedback>
               </View>
