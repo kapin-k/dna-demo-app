@@ -5,15 +5,26 @@ import {
   Text,
   View,
   Alert,
+  Image,
   TouchableOpacity,
+  TouchableWithoutFeedback,
+  TouchableHighlight,
+  Modal,
 } from 'react-native';
 import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AnalyzeButton} from './AnalyzeButton';
+import {SampleButton} from './SampleButton';
 
 import RNSketchCanvas from '@terrylinla/react-native-sketch-canvas';
 import {SketchCanvas} from '@terrylinla/react-native-sketch-canvas';
-import {SampleButton} from './SampleButton';
+
+// ios-black 1C1C1E
+// ios-blue 007AFF
+// ios-pink FF2D55
+// ios-purple AF52DE
+// ios-orange FF9500
+// ios-green 34C759
 
 export class DrawingBoard extends Component {
   constructor(props) {
@@ -23,8 +34,10 @@ export class DrawingBoard extends Component {
       thickness: 8,
       message: '',
       photoPath: null,
+      chosenSample: null,
       scrollEnabled: true,
       path: null,
+      overlayVisibility: false,
     };
   }
   updateState = () => {
@@ -38,15 +51,173 @@ export class DrawingBoard extends Component {
   };
 
   render() {
+    var RNFS = require('react-native-fs');
+    var _ = require('lodash');
+    // RNFS.downloadFile({
+    //   fromUrl:
+    //     'https://github.com/kapin-k/dna-demo-app/blob/master/dnademo/ios/background.PNG',
+    //   toFile: `${RNFS.DocumentDirectoryPath}/background-board.png`,
+    // }).promise.then(r => {
+    // console.log('BACKGROUND SET');
+    // });
+    // var backgroundPath = RNFS.DocumentDirectoryPath + '/background-board.png'
     // console.log('Checking state.path ' + this.state.path)
     return (
       <View style={{flex: 1, flexDirection: 'row'}}>
+        <Modal
+          animationType="slide"
+          visible={this.state.overlayVisibility}
+          onRequestClose={() => {
+            console.log('Modal displaying samples have been closed!');
+          }}>
+          <TouchableWithoutFeedback
+            onPressIn={() => this.setState({overlayVisibility: false})}>
+            <View style={styles.mainModalView}>
+              <View style={styles.centeredView}>
+                {/* SAMPLE 1 */}
+                <TouchableWithoutFeedback
+                  onPressIn={() => this.setState({overlayVisibility: false})}>
+                  <View style={styles.modalView1}>
+                    <Image
+                      source={require('./Sample_Screens/Sample1.png')}
+                      style={{width: 370, height: 330}}
+                    />
+                    <TouchableHighlight
+                      style={{...styles.openButton}}
+                      onPress={() => {
+                        this.setState({
+                          overlayVisibility: false,
+                          chosenSample: 1,
+                        });
+                      }}>
+                      <Text style={styles.textStyle}>SAMPLE 1</Text>
+                    </TouchableHighlight>
+                  </View>
+                </TouchableWithoutFeedback>
+
+                {/* SAMPLE 2 */}
+                <TouchableWithoutFeedback
+                  onPressIn={() => this.setState({overlayVisibility: false})}>
+                  <View style={styles.modalView2}>
+                    <Image
+                      source={require('./Sample_Screens/Sample2.png')}
+                      style={{width: 370, height: 330}}
+                    />
+                    <TouchableHighlight
+                      style={{...styles.openButton}}
+                      onPress={() => {
+                        this.setState({
+                          overlayVisibility: false,
+                          chosenSample: 2,
+                        });
+                      }}>
+                      <Text style={styles.textStyle}>SAMPLE 2</Text>
+                    </TouchableHighlight>
+                  </View>
+                </TouchableWithoutFeedback>
+
+                {/* SAMPLE 3 */}
+                <TouchableWithoutFeedback
+                  onPressIn={() => this.setState({overlayVisibility: false})}>
+                  <View style={styles.modalView3}>
+                    <Image
+                      source={require('./Sample_Screens/Sample3.png')}
+                      style={{width: 370, height: 330}}
+                    />
+                    <TouchableHighlight
+                      style={{...styles.openButton}}
+                      onPress={() => {
+                        this.setState({
+                          overlayVisibility: false,
+                          chosenSample: 3,
+                        });
+                      }}>
+                      <Text style={styles.textStyle}>SAMPLE 3</Text>
+                    </TouchableHighlight>
+                  </View>
+                </TouchableWithoutFeedback>
+              </View>
+
+              <View style={styles.centeredView}>
+                {/* SAMPLE 4 */}
+                <TouchableWithoutFeedback
+                  onPressIn={() => this.setState({overlayVisibility: false})}>
+                  <View style={styles.modalView4}>
+                    <Image
+                      source={require('./Sample_Screens/Sample4.png')}
+                      style={{width: 370, height: 330}}
+                    />
+                    <TouchableHighlight
+                      style={{...styles.openButton}}
+                      onPress={() => {
+                        this.setState({
+                          overlayVisibility: false,
+                          chosenSample: 4,
+                        });
+                      }}>
+                      <Text style={styles.textStyle}>SAMPLE 4</Text>
+                    </TouchableHighlight>
+                  </View>
+                </TouchableWithoutFeedback>
+
+                {/* SAMPLE 5 */}
+                <TouchableWithoutFeedback
+                  onPressIn={() => this.setState({overlayVisibility: false})}>
+                  <View style={styles.modalView5}>
+                    <Image
+                      source={require('./Sample_Screens/Sample5.png')}
+                      style={{width: 370, height: 330}}
+                    />
+                    <TouchableHighlight
+                      style={{...styles.openButton}}
+                      onPress={() => {
+                        this.setState({
+                          overlayVisibility: false,
+                          chosenSample: 5,
+                        });
+                      }}>
+                      <Text style={styles.textStyle}>SAMPLE 5</Text>
+                    </TouchableHighlight>
+                  </View>
+                </TouchableWithoutFeedback>
+              </View>
+              <TouchableWithoutFeedback
+                onPress={() => this.setState({overlayVisibility: false})}>
+                <View
+                  style={{
+                    flex: 0.18,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: 15,
+                  }}>
+                  <Button
+                    type="clear"
+                    icon={
+                      <Icon
+                        name="chevron-triple-down"
+                        size={60}
+                        color="#606063"
+                      />
+                    }
+                    onPress={() => {
+                      this.setState({
+                        overlayVisibility: false,
+                      });
+                    }}
+                  />
+                </View>
+              </TouchableWithoutFeedback>
+            </View>
+          </TouchableWithoutFeedback>
+        </Modal>
+
         <View style={{flex: 1, flexDirection: 'column'}}>
           {/* Place eraser component */}
           <SketchCanvas
             localSourceImage={{
               filename: 'background.png',
-              directory: 'SketchCanvas.MAIN_BUNDLE',
+              directory:
+                '/Users/invenstphonethree/Documents/dna-demo-app/dnademo/background.png',
               mode: 'ScaleToFill',
             }}
             text={[
@@ -104,36 +275,43 @@ export class DrawingBoard extends Component {
               // this.props.onChangeinPath(JSON.stringify(this.canvas.getPaths()));
             }}
             onPathsChange={pathsCount => {
-              console.log('pathsCount', pathsCount);
+              // console.log('pathsCount', pathsCount);
             }}
           />
+
           <View
             style={{
               flexDirection: 'row',
               justifyContent: 'space-evenly',
               alignItems: 'center',
             }}>
-            {/* <Button
+            {/* ~~~~~~~~~~~~~~~<SampleButton />~~~~~~~~~~~~~~~ */}
+            <Button
               type="clear"
               icon={<Icon name="book" size={60} color="#007AFF" />}
               onPress={() => {
-                console.log('This is the output' + JSON.stringify(this.canvas.getPaths()));
-                this.setState({path: JSON.stringify(this.canvas.getPaths())});
-                //  <Overlay></Overlay>
+                this.setState({
+                  overlayVisibility: true,
+                });
               }}
-            /> */}
-            <SampleButton />
+            />
 
+            {/* ~~~~~~~~~~~~~~~<AnalyzeButton />~~~~~~~~~~~~~~~ */}
             <Button
               type="clear"
               icon={<Icon name="play-circle" size={60} color="#34C759" />}
               onPress={() => {
-                var RNFS = require('react-native-fs');
-                var _ = require('lodash');
-                var filePath =
-                  RNFS.DocumentDirectoryPath + '/Response.json';
+                var filePath = RNFS.DocumentDirectoryPath + '/Response.json';
                 var split2 = '';
                 var userInput = JSON.stringify(this.canvas.getPaths());
+                if (userInput == '[]') {
+                  Alert.alert(
+                    'Oops, empty drawing board!',
+                    'If you dont know where to start, please checkout the sample traces by clicking the blue icon. Happy tracing!!!',
+                    [{text: 'Okay', onPress: () => console.log('OK Pressed')}],
+                    {cancelable: false},
+                  );
+                }
                 console.log('userInput : ' + userInput);
                 var split1 = userInput.split('data":');
                 // console.log('split1 : ' + split1);
@@ -167,10 +345,12 @@ export class DrawingBoard extends Component {
                   {
                     path: userInput,
                   },
-                  () => {
-                  },
+                  () => {},
                 );
-
+                this.canvas.clear();
+                {
+                  /* ~~~~~~~~~~~~~~~<Backend Calls />~~~~~~~~~~~~~~~ */
+                }
                 //ADD BACKEND CODE HERE
               }}
             />
@@ -224,6 +404,158 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     // borderRadius: 25,
+  },
+  centeredView: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    // alignItems: 'center',
+    marginTop: 25,
+    marginLeft: 12,
+    marginRight: 12,
+    marginBottom: 15,
+    // backgroundColor: 'green',
+  },
+  mainModalView: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: '#f2f2f7',
+    justifyContent: 'space-between',
+    borderRadius: 50,
+    // alignItems: 'center',
+    marginTop: 25,
+    marginLeft: 12,
+    marginRight: 12,
+    marginBottom: 15,
+    // backgroundColor: 'green',
+  },
+  modalView1: {
+    // margin: 2,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
+    backgroundColor: '#2d70f7',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 3.84,
+    elevation: 5,
+    width: 420,
+    height: 420,
+    // borderColor: '#007AFF',
+    // borderWidth: 2
+  },
+  modalView2: {
+    // margin: 2,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
+    backgroundColor: '#FF2D55',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 3.84,
+    elevation: 5,
+    width: 420,
+    height: 420,
+    // borderColor: '#007AFF',
+    // borderWidth: 2
+  },
+  modalView3: {
+    // margin: 2,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
+    backgroundColor: '#AF52DE',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 3.84,
+    elevation: 5,
+    width: 420,
+    height: 420,
+    // borderColor: '#007AFF',
+    // borderWidth: 2
+  },
+  modalView4: {
+    // margin: 2,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
+    backgroundColor: '#FF9500',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 3.84,
+    elevation: 5,
+    width: 420,
+    height: 420,
+    // borderColor: '#007AFF',
+    // borderWidth: 2
+  },
+  modalView5: {
+    // margin: 2,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
+    backgroundColor: '#34C759',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 3.84,
+    elevation: 5,
+    width: 420,
+    height: 420,
+    // borderColor: '#007AFF',
+    // borderWidth: 2
+  },
+  openButton: {
+    backgroundColor: '#4b4d4f',
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    paddingTop: 5,
+    marginTop: 12,
+  },
+  textStyle: {
+    color: 'white',
+    fontStyle: 'italic',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
   },
 });
 
