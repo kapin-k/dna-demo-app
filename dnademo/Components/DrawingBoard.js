@@ -11,8 +11,6 @@ import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AnalyzeButton} from './AnalyzeButton';
 
-import Request from './Request.json';
-
 import RNSketchCanvas from '@terrylinla/react-native-sketch-canvas';
 import {SketchCanvas} from '@terrylinla/react-native-sketch-canvas';
 import {SampleButton} from './SampleButton';
@@ -47,8 +45,8 @@ export class DrawingBoard extends Component {
           {/* Place eraser component */}
           <SketchCanvas
             localSourceImage={{
-              filename: 'background.jpg',
-              directory: '',
+              filename: 'background.png',
+              directory: 'SketchCanvas.MAIN_BUNDLE',
               mode: 'ScaleToFill',
             }}
             text={[
