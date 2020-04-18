@@ -41,6 +41,7 @@ export class DrawingBoard extends Component {
       overlayVisibility: false,
     };
   }
+
   updateState = () => {
     console.log('updateState called');
     // let pathChange = JSON.stringify(this.canvas.getPaths());
@@ -49,6 +50,12 @@ export class DrawingBoard extends Component {
         path: JSON.stringify(this.canvas.getPaths()),
       };
     });
+  };
+
+  addPathData = (response_json) => {
+    console.log('addPathData called');
+    var start = '[{"path":{"id":77684860,"color":"#1C1C1E","width":8,"data":';
+    var end = '},"size":{"width":1366,"height":925},"drawer":null}]';
   };
 
   render() {
@@ -84,12 +91,22 @@ export class DrawingBoard extends Component {
                       style={{width: 370, height: 330}}
                     />
                     <View style={{marginTop: 10}}>
-                     <AwesomeButtonRick type="secondary" height={30} borderRadius={30} padding={10} paddingTop={5} elevation={3} onPress={() => {
-                        this.setState({
-                          overlayVisibility: false,
-                          chosenSample: 1,
-                        });
-                      }}>SAMPLE 1</AwesomeButtonRick></View>
+                      <AwesomeButtonRick
+                        type="secondary"
+                        height={30}
+                        borderRadius={30}
+                        padding={10}
+                        paddingTop={5}
+                        elevation={3}
+                        onPress={() => {
+                          this.setState({
+                            overlayVisibility: false,
+                            chosenSample: 1,
+                          });
+                        }}>
+                        SAMPLE 1
+                      </AwesomeButtonRick>
+                    </View>
                     {/* <TouchableHighlight
                       style={{...styles.openButton}}
                       onPress={() => {
@@ -112,12 +129,22 @@ export class DrawingBoard extends Component {
                       style={{width: 370, height: 330}}
                     />
                     <View style={{marginTop: 10}}>
-                     <AwesomeButtonRick type="secondary" height={30} borderRadius={30} padding={10} paddingTop={5} elevation={3} onPress={() => {
-                        this.setState({
-                          overlayVisibility: false,
-                          chosenSample: 2,
-                        });
-                      }}>SAMPLE 2</AwesomeButtonRick></View>
+                      <AwesomeButtonRick
+                        type="secondary"
+                        height={30}
+                        borderRadius={30}
+                        padding={10}
+                        paddingTop={5}
+                        elevation={3}
+                        onPress={() => {
+                          this.setState({
+                            overlayVisibility: false,
+                            chosenSample: 2,
+                          });
+                        }}>
+                        SAMPLE 2
+                      </AwesomeButtonRick>
+                    </View>
                   </View>
                 </TouchableWithoutFeedback>
 
@@ -130,12 +157,22 @@ export class DrawingBoard extends Component {
                       style={{width: 370, height: 330}}
                     />
                     <View style={{marginTop: 10}}>
-                     <AwesomeButtonRick type="secondary" height={30} borderRadius={30} padding={10} paddingTop={5} elevation={3} onPress={() => {
-                        this.setState({
-                          overlayVisibility: false,
-                          chosenSample: 3,
-                        });
-                      }}>SAMPLE 3</AwesomeButtonRick></View>
+                      <AwesomeButtonRick
+                        type="secondary"
+                        height={30}
+                        borderRadius={30}
+                        padding={10}
+                        paddingTop={5}
+                        elevation={3}
+                        onPress={() => {
+                          this.setState({
+                            overlayVisibility: false,
+                            chosenSample: 3,
+                          });
+                        }}>
+                        SAMPLE 3
+                      </AwesomeButtonRick>
+                    </View>
                   </View>
                 </TouchableWithoutFeedback>
               </View>
@@ -150,12 +187,22 @@ export class DrawingBoard extends Component {
                       style={{width: 370, height: 330}}
                     />
                     <View style={{marginTop: 10}}>
-                     <AwesomeButtonRick type="secondary" height={30} borderRadius={30} padding={10} paddingTop={5} elevation={3} onPress={() => {
-                        this.setState({
-                          overlayVisibility: false,
-                          chosenSample: 4,
-                        });
-                      }}>SAMPLE 4</AwesomeButtonRick></View>
+                      <AwesomeButtonRick
+                        type="secondary"
+                        height={30}
+                        borderRadius={30}
+                        padding={10}
+                        paddingTop={5}
+                        elevation={3}
+                        onPress={() => {
+                          this.setState({
+                            overlayVisibility: false,
+                            chosenSample: 4,
+                          });
+                        }}>
+                        SAMPLE 4
+                      </AwesomeButtonRick>
+                    </View>
                   </View>
                 </TouchableWithoutFeedback>
 
@@ -168,12 +215,22 @@ export class DrawingBoard extends Component {
                       style={{width: 370, height: 330}}
                     />
                     <View style={{marginTop: 10}}>
-                     <AwesomeButtonRick type="secondary" height={30} borderRadius={30} padding={10} paddingTop={5} elevation={3} onPress={() => {
-                        this.setState({
-                          overlayVisibility: false,
-                          chosenSample: 5,
-                        });
-                      }}>SAMPLE 5</AwesomeButtonRick></View>
+                      <AwesomeButtonRick
+                        type="secondary"
+                        height={30}
+                        borderRadius={30}
+                        padding={10}
+                        paddingTop={5}
+                        elevation={3}
+                        onPress={() => {
+                          this.setState({
+                            overlayVisibility: false,
+                            chosenSample: 5,
+                          });
+                        }}>
+                        SAMPLE 5
+                      </AwesomeButtonRick>
+                    </View>
                   </View>
                 </TouchableWithoutFeedback>
               </View>
@@ -211,9 +268,9 @@ export class DrawingBoard extends Component {
           {/* Place eraser component */}
           <SketchCanvas
             localSourceImage={{
-              filename: 'background.png',
-              directory:
+              filename:
                 '/Users/invenstphonethree/Documents/dna-demo-app/dnademo/background.png',
+              directory: 'SketchCanvas.MAIN_BUNDLE',
               mode: 'ScaleToFill',
             }}
             text={[
