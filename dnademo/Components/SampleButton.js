@@ -9,213 +9,107 @@ export class SampleButton extends Component {
     return (
       <View>
         <Button
-          type="clear"
-          icon={<Icon name="book" size={60} color="#007AFF" />}
-          onPress={() => {
-            <Modal
-              animationType="slide"
-              visible={this.state.overlayVisibility}
-              onRequestClose={() => {
-                console.log('Modal displaying samples have been closed!');
-              }}>
-              <TouchableWithoutFeedback
-                onPressIn={() => this.setState({overlayVisibility: false})}>
-                <View style={styles.mainModalView}>
-                  <View style={styles.centeredView}>
-                    {/* SAMPLE 1 */}
-                    <TouchableWithoutFeedback
-                      onPressIn={() =>
-                        this.setState({overlayVisibility: false})
-                      }>
-                      <View style={styles.modalView1}>
-                        <Image
-                          source={require('./Sample_Screens/Sample1.png')}
-                          style={{width: 370, height: 330}}
-                        />
-                        <View style={{marginTop: 10}}>
-                          <AwesomeButtonRick
-                            type="secondary"
-                            height={30}
-                            borderRadius={30}
-                            padding={10}
-                            paddingTop={5}
-                            elevation={3}
-                            onPress={() => {
-                              this.setState({
-                                overlayVisibility: false,
-                                chosenSample: 1,
-                              });
-                            }}>
-                            SAMPLE 1
-                          </AwesomeButtonRick>
-                        </View>
-                        {/* <TouchableHighlight
-                      style={{...styles.openButton}}
-                      onPress={() => {
+              type="clear"
+              icon={<Icon name="book" size={60} color="#007AFF" />}
+              onPress={() => {
+                console.log('Sample Overlay is opened');
+                if (this.state.firstClickonSample) {
+
+                //   my_proxy.get('/config') //,{Read})
+                // .then((responseSample) => {
+                //     var convertJSON = responseSample.data.replace(/'/g, '"');
+                //     var dataToJSON = JSON.parse(convertJSON);
+
+                //     presetJSON.splice(0, 0, dataToJSON[0]);
+                //     presetJSON.splice(1, 0, dataToJSON[1]);
+                //     presetJSON.splice(2, 0, dataToJSON[2]);
+                //     presetJSON.splice(3, 0, dataToJSON[3]);
+                //     presetJSON.splice(4, 0, dataToJSON[4]);
+                //     console.log('presetJSON' + presetJSON[0].Read);
+                //   }
+                //  ).catch(error => {console.log(error)});
+
+                  //enters only once to initialize the preset data
+                  //Preset data initialization
+                  function scaleYaxis(item, index) {
+                    var value = (item + 2) * 200;
+                    presetJSON[i].Read[index] = Math.round(value * 10) / 10;
+                  }
+                  for (var i = 0; i < 5; i++) {
+                    presetJSON[i].Read.forEach(scaleYaxis);
+                    switch (i) {
+                      case 0:
+                        sample_color = '#007AFF';
+                        var sample1_tracePath = this.preparePathData(
+                          presetJSON[i].Read,
+                          i,
+                          sample_color,
+                        );
+                        // addTrace.push(JSON.parse(sample1_tracePath));
+                        addTrace.splice(0, 0, JSON.parse(sample1_tracePath));
                         this.setState({
-                          overlayVisibility: false,
-                          chosenSample: 1,
+                          tracePath: addTrace,
                         });
-                      }}>
-                      <Text style={styles.textStyle}>SAMPLE 1</Text>
-                    </TouchableHighlight> */}
-                      </View>
-                    </TouchableWithoutFeedback>
-
-                    {/* SAMPLE 2 */}
-                    <TouchableWithoutFeedback
-                      onPressIn={() =>
-                        this.setState({overlayVisibility: false})
-                      }>
-                      <View style={styles.modalView2}>
-                        <Image
-                          source={require('./Sample_Screens/Sample2.png')}
-                          style={{width: 370, height: 330}}
-                        />
-                        <View style={{marginTop: 10}}>
-                          <AwesomeButtonRick
-                            type="secondary"
-                            height={30}
-                            borderRadius={30}
-                            padding={10}
-                            paddingTop={5}
-                            elevation={3}
-                            onPress={() => {
-                              this.setState({
-                                overlayVisibility: false,
-                                chosenSample: 2,
-                              });
-                            }}>
-                            SAMPLE 2
-                          </AwesomeButtonRick>
-                        </View>
-                      </View>
-                    </TouchableWithoutFeedback>
-
-                    {/* SAMPLE 3 */}
-                    <TouchableWithoutFeedback
-                      onPressIn={() =>
-                        this.setState({overlayVisibility: false})
-                      }>
-                      <View style={styles.modalView3}>
-                        <Image
-                          source={require('./Sample_Screens/Sample3.png')}
-                          style={{width: 370, height: 330}}
-                        />
-                        <View style={{marginTop: 10}}>
-                          <AwesomeButtonRick
-                            type="secondary"
-                            height={30}
-                            borderRadius={30}
-                            padding={10}
-                            paddingTop={5}
-                            elevation={3}
-                            onPress={() => {
-                              this.setState({
-                                overlayVisibility: false,
-                                chosenSample: 3,
-                              });
-                            }}>
-                            SAMPLE 3
-                          </AwesomeButtonRick>
-                        </View>
-                      </View>
-                    </TouchableWithoutFeedback>
-                  </View>
-
-                  <View style={styles.centeredView}>
-                    {/* SAMPLE 4 */}
-                    <TouchableWithoutFeedback
-                      onPressIn={() =>
-                        this.setState({overlayVisibility: false})
-                      }>
-                      <View style={styles.modalView4}>
-                        <Image
-                          source={require('./Sample_Screens/Sample4.png')}
-                          style={{width: 370, height: 330}}
-                        />
-                        <View style={{marginTop: 10}}>
-                          <AwesomeButtonRick
-                            type="secondary"
-                            height={30}
-                            borderRadius={30}
-                            padding={10}
-                            paddingTop={5}
-                            elevation={3}
-                            onPress={() => {
-                              this.setState({
-                                overlayVisibility: false,
-                                chosenSample: 4,
-                              });
-                            }}>
-                            SAMPLE 4
-                          </AwesomeButtonRick>
-                        </View>
-                      </View>
-                    </TouchableWithoutFeedback>
-
-                    {/* SAMPLE 5 */}
-                    <TouchableWithoutFeedback
-                      onPressIn={() =>
-                        this.setState({overlayVisibility: false})
-                      }>
-                      <View style={styles.modalView5}>
-                        <Image
-                          source={require('./Sample_Screens/Sample5.png')}
-                          style={{width: 370, height: 330}}
-                        />
-                        <View style={{marginTop: 10}}>
-                          <AwesomeButtonRick
-                            type="secondary"
-                            height={30}
-                            borderRadius={30}
-                            padding={10}
-                            paddingTop={5}
-                            elevation={3}
-                            onPress={() => {
-                              this.setState({
-                                overlayVisibility: false,
-                                chosenSample: 5,
-                              });
-                            }}>
-                            SAMPLE 5
-                          </AwesomeButtonRick>
-                        </View>
-                      </View>
-                    </TouchableWithoutFeedback>
-                  </View>
-                  <TouchableWithoutFeedback
-                    onPress={() => this.setState({overlayVisibility: false})}>
-                    <View
-                      style={{
-                        flex: 0.18,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginBottom: 15,
-                      }}>
-                      <Button
-                        type="clear"
-                        icon={
-                          <Icon
-                            name="chevron-triple-down"
-                            size={60}
-                            color="#606063"
-                          />
-                        }
-                        onPress={() => {
-                          this.setState({
-                            overlayVisibility: false,
-                          });
-                        }}
-                      />
-                    </View>
-                  </TouchableWithoutFeedback>
-                </View>
-              </TouchableWithoutFeedback>
-            </Modal>;
-          }}
-          //   title={<Text style = {styles.buttonText} > Checkout these samples!</Text>}
-        />
+                        break;
+                      case 1:
+                        sample_color = '#FF2D55';
+                        var sample2_tracePath = this.preparePathData(
+                          presetJSON[i].Read,
+                          i,
+                          sample_color,
+                        );
+                        addTrace.splice(1, 0, JSON.parse(sample2_tracePath));
+                        this.setState({
+                          tracePath: addTrace,
+                        });
+                        break;
+                      case 2:
+                        sample_color = '#AF52DE';
+                        var sample3_tracePath = this.preparePathData(
+                          presetJSON[i].Read,
+                          i,
+                          sample_color,
+                        );
+                        addTrace.splice(2, 0, JSON.parse(sample3_tracePath));
+                        this.setState({
+                          tracePath: addTrace,
+                        });
+                        break;
+                      case 3:
+                        sample_color = '#FF9500';
+                        var sample4_tracePath = this.preparePathData(
+                          presetJSON[i].Read,
+                          i,
+                          sample_color,
+                        );
+                        addTrace.splice(3, 0, JSON.parse(sample4_tracePath));
+                        this.setState({
+                          tracePath: addTrace,
+                        });
+                        break;
+                      case 4:
+                        sample_color = '#34C759';
+                        var sample5_tracePath = this.preparePathData(
+                          presetJSON[i].Read,
+                          i,
+                          sample_color,
+                        );
+                        addTrace.splice(4, 0, JSON.parse(sample5_tracePath));
+                        this.setState({
+                          tracePath: addTrace,
+                        });
+                        break;
+                    }
+                  }
+                  this.setState({
+                    firstClickonSample: false,
+                  });
+                }
+                this.setState({
+                  sampleOverlay_visible: true,
+                });
+              }}
+            />
       </View>
     );
   }
