@@ -48,15 +48,18 @@ export class DrawingBoard extends Component {
       chosenOutput: null,
       path: null,
       firstClickonSample: true,
+      //Use these state variables to sdisplay
       dnaName: null,
       dnaConfidence: null,
       dnaTime: null,
+      //Overlay visibility
       sampleOverlay_visible: false,
       outputOverlay_visible: false,
+      //Stores the path to be added to the drawing board
       tracePath: null,
       outputPath: null,
+      //Has the response data stored accordingly
       responseJSON: null,
-      progressBar_color: null,
       OP1_Name: '',
       OP2_Name: '',
       OP3_Name: '',
@@ -79,7 +82,7 @@ export class DrawingBoard extends Component {
       OP5_Meter: '',
     };
 
-    resetResponse=()=>{
+    resetResponse = () =>{
       this.setState({responseJSON: initialState,
         OP1_Name: '',
         OP2_Name: '',
@@ -150,8 +153,7 @@ export class DrawingBoard extends Component {
     var RNFS = require('react-native-fs');
     var _ = require('lodash');
     const progressCustomStyles = {
-      backgroundColor: '#0d6b49', //Dark green
-      // backgroundColor: '#00ff3c',
+      backgroundColor: '#0d6b49',
       borderColor: 'grey', 
       borderRadius: 20,
       width: 380,
@@ -161,7 +163,6 @@ export class DrawingBoard extends Component {
       backgroundColorOnComplete: '#ffd60a',
     };
     var sample_color = '';
-    // var presetJSON = [];
     var addTrace = [];
     var addOutput = [];
     var responsefromServer = [];
@@ -484,7 +485,7 @@ export class DrawingBoard extends Component {
                 'Output Overlay is closed wihtout choosing any output',
               );
               this.canvas.clear();
-              this.setState({outputOverlay_visible: false});
+              this.setState({outputOverlay_visible: false, chosenOutput: null,});
             }}>
             <View style={styles.mainModalView1}>
             <View style={styles.centeredView1}>
@@ -495,7 +496,6 @@ export class DrawingBoard extends Component {
                 <TouchableWithoutFeedback
                   onPressIn={() => {
                   this.canvas.addPath(this.state.outputPath[0]);
-                  console.log('ID of path '+ this.state.outputPath[0].path.id);
                   console.log('Output Overlay is closed by choosing Output1 Text View',);
                   this.setState({outputOverlay_visible: false, chosenOutput: 1});
                 }}>
@@ -766,6 +766,7 @@ export class DrawingBoard extends Component {
                   );
                 }
                 this.canvas.clear();
+                this.setState({chosenOutput: null, chosenSample: null,});
               }}
             />
           </View>
@@ -853,7 +854,6 @@ export class DrawingBoard extends Component {
                 // .then((responseSample) => {
                 //     var convertJSON = responseSample.data.replace(/'/g, '"');
                 //     var dataToJSON = JSON.parse(convertJSON);
-
                 //     presetJSON.splice(0, 0, dataToJSON[0]);
                 //     presetJSON.splice(1, 0, dataToJSON[1]);
                 //     presetJSON.splice(2, 0, dataToJSON[2]);
@@ -1042,15 +1042,14 @@ export class DrawingBoard extends Component {
                 }
                 //var readSplit = '"Read":' + split2;
                 //var dataToServer = "'{".concat(readSplit).concat("}'");
+
                 split2 = split2.replace('[[', '[*');
                 split2 = split2.replace(']]', ']');
                 split2 = split2.replace('[[', '[');
                 split2 = split2.replace('[*', '[[');
+
                 var Read = JSON.stringify(split2);
                 console.log('dataToServer : ' + Read);
-
-                // Just for testing (Change per user)
-                // RNFS.writeFile('/Users/invenstphonethree/Documents/dna-demo-app/dnademo/Components/Request.json',userInput,'utf8',);
 
                 //Incase we need to write a json file for the output recieved from the Server
                 RNFS.writeFile(filePath, userInput, 'utf8')
@@ -1066,15 +1065,16 @@ export class DrawingBoard extends Component {
                     path: userInput,
                     chosenSample: null,
                   },
-                  () => {},
                 );
 
                 {
                   /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<Backend Calls />~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
                 }
 
-                
-                my_proxy.post('/analyze',{Read})
+                //Fetch results from server only when user clears screen or doesn't want any output; else show already fetched result
+                if(this.state.chosenOutput == null){
+                  console.log('Server is being hit!');
+                my_proxy.get('/config') //,{Read})
                 .then((response) => {
                     var convertJSON = response.data.replace(/'/g, '"');
                     var dataToJSON = JSON.parse(convertJSON);
@@ -1082,22 +1082,16 @@ export class DrawingBoard extends Component {
                     for(var i = 0; i< dataToJSON.length; i++){
                       responsefromServer.splice(i, 0, dataToJSON[i]);
                     }
-                    // responsefromServer.splice(0, 0, dataToJSON[0]);
-                    // responsefromServer.splice(1, 0, dataToJSON[1]);
-                    // responsefromServer.splice(2, 0, dataToJSON[2]);
-                    // responsefromServer.splice(3, 0, dataToJSON[3]);
-                    // responsefromServer.splice(4, 0, dataToJSON[4]);
-                    console.log('len of response.data:' + dataToJSON.length)
-                    
+
+                    //No results -> Handling
                     if (dataToJSON.length == 0) {
                       Alert.alert(
-                        
                         'No Match Found',
                         'It is okay! Go back and try again!',
                         [{text: 'Okay', onPress: () => {
                           this.canvas.clear(),
                           console.log('OK Pressed'),
-                          this.setState({outputOverlay_visible: false})}}],
+                          this.setState({outputOverlay_visible: false, chosenOutput: null,})}}],
                         {cancelable: false},
                       );
                     }
@@ -1215,7 +1209,9 @@ export class DrawingBoard extends Component {
                  ).catch(error => {console.log(error)});
                  {this.setState({
                    responseJSON: responsefromServer,
+                   chosenOutput: null,
                  })}
+              }
               }}
             />
           </View>
