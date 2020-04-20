@@ -35,6 +35,8 @@ const my_proxy = axios.create({
 // ios-orange FF9500
 // ios-green 34C759
 
+const initialState = null;
+
 export class DrawingBoard extends Component {
   constructor(props) {
     super(props);
@@ -76,6 +78,33 @@ export class DrawingBoard extends Component {
       OP4_Meter: '',
       OP5_Meter: '',
     };
+
+    resetResponse=()=>{
+      this.setState({responseJSON: initialState,
+        OP1_Name: '',
+        OP2_Name: '',
+        OP3_Name: '',
+        OP4_Name: '',
+        OP5_Name: '',
+        OP1_Time: '',
+        OP2_Time: '',
+        OP3_Time: '',
+        OP4_Time: '',
+        OP5_Time: '',
+        OP1_Confidence: '',
+        OP2_Confidence: '',
+        OP3_Confidence: '',
+        OP4_Confidence: '',
+        OP5_Confidence: '',
+        OP1_Meter: '',
+        OP2_Meter: '',
+        OP3_Meter: '',
+        OP4_Meter: '',
+        OP5_Meter: '',
+      })
+    }
+
+
   }
 
   updateState = () => {
@@ -138,7 +167,7 @@ export class DrawingBoard extends Component {
     var responsefromServer = [];
     return (
       <View style={{flex: 1, flexDirection: 'row'}}>
-        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<SAMPLE MODAL DISPLAY />~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<SAMPLE MODAL DISPLAY />~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
         <Modal
           animationType="slide"
           visible={this.state.sampleOverlay_visible}
@@ -442,7 +471,7 @@ export class DrawingBoard extends Component {
           </TouchableWithoutFeedback>
         </Modal>
 
-        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<OUTPUT MODAL DISPLAY />~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<OUTPUT MODAL DISPLAY />~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
         <Modal
           animationType="slide"
           visible={this.state.outputOverlay_visible}
@@ -459,7 +488,7 @@ export class DrawingBoard extends Component {
             }}>
             <View style={styles.mainModalView1}>
             <View style={styles.centeredView1}>
-
+            
               {/* ~~~~~~~~~~ OUTPUT 1 ~~~~~~~~~~ */}
                 <View style={styles.outputCard}>
                 <View style={{width: 50, height:145, backgroundColor: '#007AFF', alignSelf: 'flex-start', borderRadius: 20 }}></View>
@@ -714,7 +743,7 @@ export class DrawingBoard extends Component {
           </TouchableWithoutFeedback>
         </Modal>
 
-        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<MAIN DISPLAY STARTING WITH DRAWING BOARD />~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<MAIN DISPLAY STARTING WITH DRAWING BOARD />~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
 
         <View style={{flex: 1, flexDirection: 'column'}}>
           <View
@@ -991,7 +1020,7 @@ export class DrawingBoard extends Component {
                 }
                 userInput = userInput.concat("]");
 
-                // var userInput = JSON.stringify(this.canvas.getPaths());
+                //var userInput = JSON.stringify(this.canvas.getPaths());
                 if (userInput == '[]') {
                   Alert.alert(
                     'Oops, empty drawing board!',
@@ -1044,16 +1073,34 @@ export class DrawingBoard extends Component {
                   /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<Backend Calls />~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
                 }
 
-                my_proxy.get('/config') //,{Read})
+                
+                my_proxy.post('/analyze',{Read})
                 .then((response) => {
                     var convertJSON = response.data.replace(/'/g, '"');
                     var dataToJSON = JSON.parse(convertJSON);
-
-                    responsefromServer.splice(0, 0, dataToJSON[0]);
-                    responsefromServer.splice(1, 0, dataToJSON[1]);
-                    responsefromServer.splice(2, 0, dataToJSON[2]);
-                    responsefromServer.splice(3, 0, dataToJSON[3]);
-                    responsefromServer.splice(4, 0, dataToJSON[4]);
+                    resetResponse();
+                    for(var i = 0; i< dataToJSON.length; i++){
+                      responsefromServer.splice(i, 0, dataToJSON[i]);
+                    }
+                    // responsefromServer.splice(0, 0, dataToJSON[0]);
+                    // responsefromServer.splice(1, 0, dataToJSON[1]);
+                    // responsefromServer.splice(2, 0, dataToJSON[2]);
+                    // responsefromServer.splice(3, 0, dataToJSON[3]);
+                    // responsefromServer.splice(4, 0, dataToJSON[4]);
+                    console.log('len of response.data:' + dataToJSON.length)
+                    
+                    if (dataToJSON.length == 0) {
+                      Alert.alert(
+                        
+                        'No Match Found',
+                        'It is okay! Go back and try again!',
+                        [{text: 'Okay', onPress: () => {
+                          this.canvas.clear(),
+                          console.log('OK Pressed'),
+                          this.setState({outputOverlay_visible: false})}}],
+                        {cancelable: false},
+                      );
+                    }
 
                     function scaleYaxis(item, index) {
                       var value = (item + 2) * 200;
