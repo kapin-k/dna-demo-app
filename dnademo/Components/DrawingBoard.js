@@ -53,8 +53,28 @@ export class DrawingBoard extends Component {
       outputOverlay_visible: false,
       tracePath: null,
       outputPath: null,
-      responseJSON: '',
+      responseJSON: null,
       progressBar_color: null,
+      OP1_Name: '',
+      OP2_Name: '',
+      OP3_Name: '',
+      OP4_Name: '',
+      OP5_Name: '',
+      OP1_Time: '',
+      OP2_Time: '',
+      OP3_Time: '',
+      OP4_Time: '',
+      OP5_Time: '',
+      OP1_Confidence: '',
+      OP2_Confidence: '',
+      OP3_Confidence: '',
+      OP4_Confidence: '',
+      OP5_Confidence: '',
+      OP1_Meter: '',
+      OP2_Meter: '',
+      OP3_Meter: '',
+      OP4_Meter: '',
+      OP5_Meter: '',
     };
   }
 
@@ -101,13 +121,15 @@ export class DrawingBoard extends Component {
     var RNFS = require('react-native-fs');
     var _ = require('lodash');
     const progressCustomStyles = {
-      backgroundColor: 'black',
+      backgroundColor: '#0d6b49', //Dark green
+      // backgroundColor: '#00ff3c',
       borderColor: 'grey', 
       borderRadius: 20,
       width: 380,
       height: 40,
       barEasing: 'linear',
       barAnimationDuration: 1500,
+      backgroundColorOnComplete: '#ffd60a',
     };
     var sample_color = '';
     // var presetJSON = [];
@@ -440,7 +462,7 @@ export class DrawingBoard extends Component {
 
               {/* ~~~~~~~~~~ OUTPUT 1 ~~~~~~~~~~ */}
                 <View style={styles.outputCard}>
-                <View style={{width: 70, height:145, backgroundColor: '#007AFF', alignSelf: 'flex-start', borderRadius: 20 }}></View>
+                <View style={{width: 50, height:145, backgroundColor: '#007AFF', alignSelf: 'flex-start', borderRadius: 20 }}></View>
                 <TouchableWithoutFeedback
                   onPressIn={() => {
                   this.canvas.addPath(this.state.outputPath[0]);
@@ -449,18 +471,18 @@ export class DrawingBoard extends Component {
                   this.setState({outputOverlay_visible: false, chosenOutput: 1});
                 }}>
                 <View style={{marginTop: 15, width: 720, height: 120, flexDirection: 'column', alignContent: 'center'}}>
-              <Text style={{color: 'black', fontSize: 40, fontWeight: 'bold', textAlign: 'center',}}>Name:</Text>
+              <Text style={{color: 'black', fontSize: 30, fontWeight: 'bold', textAlign: 'center',}}>{this.state.OP1_Name}</Text>
                   <Text style={{color: 'black', fontSize: 15, fontStyle: 'italic', fontWeight: '100', textAlign: 'center', marginBottom: 10}}>Name Tag of the DNA</Text>
                   <View style={{ marginTop: 5, marginBottom: 5, width: 720, flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}>Time:</Text>
-                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}> Confidence: </Text>
+                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}>Time: {this.state.OP1_Time}</Text>
+                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}> Confidence: {this.state.OP1_Confidence} </Text>
                   </View>
                 </View>
                 </TouchableWithoutFeedback>
                   <View style={{marginTop: 10, width: 400, height: 120, justifyContent: 'center', flexDirection: 'column'}}>
                     <Text style={{color: 'black', fontStyle: 'italic' ,fontSize: 25, fontWeight: 'bold', textAlign: 'center' ,marginBottom: 10,}}>Similarity Meter</Text>
                     <ProgressBarAnimated {...progressCustomStyles}
-                      value={70}
+                      value={this.state.OP1_Meter}
                     />
                   </View>
                   <View style={{width: 90, borderLeftColor: '#606063' , height:145, justifyContent: 'center', borderRadius: 20 }}>
@@ -483,7 +505,7 @@ export class DrawingBoard extends Component {
 
               {/* ~~~~~~~~~~ OUTPUT 2 ~~~~~~~~~~ */}
               <View style={styles.outputCard}>
-                <View style={{width: 70, height:145, backgroundColor: '#FF2D55', alignSelf: 'flex-start', borderRadius: 20 }}></View>
+                <View style={{width: 50, height:145, backgroundColor: '#FF2D55', alignSelf: 'flex-start', borderRadius: 20 }}></View>
                 <TouchableWithoutFeedback
                   onPressIn={() => {
                     this.canvas.addPath(this.state.outputPath[1]);
@@ -492,18 +514,18 @@ export class DrawingBoard extends Component {
                   this.setState({outputOverlay_visible: false, chosenOutput: 2});
                 }}>
                 <View style={{marginTop: 15, width: 720, height: 120, flexDirection: 'column', alignContent: 'center'}}>
-              <Text style={{color: 'black', fontSize: 40, fontWeight: 'bold', textAlign: 'center',}}>DNA NAME</Text>
+                  <Text style={{color: 'black', fontSize: 30, fontWeight: 'bold', textAlign: 'center',}}>{this.state.OP2_Name}</Text>
                   <Text style={{color: 'black', fontSize: 15, fontStyle: 'italic', fontWeight: '100', textAlign: 'center', marginBottom: 10}}>Name Tag of the DNA</Text>
                   <View style={{ marginTop: 5, marginBottom: 5, width: 720, flexDirection: 'row', justifyContent: 'space-evenly'}}>
-              <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}>Time: </Text>
-                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}> Confidence: </Text>
+                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}>Time: {this.state.OP2_Time}</Text>
+                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}> Confidence: {this.state.OP2_Confidence} </Text>
                   </View>
                 </View>
                 </TouchableWithoutFeedback>
                   <View style={{marginTop: 10, width: 400, height: 120, justifyContent: 'center', flexDirection: 'column'}}>
                     <Text style={{color: 'black', fontStyle: 'italic' ,fontSize: 25, fontWeight: 'bold', textAlign: 'center' ,marginBottom: 10,}}>Similarity Meter</Text>
                     <ProgressBarAnimated {...progressCustomStyles}
-                      value={70}
+                      value={this.state.OP2_Meter}
                     />
                   </View>
                   <View style={{width: 90, borderLeftColor: '#606063' , height:145, justifyContent: 'center', borderRadius: 20 }}>
@@ -526,7 +548,7 @@ export class DrawingBoard extends Component {
 
               {/* ~~~~~~~~~~ OUTPUT 3 ~~~~~~~~~~ */}
               <View style={styles.outputCard}>
-                <View style={{width: 70, height:145, backgroundColor: '#AF52DE', alignSelf: 'flex-start', borderRadius: 20 }}></View>
+                <View style={{width: 50, height:145, backgroundColor: '#AF52DE', alignSelf: 'flex-start', borderRadius: 20 }}></View>
                 <TouchableWithoutFeedback
                   onPressIn={() => {
                     this.canvas.addPath(this.state.outputPath[2]);
@@ -535,18 +557,18 @@ export class DrawingBoard extends Component {
                   this.setState({outputOverlay_visible: false, chosenOutput: 3});
                 }}>
                 <View style={{marginTop: 15, width: 720, height: 120, flexDirection: 'column', alignContent: 'center'}}>
-                  <Text style={{color: 'black', fontSize: 40, fontWeight: 'bold', textAlign: 'center',}}>DNA NAME</Text>
+                <Text style={{color: 'black', fontSize: 30, fontWeight: 'bold', textAlign: 'center',}}>{this.state.OP3_Name}</Text>
                   <Text style={{color: 'black', fontSize: 15, fontStyle: 'italic', fontWeight: '100', textAlign: 'center', marginBottom: 10}}>Name Tag of the DNA</Text>
                   <View style={{ marginTop: 5, marginBottom: 5, width: 720, flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}>Time:</Text>
-                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}> Confidence: </Text>
+                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}>Time: {this.state.OP3_Time}</Text>
+                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}> Confidence: {this.state.OP3_Confidence} </Text>
                   </View>
                 </View>
                 </TouchableWithoutFeedback>
                   <View style={{marginTop: 10, width: 400, height: 120, justifyContent: 'center', flexDirection: 'column'}}>
                     <Text style={{color: 'black', fontStyle: 'italic' ,fontSize: 25, fontWeight: 'bold', textAlign: 'center' ,marginBottom: 10,}}>Similarity Meter</Text>
                     <ProgressBarAnimated {...progressCustomStyles}
-                      value={70}
+                      value={this.state.OP3_Meter}
                     />
                   </View>
                   <View style={{width: 90, borderLeftColor: '#606063' , height:145, justifyContent: 'center', borderRadius: 20 }}>
@@ -569,7 +591,7 @@ export class DrawingBoard extends Component {
 
               {/* ~~~~~~~~~~ OUTPUT 4 ~~~~~~~~~~ */}
               <View style={styles.outputCard}>
-                <View style={{width: 70, height:145, backgroundColor: '#FF9500', alignSelf: 'flex-start', borderRadius: 20 }}></View>
+                <View style={{width: 50, height:145, backgroundColor: '#FF9500', alignSelf: 'flex-start', borderRadius: 20 }}></View>
                 <TouchableWithoutFeedback
                   onPressIn={() => {
                     this.canvas.addPath(this.state.outputPath[3]);
@@ -578,18 +600,18 @@ export class DrawingBoard extends Component {
                   this.setState({outputOverlay_visible: false, chosenOutput: 4});
                 }}>
                 <View style={{marginTop: 15, width: 720, height: 120, flexDirection: 'column', alignContent: 'center'}}>
-                  <Text style={{color: 'black', fontSize: 40, fontWeight: 'bold', textAlign: 'center',}}>DNA NAME</Text>
+                <Text style={{color: 'black', fontSize: 30, fontWeight: 'bold', textAlign: 'center',}}>{this.state.OP4_Name}</Text>
                   <Text style={{color: 'black', fontSize: 15, fontStyle: 'italic', fontWeight: '100', textAlign: 'center', marginBottom: 10}}>Name Tag of the DNA</Text>
                   <View style={{ marginTop: 5, marginBottom: 5, width: 720, flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}>Time:</Text>
-                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}> Confidence: </Text>
+                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}>Time: {this.state.OP4_Time}</Text>
+                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}> Confidence: {this.state.OP4_Confidence} </Text>
                   </View>
                 </View>
                 </TouchableWithoutFeedback>
                   <View style={{marginTop: 10, width: 400, height: 120, justifyContent: 'center', flexDirection: 'column'}}>
                     <Text style={{color: 'black', fontStyle: 'italic' ,fontSize: 25, fontWeight: 'bold', textAlign: 'center' ,marginBottom: 10,}}>Similarity Meter</Text>
                     <ProgressBarAnimated {...progressCustomStyles}
-                      value={70}
+                      value={this.state.OP4_Meter}
                     />
                   </View>
                   <View style={{width: 90, borderLeftColor: '#606063' , height:145, justifyContent: 'center', borderRadius: 20 }}>
@@ -612,7 +634,7 @@ export class DrawingBoard extends Component {
 
               {/* ~~~~~~~~~~ OUTPUT 5 ~~~~~~~~~~ */}
               <View style={styles.outputCard}>
-                <View style={{width: 70, height:145, backgroundColor: '#34C759', alignSelf: 'flex-start', borderRadius: 20 }}></View>
+                <View style={{width: 50, height:145, backgroundColor: '#34C759', alignSelf: 'flex-start', borderRadius: 20 }}></View>
                 <TouchableWithoutFeedback
                   onPressIn={() => {
                     this.canvas.addPath(this.state.outputPath[4]);
@@ -621,18 +643,18 @@ export class DrawingBoard extends Component {
                   this.setState({outputOverlay_visible: false, chosenOutput: 5});
                 }}>
                 <View style={{marginTop: 15, width: 720, height: 120, flexDirection: 'column', alignContent: 'center'}}>
-                  <Text style={{color: 'black', fontSize: 40, fontWeight: 'bold', textAlign: 'center',}}>DNA NAME</Text>
+                <Text style={{color: 'black', fontSize: 30, fontWeight: 'bold', textAlign: 'center',}}>{this.state.OP5_Name}</Text>
                   <Text style={{color: 'black', fontSize: 15, fontStyle: 'italic', fontWeight: '100', textAlign: 'center', marginBottom: 10}}>Name Tag of the DNA</Text>
                   <View style={{ marginTop: 5, marginBottom: 5, width: 720, flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}>Time:</Text>
-                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}> Confidence: </Text>
+                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}>Time: {this.state.OP5_Time}</Text>
+                    <Text style={{color: 'black', fontSize: 25, fontWeight: '500', textAlign: 'left',}}> Confidence: {this.state.OP5_Confidence} </Text>
                   </View>
                 </View>
                 </TouchableWithoutFeedback>
                   <View style={{marginTop: 10, width: 400, height: 120, justifyContent: 'center', flexDirection: 'column'}}>
                     <Text style={{color: 'black', fontStyle: 'italic' ,fontSize: 25, fontWeight: 'bold', textAlign: 'center' ,marginBottom: 10,}}>Similarity Meter</Text>
                     <ProgressBarAnimated {...progressCustomStyles}
-                      value={70}
+                      value={this.state.OP5_Meter}
                     />
                   </View>
                   <View style={{width: 90, borderLeftColor: '#606063' , height:145, justifyContent: 'center', borderRadius: 20 }}>
@@ -1042,6 +1064,10 @@ export class DrawingBoard extends Component {
                       switch (i) {
                         case 0:
                           sample_color = '#007AFF';
+                          var name_string = responsefromServer[0].Name;
+                          var time_string = responsefromServer[0].Time;
+                          var confidence_string = responsefromServer[0].Confidence;
+                          var meter_string = confidence_string * 100;
                           var outPut1 = this.preparePathData(
                             responsefromServer[i].Read,
                             i,
@@ -1050,10 +1076,18 @@ export class DrawingBoard extends Component {
                           addOutput.splice(0, 0, JSON.parse(outPut1));
                           this.setState({
                             outputPath: addOutput,
+                            OP1_Name: name_string,
+                            OP1_Time: time_string,
+                            OP1_Confidence: confidence_string,
+                            OP1_Meter: meter_string,
                           });
                           break;
                         case 1:
                           sample_color = '#FF2D55';
+                          var name_string = responsefromServer[1].Name;
+                          var time_string = responsefromServer[1].Time;
+                          var confidence_string = responsefromServer[1].Confidence;
+                          var meter_string = confidence_string * 100;
                           var outPut2 = this.preparePathData(
                             responsefromServer[i].Read,
                             i,
@@ -1062,10 +1096,18 @@ export class DrawingBoard extends Component {
                           addOutput.splice(1, 0, JSON.parse(outPut2));
                           this.setState({
                             outputPath: addOutput,
+                            OP2_Name: name_string,
+                            OP2_Time: time_string,
+                            OP2_Confidence: confidence_string,
+                            OP2_Meter: meter_string,
                           });
                           break;
                         case 2:
                           sample_color = '#AF52DE';
+                          var name_string = responsefromServer[2].Name;
+                          var time_string = responsefromServer[2].Time;
+                          var confidence_string = responsefromServer[2].Confidence;
+                          var meter_string = confidence_string * 100;
                           var outPut3 = this.preparePathData(
                             responsefromServer[i].Read,
                             i,
@@ -1074,10 +1116,18 @@ export class DrawingBoard extends Component {
                           addOutput.splice(2, 0, JSON.parse(outPut3));
                           this.setState({
                             outputPath: addOutput,
+                            OP3_Name: name_string,
+                            OP3_Time: time_string,
+                            OP3_Confidence: confidence_string,
+                            OP3_Meter: meter_string,
                           });
                           break;
                         case 3:
                           sample_color = '#FF9500';
+                          var name_string = responsefromServer[3].Name;
+                          var time_string = responsefromServer[3].Time;
+                          var confidence_string = responsefromServer[3].Confidence;
+                          var meter_string = confidence_string * 100;
                           var outPut4 = this.preparePathData(
                             responsefromServer[i].Read,
                             i,
@@ -1086,10 +1136,18 @@ export class DrawingBoard extends Component {
                           addOutput.splice(3, 0, JSON.parse(outPut4));
                           this.setState({
                             outputPath: addOutput,
+                            OP4_Name: name_string,
+                            OP4_Time: time_string,
+                            OP4_Confidence: confidence_string,
+                            OP4_Meter: meter_string,
                           });
                           break;
                         case 4:
                           sample_color = '#34C759';
+                          var name_string = responsefromServer[4].Name;
+                          var time_string = responsefromServer[4].Time;
+                          var confidence_string = responsefromServer[4].Confidence;
+                          var meter_string = confidence_string * 100;
                           var outPut5 = this.preparePathData(
                             responsefromServer[i].Read,
                             i,
@@ -1098,12 +1156,19 @@ export class DrawingBoard extends Component {
                           addOutput.splice(4, 0, JSON.parse(outPut5));
                           this.setState({
                             outputPath: addOutput,
+                            OP5_Name: name_string,
+                            OP5_Time: time_string,
+                            OP5_Confidence: confidence_string,
+                            OP5_Meter: meter_string,
                           });
                           break;
                       }
                     }
                   }
                  ).catch(error => {console.log(error)});
+                 {this.setState({
+                   responseJSON: responsefromServer,
+                 })}
               }}
             />
           </View>
