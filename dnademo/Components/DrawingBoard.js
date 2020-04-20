@@ -435,7 +435,7 @@ export class DrawingBoard extends Component {
               this.canvas.clear();
               this.setState({outputOverlay_visible: false});
             }}>
-            <View style={styles.mainModalView}>
+            <View style={styles.mainModalView1}>
             <View style={styles.centeredView1}>
 
               {/* ~~~~~~~~~~ OUTPUT 1 ~~~~~~~~~~ */}
@@ -1171,6 +1171,19 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderRadius: 50,
     // alignItems: 'center',
+    marginTop: 25,
+    marginLeft: 12,
+    marginRight: 12,
+    marginBottom: 10,
+    // backgroundColor: 'green',
+  },
+  mainModalView1: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: '#f2f2f7',
+    justifyContent: 'space-between',
+    borderRadius: 50,
+    alignItems: 'center',
     marginTop: 25,
     marginLeft: 12,
     marginRight: 12,
