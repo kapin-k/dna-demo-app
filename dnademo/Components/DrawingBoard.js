@@ -978,7 +978,6 @@ export class DrawingBoard extends Component {
                 }
                 this.setState({
                   outputOverlay_visible: true,
-                  chosenOutput: null,
                 });
 
                 var filePath = RNFS.DocumentDirectoryPath + '/Response.json';
@@ -1063,7 +1062,6 @@ export class DrawingBoard extends Component {
                 this.setState(
                   {
                     path: userInput,
-                    chosenSample: null,
                   },
                 );
 
