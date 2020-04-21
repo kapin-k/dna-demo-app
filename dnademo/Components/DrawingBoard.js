@@ -8,19 +8,14 @@ import {
   Image,
   TouchableWithoutFeedback,
   Modal,
-  Dimensions,
   Linking
 } from 'react-native';
 import {Button} from 'react-native-elements';
+import {SketchCanvas} from '@terrylinla/react-native-sketch-canvas';
 import ProgressBarAnimated from 'react-native-progress-bar-animated';
 import AwesomeButtonRick from 'react-native-really-awesome-button/src/themes/rick';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import presetJSON from './Sample_Screens/Preset.json';
-import {AnalyzeButton} from './AnalyzeButton';
-import {SampleButton} from './SampleButton';
-
-import RNSketchCanvas from '@terrylinla/react-native-sketch-canvas';
-import {SketchCanvas} from '@terrylinla/react-native-sketch-canvas';
 
 // Imports and constants for backend
 import axios from 'axios';
@@ -29,12 +24,14 @@ const my_proxy = axios.create({
   baseURL: serv,
 });
 
-// ios-black 1C1C1E
-// ios-blue 007AFF
-// ios-pink FF2D55
-// ios-purple AF52DE
-// ios-orange FF9500
-// ios-green 34C759
+// COLOUR SCHEME
+// ios-black #1C1C1E
+// ios-blue #007AFF  --> Sample 1
+// ios-pink #FF2D55  --> Sample 2
+// ios-purple #AF52DE  --> Sample 3
+// ios-orange #FF9500  --> Sample 4
+// ios-green #34C759  --> Sample 5
+//ios-indigo #5856d6 --> Sample 6
 
 const initialState = null;
 
@@ -136,7 +133,8 @@ export class DrawingBoard extends Component {
 
   // {/* ~~~~~~~~~~ COVERT RESULTS TO DRAWING BOARD OBJECT [for (y) to (x,y) conversion -> check sample button's code]~~~~~~~~~~ */}
 
-  preparePathData(yCoordinates, Number, sampleColor) {
+  // CONVERTING DATA FROM SERVER 
+  prepareTraceData(yCoordinates, Number, sampleColor) {
     console.log(
       "Converted data to drawing board's scale for UserInput/Sample: " +
         Number +
@@ -157,6 +155,34 @@ export class DrawingBoard extends Component {
         var newCoordinate = '"' + x + ',' + yCoordinates[y] + '"';
         sampleData.push(newCoordinate);
         x = x + 20;
+      }
+    }
+    var Path = start + sampleData + end;
+    return Path;
+  }
+
+  // CONVERTING DATA TO SERVER
+  preparePathData(yCoordinates, Number, sampleColor) {
+    console.log(
+      "Converted data to drawing board's scale for UserInput/Sample: " +
+        Number +
+        ' ; ' +
+        sampleColor,
+    );
+    var start =
+      '{"path":{"id":' +
+      Number +
+      ',"color":"' +
+      sampleColor +
+      '","width":18,"data":[';
+    var end = ']},"size":{"width":1366,"height":925},"drawer":null}';
+    var x = 0;
+    var sampleData = [];
+    for (y in yCoordinates) {
+      if (yCoordinates[y] >= 0) {
+        var newCoordinate = '"' + x + ',' + yCoordinates[y] + '"';
+        sampleData.push(newCoordinate);
+        x = x + 0.5;
       }
     }
     var Path = start + sampleData + end;
@@ -450,6 +476,55 @@ export class DrawingBoard extends Component {
                     </View>
                   </View>
                 </TouchableWithoutFeedback>
+
+                {/* ~~~~~~~~~~ SAMPLE 6 ~~~~~~~~~~ */}
+                <TouchableWithoutFeedback
+                  onPressIn={() => {
+                    console.log(
+                      'Sample Overlay is closed by pressing on Sample 5',
+                    );
+                    this.canvas.clear();
+                    this.canvas.addPath(this.state.tracePath[4]);
+                    this.setState({
+                      sampleOverlay_visible: false,
+                      chosenSample: 6,
+                      dnaName: presetJSON[4].Name,
+                      dnaConfidence: presetJSON[4].Confidence,
+                      dnaTime: presetJSON[4].Time,
+                      ifOutput: false,
+                    });
+                  }}>
+                  <View style={styles.modalView6}>
+                    <Image
+                      source={require('./Sample_Screens/Sample5.png')}
+                      style={{width: 370, height: 330}}
+                    />
+                    <View style={{marginTop: 10}}>
+                      <AwesomeButtonRick
+                        type="secondary"
+                        height={30}
+                        borderRadius={30}
+                        padding={10}
+                        paddingTop={5}
+                        elevation={3}
+                        onPress={() => {
+                          this.canvas.clear();
+                          this.canvas.addPath(this.state.tracePath[4]);
+                          this.setState({
+                            sampleOverlay_visible: false,
+                            chosenSample: 6,
+                            dnaName: presetJSON[4].Name, //Should be changed to 5; No we dont have that value set
+                            dnaConfidence: presetJSON[4].Confidence,
+                            dnaTime: presetJSON[4].Time,
+                            ifOutput: false,
+                          });
+                        }}>
+                        SAMPLE 6
+                      </AwesomeButtonRick>
+                    </View>
+                  </View>
+                </TouchableWithoutFeedback>
+
               </View>
 
               {/* ~~~~~~~~~~ BACK BUTTON ~~~~~~~~~~ */}
@@ -478,7 +553,7 @@ export class DrawingBoard extends Component {
                     type="clear"
                     icon={
                       <Icon
-                        name="chevron-triple-down"
+                        name="chevron-double-down"
                         size={60}
                         color="#606063"
                       />
@@ -815,7 +890,7 @@ export class DrawingBoard extends Component {
               <Button
                 type="clear"
                 icon={
-                  <Icon name="chevron-triple-down" size={60} color="#606063" />
+                  <Icon name="chevron-double-down" size={60} color="#606063" />
                 }
                 onPress={() => {
                   this.canvas.clear();
@@ -914,49 +989,12 @@ export class DrawingBoard extends Component {
       </View>
 
           <SketchCanvas
-            localSourceImage={{
-              filename:
-                '/Users/invenstphonethree/Documents/dna-demo-app/dnademo/background.png',
-              directory: 'SketchCanvas.MAIN_BUNDLE',
-              mode: 'ScaleToFill',
-            }}
-            // text={[
-            //   {
-            //     text: '<----------- Time (milliseconds) ----------->',
-            //     font: 'Zapfino',
-            //     fontSize: 15,
-            //     position: {x: 441, y: 843},
-            //     anchor: {x: 0, y: 0},
-            //     overlay: 'SketchOnText',
-            //     coordinate: 'Absolute',
-            //     alignment: 'Center',
-            //     fontColor: 'grey',
-            //   },
-              // {
-              //   text: '2000',
-              //   font: 'Zapfino',
-              //   fontSize: 12,
-              //   position: {x: 1300, y: 888},
-              //   anchor: {x: 0, y: 0},
-              //   overlay: 'SketchOnText',
-              //   coordinate: 'Absolute',
-              //   alignment: 'Center',
-              //   fontColor: 'grey',
-              // },
-              // {
-              //   text: '0',
-              //   font: 'Zapfino',
-              //   fontSize: 12,
-              //   position: {x: 10, y: 888},
-              //   anchor: {x: 0, y: 0},
-              //   overlay: 'SketchOnText',
-              //   coordinate: 'Absolute',
-              //   alignment: 'Center',
-              //   fontColor: 'grey',
-              // },
-              // { text: '-2', font: 'Zapfino', fontSize: 12, position: { x: 10, y: 838 }, anchor: { x: 0, y: 0 }, overlay: 'SketchOnText', coordinate: 'Absolute', alignment: 'Center', fontColor: 'grey' },
-              // { text: '2', font: 'Zapfino', fontSize: 12, position: { x: 10, y: 10 }, anchor: { x: 0, y: 0 }, overlay: 'SketchOnText', coordinate: 'Absolute', alignment: 'Center', fontColor: 'grey' },
-            // ]}
+            // localSourceImage={{
+            //   filename:
+            //     '/Users/invenstphonethree/Documents/dna-demo-app/dnademo/background.png',
+            //   directory: 'SketchCanvas.MAIN_BUNDLE',
+            //   mode: 'ScaleToFill',
+            // }}
             ref={ref => (this.canvas = ref)}
             style={{flex: 1}}
             strokeColor={this.state.color}
@@ -1019,6 +1057,7 @@ export class DrawingBoard extends Component {
                 console.log('Sample Overlay is opened');
                 if (this.state.firstClickonSample) {
 
+                //    -------- READING PROXY FROM FILE --------
                 //   my_proxy.get('/config') //,{Read})
                 // .then((responseSample) => {
                 //     var convertJSON = responseSample.data.replace(/'/g, '"');
@@ -1043,7 +1082,7 @@ export class DrawingBoard extends Component {
                     switch (i) {
                       case 0:
                         sample_color = '#007AFF';
-                        var sample1_tracePath = this.preparePathData(
+                        var sample1_tracePath = this.prepareTraceData(
                           presetJSON[i].Read,
                           i,
                           sample_color,
@@ -1056,7 +1095,7 @@ export class DrawingBoard extends Component {
                         break;
                       case 1:
                         sample_color = '#FF2D55';
-                        var sample2_tracePath = this.preparePathData(
+                        var sample2_tracePath = this.prepareTraceData(
                           presetJSON[i].Read,
                           i,
                           sample_color,
@@ -1068,7 +1107,7 @@ export class DrawingBoard extends Component {
                         break;
                       case 2:
                         sample_color = '#AF52DE';
-                        var sample3_tracePath = this.preparePathData(
+                        var sample3_tracePath = this.prepareTraceData(
                           presetJSON[i].Read,
                           i,
                           sample_color,
@@ -1080,7 +1119,7 @@ export class DrawingBoard extends Component {
                         break;
                       case 3:
                         sample_color = '#FF9500';
-                        var sample4_tracePath = this.preparePathData(
+                        var sample4_tracePath = this.prepareTraceData(
                           presetJSON[i].Read,
                           i,
                           sample_color,
@@ -1092,12 +1131,24 @@ export class DrawingBoard extends Component {
                         break;
                       case 4:
                         sample_color = '#34C759';
-                        var sample5_tracePath = this.preparePathData(
+                        var sample5_tracePath = this.prepareTraceData(
                           presetJSON[i].Read,
                           i,
                           sample_color,
                         );
                         addTrace.splice(4, 0, JSON.parse(sample5_tracePath));
+                        this.setState({
+                          tracePath: addTrace,
+                        });
+                        break;
+                        case 5:
+                        sample_color = '#5856d6';
+                        var sample6_tracePath = this.prepareTraceData(
+                          presetJSON[i].Read,
+                          i,
+                          sample_color,
+                        );
+                        addTrace.splice(5, 0, JSON.parse(sample6_tracePath));
                         this.setState({
                           tracePath: addTrace,
                         });
@@ -1163,7 +1214,7 @@ export class DrawingBoard extends Component {
                     return Math.round(n) / multiplicator;
                   }
 
-                function scaleYaxistoSmallerValue(item, index) {
+                function scaleYaxistoDrawingValue(item, index) {
                     // console.log('item : '+ item);
                     var y_coordinate = item.split(",");
                     // console.log('y coordinate '+ y_coordinate[0]+' '+ y_coordinate[1]);
@@ -1174,7 +1225,7 @@ export class DrawingBoard extends Component {
                     path_json[i].path.data[index] = y_coordinate[0].concat(',',value);
                   }
                   for (var i = 0; i < path_json.length; i++) {
-                    path_json[i].path.data.forEach(scaleYaxistoSmallerValue);
+                    path_json[i].path.data.forEach(scaleYaxistoDrawingValue);
                   }
 
                 var userInput = "[";
@@ -1583,6 +1634,28 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'stretch',
     backgroundColor: '#34C759',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 3.84,
+    elevation: 5,
+    width: 420,
+    height: 420,
+    // borderColor: '#007AFF',
+    // borderWidth: 2
+  },
+  modalView6: {
+    // margin: 2,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
+    backgroundColor: '#5856d6',
     borderRadius: 20,
     padding: 35,
     alignItems: 'center',
