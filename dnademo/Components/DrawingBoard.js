@@ -8,6 +8,7 @@ import {
   Image,
   TouchableWithoutFeedback,
   Modal,
+  Dimensions,
 } from 'react-native';
 import {Button} from 'react-native-elements';
 import ProgressBarAnimated from 'react-native-progress-bar-animated';
@@ -52,6 +53,7 @@ export class DrawingBoard extends Component {
       dnaName: null,
       dnaConfidence: null,
       dnaTime: null,
+      ifOutput: false,
       //Overlay visibility
       sampleOverlay_visible: false,
       outputOverlay_visible: false,
@@ -166,6 +168,7 @@ export class DrawingBoard extends Component {
     var addTrace = [];
     var addOutput = [];
     var responsefromServer = [];
+    var isOutput = this.state.ifOutput;
     return (
       <View style={{flex: 1, flexDirection: 'row'}}>
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<SAMPLE MODAL DISPLAY />~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
@@ -526,6 +529,7 @@ export class DrawingBoard extends Component {
                   this.setState({
                     outputOverlay_visible: false,
                     chosenOutput: 1,
+                    ifOutput: true,
                   });
                 }}
               />
@@ -569,6 +573,7 @@ export class DrawingBoard extends Component {
                   this.setState({
                     outputOverlay_visible: false,
                     chosenOutput: 2,
+                    ifOutput: true,
                   });
                 }}
               />
@@ -612,6 +617,7 @@ export class DrawingBoard extends Component {
                   this.setState({
                     outputOverlay_visible: false,
                     chosenOutput: 3,
+                    ifOutput: true,
                   });
                 }}
               />
@@ -655,6 +661,7 @@ export class DrawingBoard extends Component {
                   this.setState({
                     outputOverlay_visible: false,
                     chosenOutput: 4,
+                    ifOutput: true,
                   });
                 }}
               />
@@ -698,6 +705,7 @@ export class DrawingBoard extends Component {
                   this.setState({
                     outputOverlay_visible: false,
                     chosenOutput: 5,
+                    ifOutput: true,
                   });
                 }}
               />
@@ -770,6 +778,58 @@ export class DrawingBoard extends Component {
               }}
             />
           </View>
+
+            {/* New changes for scale */}
+            {isOutput && <View style={{flexDirection: 'row' , justifyContent: 'space-around'}}>
+  <Text style={{
+                textAlign: 'left',
+                fontSize: 18,
+                 marginTop: -25,
+                 paddingLeft: 70 
+              }}>Disease_Name : {} </Text>
+
+  <Text style={{
+                textAlign: 'left',
+                fontSize: 18,
+               
+                marginTop: -25,
+             
+                paddingLeft: 120 
+              }}>Confidence: {} </Text>
+
+
+    <Text style={{
+                textAlign: 'right',
+                fontSize: 18,
+            
+                marginTop: -25,
+               
+                paddingLeft: 120 ,
+                paddingRight: 40 
+              }}>Time: {}</Text>
+
+            </View> }
+    
+        <View style={{ height: 770, padding: 20, marginTop: -20, flexDirection: 'row' , flexWrap: 'wrap'}}>
+        <View style={{ flexDirection: 'column', alignContent: 'space-around' }}>
+        <View style={{width: 50, height: 190, backgroundColor: '#F8F8F8'}} > 
+        <Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>2</Text> 
+        </View>
+
+        <View style={{width: 50, height: 190, backgroundColor: '#F8F8F8'}} >
+        <Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>1</Text> 
+        </View>
+        <View style={{width: 50, height: 190, backgroundColor: 'F8F8F8'}} >
+        <Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>0</Text> 
+        </View>
+        <View style={{width: 50, height: 190, backgroundColor: 'F8F8F8'}} >
+        <Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>-1</Text> 
+        </View>
+        <View style={{width: 50, height: 30, backgroundColor: 'F8F8F8'}} >
+        <Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>-2</Text> 
+        </View>
+      </View>
+
           <SketchCanvas
             localSourceImage={{
               filename:
@@ -835,9 +895,35 @@ export class DrawingBoard extends Component {
               // console.log('pathsCount', pathsCount);
             }}
           />
+          </View>
+
+{/* x-axis display */}
+<View style={{ padding: 87, flexDirection: 'column'}}>
+<View style={{ flexDirection: 'row' , justifyContent: 'space-between'}}>
+<View style={{width:120, height: 0, backgroundColor: '#F8F8F8'}} > 
+<Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}></Text> 
+</View>
+
+<View style={{width: 280, height: 0, backgroundColor: '#F8F8F8'}} >
+<Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>0.2s</Text> 
+</View>
+<View style={{width: 280, height: 0, backgroundColor: 'F8F8F8'}} >
+<Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>0.4s</Text> 
+</View>
+<View style={{width: 280, height: 0, backgroundColor: 'F8F8F8'}} >
+<Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>0.6s</Text> 
+</View>
+<View style={{width: 280, height: 0, backgroundColor: 'F8F8F8'}} >
+<Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>0.8s</Text> 
+</View>
+<View style={{width: 280, height: 0, backgroundColor: 'F8F8F8'}} >
+<Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>1s</Text> 
+</View>
+</View>
 
           <View
             style={{
+              padding: 43,
               flexDirection: 'row',
               justifyContent: 'space-evenly',
               alignItems: 'center',
@@ -1213,6 +1299,7 @@ export class DrawingBoard extends Component {
               }}
             />
           </View>
+        </View>
         </View>
       </View>
     );
