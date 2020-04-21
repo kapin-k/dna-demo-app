@@ -1309,7 +1309,13 @@ export class DrawingBoard extends Component {
                         [{text: 'Okay', onPress: () => {
                           this.canvas.clear(),
                           console.log('OK Pressed'),
-                          this.setState({outputOverlay_visible: false, chosenOutput: null,})}}],
+                          this.setState({outputOverlay_visible: false, chosenOutput: null,})}},
+                          {
+                          text: "Show me some samples!",
+                          onPress: () => {console.log("Show me some samples - Pressed");
+                          this.setState({outputOverlay_visible: false, sampleOverlay_visible: true, firstClickonSample: true , chosenOutput: null,})},
+                          style: "cancel"
+                        },],
                         {cancelable: false},
                       );
                     }
@@ -1430,7 +1436,22 @@ export class DrawingBoard extends Component {
                     }
                   }
                  ).catch(error => {console.log(error)});
-                 {this.setState({
+                 {Alert.alert(
+                        'No Match Found',
+                        'It is okay! Go back and try again!',
+                        [{text: 'Okay', onPress: () => {
+                          this.canvas.clear(),
+                          console.log('OK Pressed'),
+                          this.setState({outputOverlay_visible: false, chosenOutput: null,})}},
+                          {
+                          text: "Show me some samples!",
+                          onPress: () => {console.log("Show me some samples - Pressed");
+                          this.setState({outputOverlay_visible: false, sampleOverlay_visible: true, firstClickonSample: true , chosenOutput: null,})},
+                          style: "cancel"
+                        },],
+                        {cancelable: false},
+                      );
+                   this.setState({
                    responseJSON: responsefromServer,
                    chosenOutput: null,
                  })}
