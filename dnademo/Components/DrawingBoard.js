@@ -9,6 +9,7 @@ import {
   TouchableWithoutFeedback,
   Modal,
   Dimensions,
+  Linking
 } from 'react-native';
 import {Button} from 'react-native-elements';
 import ProgressBarAnimated from 'react-native-progress-bar-animated';
@@ -169,6 +170,7 @@ export class DrawingBoard extends Component {
     var addOutput = [];
     var responsefromServer = [];
     var isOutput = this.state.ifOutput;
+    //var Link = "https://wikipedia.com/".concat(data[0].Name);
     return (
       <View style={{flex: 1, flexDirection: 'row'}}>
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<SAMPLE MODAL DISPLAY />~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
@@ -785,8 +787,10 @@ export class DrawingBoard extends Component {
                 textAlign: 'left',
                 fontSize: 18,
                  marginTop: -25,
-                 paddingLeft: 70 
-              }}>Disease_Name : {} </Text>
+                 paddingLeft: 70 ,
+               textDecorationLine: 'underline'
+               
+              }} onPress={() => Linking.openURL(Link) } >Disease_Name : {} </Text>
 
   <Text style={{
                 textAlign: 'left',
