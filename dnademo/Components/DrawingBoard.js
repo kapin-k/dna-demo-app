@@ -24,7 +24,6 @@ import {SketchCanvas} from '@terrylinla/react-native-sketch-canvas';
 
 // Imports and constants for backend
 import axios from 'axios';
-import { thisExpression } from '@babel/types';
 const serv = 'http://127.0.0.1:5000';
 const my_proxy = axios.create({
   baseURL: serv,
@@ -83,6 +82,13 @@ export class DrawingBoard extends Component {
       OP3_Meter: '',
       OP4_Meter: '',
       OP5_Meter: '',
+      // Is there an output to be displayed
+      OP1: false,
+      OP2: false,
+      OP3: false,
+      OP4: false,
+      OP5: false,
+      DNAcolor: '#000000',
     };
 
     resetResponse = () =>{
@@ -107,6 +113,11 @@ export class DrawingBoard extends Component {
         OP3_Meter: '',
         OP4_Meter: '',
         OP5_Meter: '',
+        OP1: false,
+        OP2: false,
+        OP3: false,
+        OP4: false,
+        OP5: false,
       })
     }
 
@@ -170,7 +181,7 @@ export class DrawingBoard extends Component {
     var addOutput = [];
     var responsefromServer = [];
     var isOutput = this.state.ifOutput;
-    //var Link = "https://wikipedia.com/".concat(data[0].Name);
+    var Link = "https://wikipedia.com/".concat(this.state.dnaName);
     return (
       <View style={{flex: 1, flexDirection: 'row'}}>
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<SAMPLE MODAL DISPLAY />~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
@@ -192,6 +203,7 @@ export class DrawingBoard extends Component {
                 dnaConfidence: null,
                 dnaTime: null,
                 ifOutput: false,
+                firstClickonSample: false,
               });
             }}>
             <View style={styles.mainModalView}>
@@ -211,6 +223,7 @@ export class DrawingBoard extends Component {
                       dnaConfidence: presetJSON[0].Confidence,
                       dnaTime: presetJSON[0].Time,
                       ifOutput: false,
+                      firstClickonSample: false
                     });
                   }}>
                   <View style={styles.modalView1}>
@@ -509,13 +522,19 @@ export class DrawingBoard extends Component {
             <View style={styles.centeredView1}>
             
               {/* ~~~~~~~~~~ OUTPUT 1 ~~~~~~~~~~ */}
-                <View style={styles.outputCard}>
+               
+              {this.state.OP1 && <View style={styles.outputCard}>
                 <View style={{width: 50, height:145, backgroundColor: '#007AFF', alignSelf: 'flex-start', borderRadius: 20 }}></View>
                 <TouchableWithoutFeedback
                   onPressIn={() => {
                   this.canvas.addPath(this.state.outputPath[0]);
                   console.log('Output Overlay is closed by choosing Output1 Text View',);
-                  this.setState({outputOverlay_visible: false, chosenOutput: 1, ifOutput: true,});
+                  this.setState({outputOverlay_visible: false, 
+                    chosenOutput: 1,
+                    dnaName: this.state.OP1_Name,
+                    dnaConfidence: this.state.OP1_Confidence,
+                    dnaTime: this.state.OP1_Time,
+                    ifOutput: true,});
                 }}>
                 <View style={{marginTop: 15, width: 720, height: 120, flexDirection: 'column', alignContent: 'center'}}>
               <Text style={{color: 'black', fontSize: 30, fontWeight: 'bold', textAlign: 'center',}}>{this.state.OP1_Name}</Text>
@@ -544,22 +563,33 @@ export class DrawingBoard extends Component {
                   this.setState({
                     outputOverlay_visible: false,
                     chosenOutput: 1,
+                    dnaName: this.state.OP1_Name,
+                    dnaConfidence: this.state.OP1_Confidence,
+                    dnaTime: this.state.OP1_Time,
+                    DNAcolor: '#007AFF',
                     ifOutput: true,
                   });
                 }}
               />
                 </View>
                 </View>
+              }
 
               {/* ~~~~~~~~~~ OUTPUT 2 ~~~~~~~~~~ */}
-              <View style={styles.outputCard}>
+              
+              {this.state.OP2 && <View style={styles.outputCard}>
                 <View style={{width: 50, height:145, backgroundColor: '#FF2D55', alignSelf: 'flex-start', borderRadius: 20 }}></View>
                 <TouchableWithoutFeedback
                   onPressIn={() => {
                     this.canvas.addPath(this.state.outputPath[1]);
                     console.log('id of path '+this.state.outputPath[1].path.id);
                   console.log('Output Overlay is closed by choosing Output2 Text View',);
-                  this.setState({outputOverlay_visible: false, chosenOutput: 2, ifOutput: true,});
+                  this.setState({outputOverlay_visible: false, 
+                    chosenOutput: 2,
+                    dnaName: this.state.OP2_Name,
+                    dnaConfidence: this.state.OP2_Confidence,
+                    dnaTime: this.state.OP2_Time,
+                    ifOutput: true,});
                 }}>
                 <View style={{marginTop: 15, width: 720, height: 120, flexDirection: 'column', alignContent: 'center'}}>
                   <Text style={{color: 'black', fontSize: 30, fontWeight: 'bold', textAlign: 'center',}}>{this.state.OP2_Name}</Text>
@@ -588,22 +618,32 @@ export class DrawingBoard extends Component {
                   this.setState({
                     outputOverlay_visible: false,
                     chosenOutput: 2,
+                    dnaName: this.state.OP2_Name,
+                    dnaConfidence: this.state.OP2_Confidence,
+                    dnaTime: this.state.OP2_Time,
+                    DNAcolor: '#FF2D55',
                     ifOutput: true,
                   });
                 }}
               />
                 </View>
                 </View>
-
+              }
               {/* ~~~~~~~~~~ OUTPUT 3 ~~~~~~~~~~ */}
-              <View style={styles.outputCard}>
+
+              {this.state.OP3 && <View style={styles.outputCard}>
                 <View style={{width: 50, height:145, backgroundColor: '#AF52DE', alignSelf: 'flex-start', borderRadius: 20 }}></View>
                 <TouchableWithoutFeedback
                   onPressIn={() => {
                     this.canvas.addPath(this.state.outputPath[2]);
                     console.log('id of path '+this.state.outputPath[2].path.id);
                   console.log('Output Overlay is closed by choosing Output3 Text View',);
-                  this.setState({outputOverlay_visible: false, chosenOutput: 3, ifOutput: true,});
+                  this.setState({outputOverlay_visible: false, 
+                    chosenOutput: 3,
+                    dnaName: this.state.OP3_Name,
+                    dnaConfidence: this.state.OP3_Confidence,
+                    dnaTime: this.state.OP3_Time,
+                    ifOutput: true,});
                 }}>
                 <View style={{marginTop: 15, width: 720, height: 120, flexDirection: 'column', alignContent: 'center'}}>
                 <Text style={{color: 'black', fontSize: 30, fontWeight: 'bold', textAlign: 'center',}}>{this.state.OP3_Name}</Text>
@@ -632,22 +672,32 @@ export class DrawingBoard extends Component {
                   this.setState({
                     outputOverlay_visible: false,
                     chosenOutput: 3,
+                    dnaName: this.state.OP3_Name,
+                    dnaConfidence: this.state.OP3_Confidence,
+                    dnaTime: this.state.OP3_Time,
+                    DNAcolor: '#AF52DE',
                     ifOutput: true,
                   });
                 }}
               />
                 </View>
                 </View>
+              }   
 
               {/* ~~~~~~~~~~ OUTPUT 4 ~~~~~~~~~~ */}
-              <View style={styles.outputCard}>
+              {this.state.OP4 && <View style={styles.outputCard}>
                 <View style={{width: 50, height:145, backgroundColor: '#FF9500', alignSelf: 'flex-start', borderRadius: 20 }}></View>
                 <TouchableWithoutFeedback
                   onPressIn={() => {
                     this.canvas.addPath(this.state.outputPath[3]);
                     console.log('id of path '+this.state.outputPath[3].path.id);
                   console.log('Output Overlay is closed by choosing Output4 Text View',);
-                  this.setState({outputOverlay_visible: false, chosenOutput: 4, ifOutput: true,});
+                  this.setState({outputOverlay_visible: false, 
+                        chosenOutput: 4, 
+                        dnaName: this.state.OP4_Name,
+                        dnaConfidence: this.state.OP4_Confidence,
+                        dnaTime: this.state.OP4_Time,
+                        ifOutput: true,});
                 }}>
                 <View style={{marginTop: 15, width: 720, height: 120, flexDirection: 'column', alignContent: 'center'}}>
                 <Text style={{color: 'black', fontSize: 30, fontWeight: 'bold', textAlign: 'center',}}>{this.state.OP4_Name}</Text>
@@ -676,22 +726,32 @@ export class DrawingBoard extends Component {
                   this.setState({
                     outputOverlay_visible: false,
                     chosenOutput: 4,
+                    dnaName: this.state.OP4_Name,
+                    dnaConfidence: this.state.OP4_Confidence,
+                    dnaTime: this.state.OP4_Time,
+                    DNAcolor: '#FF9500',
                     ifOutput: true,
                   });
                 }}
               />
                 </View>
                 </View>
+              }
 
               {/* ~~~~~~~~~~ OUTPUT 5 ~~~~~~~~~~ */}
-              <View style={styles.outputCard}>
+              {this.state.OP5 && <View style={styles.outputCard}>
                 <View style={{width: 50, height:145, backgroundColor: '#34C759', alignSelf: 'flex-start', borderRadius: 20 }}></View>
                 <TouchableWithoutFeedback
                   onPressIn={() => {
                     this.canvas.addPath(this.state.outputPath[4]);
                     console.log('id of path '+this.state.outputPath[4].path.id);
                   console.log('Output Overlay is closed by choosing Output5 Text View',);
-                  this.setState({outputOverlay_visible: false, chosenOutput: 5, ifOutput: true,});
+                  this.setState({outputOverlay_visible: false,
+                     chosenOutput: 5,
+                     dnaName: this.state.OP5_Name,
+                     dnaConfidence: this.state.OP5_Confidence,
+                     dnaTime: this.state.OP5_Time,
+                     ifOutput: true,});
                 }}>
                 <View style={{marginTop: 15, width: 720, height: 120, flexDirection: 'column', alignContent: 'center'}}>
                 <Text style={{color: 'black', fontSize: 30, fontWeight: 'bold', textAlign: 'center',}}>{this.state.OP5_Name}</Text>
@@ -720,13 +780,18 @@ export class DrawingBoard extends Component {
                   this.setState({
                     outputOverlay_visible: false,
                     chosenOutput: 5,
+                    dnaName: this.state.OP5_Name,
+                    dnaConfidence: this.state.OP5_Confidence,
+                    dnaTime: this.state.OP5_Time,
+                    DNAcolor: '#34C759',
                     ifOutput: true,
                   });
                 }}
               />
                 </View>
                 </View>
-            </View>
+              }
+              </View>
           {/* ~~~~~~~~~~ BACK BUTTON ~~~~~~~~~~ */}
           <TouchableWithoutFeedback
             onPressIn={() => {
@@ -780,7 +845,7 @@ export class DrawingBoard extends Component {
             {/* ~~~~~~~~~~ ERASER BUTTON ~~~~~~~~~~ */}
             <Button
               type="clear"
-              icon={<Icon name="eraser" size={30} color="#8e8e93" />}
+              icon={<Icon name="eraser" size={40} color="#8e8e93" />}
               onPress={() => {
                 if(JSON.stringify(this.canvas.getPaths()) == '[]'){
                   Alert.alert(
@@ -791,61 +856,60 @@ export class DrawingBoard extends Component {
                   );
                 }
                 this.canvas.clear();
-                this.setState({chosenOutput: null, chosenSample: null,ifOutput: false});
+                this.setState({chosenOutput: null, chosenSample: null,ifOutput: false,});
               }}
             />
           </View>
 
-            {/* New changes for scale */}
-            {isOutput && <View style={{flexDirection: 'row' , justifyContent: 'space-around'}}>
+            {/* New changes for y-scale */}
+            {isOutput && <View style={{flexDirection: 'row' ,height: 20, justifyContent: 'space-evenly'}}>
   <Text style={{
-                textAlign: 'left',
-                fontSize: 18,
-                 marginTop: -25,
-                 paddingLeft: 70 ,
-               textDecorationLine: 'underline'
-               
-              }} onPress={() => Linking.openURL(Link) } >Disease_Name : {} </Text>
+                textAlign: 'center',
+                fontSize: 22,
+                marginTop: -25,
+                paddingLeft: 10,
+                // textDecorationLine: 'underline',
+                fontFamily: 'AmericanTypewriter-Bold',
+                color: '#696969',
+              }} onPress={() => Linking.openURL(Link) } >DNA Name : {this.state.dnaName} <Icon name="search-web" size ={22} color="#696969"/></Text>
 
   <Text style={{
-                textAlign: 'left',
-                fontSize: 18,
-               
+                textAlign: 'center',
+                fontSize: 22,
+                fontFamily: 'AmericanTypewriter-Bold',
                 marginTop: -25,
-             
-                paddingLeft: 120 
-              }}>Confidence: {} </Text>
+                color: '#696969',
+              }}>Confidence: {this.state.dnaConfidence} </Text>
 
 
     <Text style={{
-                textAlign: 'right',
-                fontSize: 18,
-            
+                textAlign: 'center',
+                fontSize: 22,
+                fontFamily: 'AmericanTypewriter-Bold',
                 marginTop: -25,
-               
-                paddingLeft: 120 ,
-                paddingRight: 40 
-              }}>Time: {}</Text>
+                color: '#696969',
+                paddingRight: 50,
+              }}>Time: {this.state.dnaTime} sec</Text>
 
             </View> }
     
-        <View style={{ height: 770, padding: 20, marginTop: -20, flexDirection: 'row' , flexWrap: 'wrap'}}>
+        <View style={{ height: 770, padding: 15, marginTop: -20, flexDirection: 'row' , flexWrap: 'wrap'}}>
         <View style={{ flexDirection: 'column', alignContent: 'space-around' }}>
-        <View style={{width: 50, height: 190, backgroundColor: '#F8F8F8'}} > 
-        <Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>2</Text> 
+        <View style={{width: 10, height: 190,}} > 
+        <Text style={{width: 20, height: 50,  fontSize: 18, color:'#8e8e93'}}>2</Text> 
         </View>
 
-        <View style={{width: 50, height: 190, backgroundColor: '#F8F8F8'}} >
-        <Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>1</Text> 
+        <View style={{width: 10, height: 190,}} >
+        <Text style={{width: 20, height: 50,  fontSize: 18, color:'#8e8e93'}}>1</Text> 
         </View>
-        <View style={{width: 50, height: 190, backgroundColor: 'F8F8F8'}} >
-        <Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>0</Text> 
+        <View style={{width: 10, height: 190,}} >
+        <Text style={{width: 20, height: 50,  fontSize: 18, color:'#8e8e93'}}>0</Text> 
         </View>
-        <View style={{width: 50, height: 190, backgroundColor: 'F8F8F8'}} >
-        <Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>-1</Text> 
+        <View style={{width: 10, height: 190,}} >
+        <Text style={{width: 20, height: 50,  fontSize: 18, color:'#8e8e93'}}>-1</Text> 
         </View>
-        <View style={{width: 50, height: 30, backgroundColor: 'F8F8F8'}} >
-        <Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>-2</Text> 
+        <View style={{width: 10, height: 30,}} >
+        <Text style={{width: 20, height: 50,  fontSize: 18, color:'#8e8e93'}}>-2</Text> 
         </View>
       </View>
 
@@ -856,18 +920,18 @@ export class DrawingBoard extends Component {
               directory: 'SketchCanvas.MAIN_BUNDLE',
               mode: 'ScaleToFill',
             }}
-            text={[
-              {
-                text: '<----------- Time (milliseconds) ----------->',
-                font: 'Zapfino',
-                fontSize: 15,
-                position: {x: 441, y: 843},
-                anchor: {x: 0, y: 0},
-                overlay: 'SketchOnText',
-                coordinate: 'Absolute',
-                alignment: 'Center',
-                fontColor: 'grey',
-              },
+            // text={[
+            //   {
+            //     text: '<----------- Time (milliseconds) ----------->',
+            //     font: 'Zapfino',
+            //     fontSize: 15,
+            //     position: {x: 441, y: 843},
+            //     anchor: {x: 0, y: 0},
+            //     overlay: 'SketchOnText',
+            //     coordinate: 'Absolute',
+            //     alignment: 'Center',
+            //     fontColor: 'grey',
+            //   },
               // {
               //   text: '2000',
               //   font: 'Zapfino',
@@ -892,7 +956,7 @@ export class DrawingBoard extends Component {
               // },
               // { text: '-2', font: 'Zapfino', fontSize: 12, position: { x: 10, y: 838 }, anchor: { x: 0, y: 0 }, overlay: 'SketchOnText', coordinate: 'Absolute', alignment: 'Center', fontColor: 'grey' },
               // { text: '2', font: 'Zapfino', fontSize: 12, position: { x: 10, y: 10 }, anchor: { x: 0, y: 0 }, overlay: 'SketchOnText', coordinate: 'Absolute', alignment: 'Center', fontColor: 'grey' },
-            ]}
+            // ]}
             ref={ref => (this.canvas = ref)}
             style={{flex: 1}}
             strokeColor={this.state.color}
@@ -917,32 +981,32 @@ export class DrawingBoard extends Component {
           </View>
 
 {/* x-axis display */}
-<View style={{ padding: 87, flexDirection: 'column'}}>
-<View style={{ flexDirection: 'row' , justifyContent: 'space-between'}}>
-<View style={{width:120, height: 0, backgroundColor: '#F8F8F8'}} > 
-<Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}></Text> 
+<View style={{ padding: 85, flexDirection: 'column',}}>
+<View style={{ flexDirection: 'row' ,justifyContent: 'space-between'}}>
+<View style={{width:220, height: 0,}} > 
+<Text style={{width: 50, height: 20,  fontSize: 18, color:'#8e8e93', textAlign: 'left'}}>0</Text> 
 </View>
 
-<View style={{width: 280, height: 0, backgroundColor: '#F8F8F8'}} >
-<Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>0.2s</Text> 
+<View style={{width: 250, height: 0}} >
+<Text style={{width: 50, height: 20,  fontSize: 18, color:'#8e8e93'}}>0.2s</Text> 
 </View>
-<View style={{width: 280, height: 0, backgroundColor: 'F8F8F8'}} >
-<Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>0.4s</Text> 
+<View style={{width: 250, height: 0,}} >
+<Text style={{width: 50, height: 20,  fontSize: 18, color:'#8e8e93'}}>0.4s</Text> 
 </View>
-<View style={{width: 280, height: 0, backgroundColor: 'F8F8F8'}} >
-<Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>0.6s</Text> 
+<View style={{width: 250, height: 0,}} >
+<Text style={{width: 50, height: 20,  fontSize: 18, color:'#8e8e93'}}>0.6s</Text> 
 </View>
-<View style={{width: 280, height: 0, backgroundColor: 'F8F8F8'}} >
-<Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>0.8s</Text> 
+<View style={{width: 250, height: 0,}} >
+<Text style={{width: 50, height: 20,  fontSize: 18, color:'#8e8e93'}}>0.8s</Text> 
 </View>
-<View style={{width: 280, height: 0, backgroundColor: 'F8F8F8'}} >
-<Text style={{width: 50, height: 50,  fontSize: 23, color:'black'}}>1s</Text> 
+<View style={{width: 250, height: 0,}} >
+<Text style={{width: 50, height: 20,  fontSize: 18, color:'#8e8e93'}}>1s</Text> 
 </View>
 </View>
 
           <View
             style={{
-              padding: 43,
+              padding: 20,
               flexDirection: 'row',
               justifyContent: 'space-evenly',
               alignItems: 'center',
@@ -950,7 +1014,7 @@ export class DrawingBoard extends Component {
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<SampleButton />~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
             <Button
               type="clear"
-              icon={<Icon name="book" size={60} color="#007AFF" />}
+              icon={<Icon name="book" size={65} color="#007AFF" />}
               onPress={() => {
                 console.log('Sample Overlay is opened');
                 if (this.state.firstClickonSample) {
@@ -1061,7 +1125,7 @@ export class DrawingBoard extends Component {
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<AnalyzeButton />~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
             <Button
               type="clear"
-              icon={<Icon name="play-circle" size={60} color="#34C759" />}
+              icon={<Icon name="play-circle" size={65} color="#34C759" />}
               onPress={() => {
                 console.log('Output Overlay is opened');
                 switch(this.state.chosenOutput){
@@ -1177,7 +1241,7 @@ export class DrawingBoard extends Component {
                 //Fetch results from server only when user clears screen or doesn't want any output; else show already fetched result
                 if(this.state.chosenOutput == null){
                   console.log('Server is being hit!');
-                my_proxy.get('/config') //,{Read})
+                my_proxy.post('/analyze',{Read})
                 .then((response) => {
                     var convertJSON = response.data.replace(/'/g, '"');
                     var dataToJSON = JSON.parse(convertJSON);
@@ -1185,7 +1249,7 @@ export class DrawingBoard extends Component {
                     for(var i = 0; i< dataToJSON.length; i++){
                       responsefromServer.splice(i, 0, dataToJSON[i]);
                     }
-
+                    console.log('length of dataToJSON(responseFromServer)' + dataToJSON.length);
                     //No results -> Handling
                     if (dataToJSON.length == 0) {
                       Alert.alert(
@@ -1203,7 +1267,7 @@ export class DrawingBoard extends Component {
                       var value = (item + 2) * 200;
                       responsefromServer[i].Read[index] = Math.round(value * 10) / 10;
                     }
-                    for (var i = 0; i < 5; i++) {
+                    for (var i = 0; i < dataToJSON.length; i++) {
                       responsefromServer[i].Read.forEach(scaleYaxis);
                       switch (i) {
                         case 0:
@@ -1224,6 +1288,7 @@ export class DrawingBoard extends Component {
                             OP1_Time: time_string,
                             OP1_Confidence: confidence_string,
                             OP1_Meter: meter_string,
+                            OP1 : true,
                           });
                           break;
                         case 1:
@@ -1244,6 +1309,7 @@ export class DrawingBoard extends Component {
                             OP2_Time: time_string,
                             OP2_Confidence: confidence_string,
                             OP2_Meter: meter_string,
+                            OP2 : true,
                           });
                           break;
                         case 2:
@@ -1264,6 +1330,7 @@ export class DrawingBoard extends Component {
                             OP3_Time: time_string,
                             OP3_Confidence: confidence_string,
                             OP3_Meter: meter_string,
+                            OP3 : true,
                           });
                           break;
                         case 3:
@@ -1284,6 +1351,7 @@ export class DrawingBoard extends Component {
                             OP4_Time: time_string,
                             OP4_Confidence: confidence_string,
                             OP4_Meter: meter_string,
+                            OP4 : true,
                           });
                           break;
                         case 4:
@@ -1304,6 +1372,7 @@ export class DrawingBoard extends Component {
                             OP5_Time: time_string,
                             OP5_Confidence: confidence_string,
                             OP5_Meter: meter_string,
+                            OP5 : true,
                           });
                           break;
                       }
