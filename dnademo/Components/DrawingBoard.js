@@ -1305,8 +1305,8 @@ export class DrawingBoard extends Component {
                     if (dataToJSON.length == 0) {
                       Alert.alert(
                         'No Match Found',
-                        'It is okay! Go back and try again!',
-                        [{text: 'Okay', onPress: () => {
+                        'Go back and try again or checkout some example traces!',
+                        [{text: "Okay, I'll try again", onPress: () => {
                           this.canvas.clear(),
                           console.log('OK Pressed'),
                           this.setState({outputOverlay_visible: false, chosenOutput: null,})}},
@@ -1438,8 +1438,8 @@ export class DrawingBoard extends Component {
                  ).catch(error => {console.log(error)});
                  {Alert.alert(
                         'No Match Found',
-                        'It is okay! Go back and try again!',
-                        [{text: 'Okay', onPress: () => {
+                        'Go back and try again or checkout some example traces!',
+                        [{text: "Okay, I'll try again", onPress: () => {
                           this.canvas.clear(),
                           console.log('OK Pressed'),
                           this.setState({outputOverlay_visible: false, chosenOutput: null,})}},
