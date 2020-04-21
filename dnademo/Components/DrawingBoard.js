@@ -50,7 +50,7 @@ export class DrawingBoard extends Component {
       chosenOutput: null,
       path: null,
       firstClickonSample: true,
-      //Use these state variables to sdisplay
+      //Use these state variables to display
       dnaName: null,
       dnaConfidence: null,
       dnaTime: null,
@@ -191,6 +191,7 @@ export class DrawingBoard extends Component {
                 dnaName: null,
                 dnaConfidence: null,
                 dnaTime: null,
+                ifOutput: false,
               });
             }}>
             <View style={styles.mainModalView}>
@@ -209,6 +210,7 @@ export class DrawingBoard extends Component {
                       dnaName: presetJSON[0].Name,
                       dnaConfidence: presetJSON[0].Confidence,
                       dnaTime: presetJSON[0].Time,
+                      ifOutput: false,
                     });
                   }}>
                   <View style={styles.modalView1}>
@@ -233,6 +235,7 @@ export class DrawingBoard extends Component {
                             dnaName: presetJSON[0].Name,
                             dnaConfidence: presetJSON[0].Confidence,
                             dnaTime: presetJSON[0].Time,
+                            ifOutput: false,
                           });
                         }}>
                         SAMPLE 1
@@ -255,6 +258,7 @@ export class DrawingBoard extends Component {
                       dnaName: presetJSON[1].Name,
                       dnaConfidence: presetJSON[1].Confidence,
                       dnaTime: presetJSON[1].Time,
+                      ifOutput: false,
                     });
                   }}>
                   <View style={styles.modalView2}>
@@ -279,6 +283,7 @@ export class DrawingBoard extends Component {
                             dnaName: presetJSON[1].Name,
                             dnaConfidence: presetJSON[1].Confidence,
                             dnaTime: presetJSON[1].Time,
+                            ifOutput: false,
                           });
                         }}>
                         SAMPLE 2
@@ -301,6 +306,7 @@ export class DrawingBoard extends Component {
                       dnaName: presetJSON[2].Name,
                       dnaConfidence: presetJSON[2].Confidence,
                       dnaTime: presetJSON[2].Time,
+                      ifOutput: false,
                     });
                   }}>
                   <View style={styles.modalView3}>
@@ -325,6 +331,7 @@ export class DrawingBoard extends Component {
                             dnaName: presetJSON[2].Name,
                             dnaConfidence: presetJSON[2].Confidence,
                             dnaTime: presetJSON[2].Time,
+                            ifOutput: false,
                           });
                         }}>
                         SAMPLE 3
@@ -349,6 +356,7 @@ export class DrawingBoard extends Component {
                       dnaName: presetJSON[3].Name,
                       dnaConfidence: presetJSON[3].Confidence,
                       dnaTime: presetJSON[3].Time,
+                      ifOutput: false,
                     });
                   }}>
                   <View style={styles.modalView4}>
@@ -373,6 +381,7 @@ export class DrawingBoard extends Component {
                             dnaName: presetJSON[3].Name,
                             dnaConfidence: presetJSON[3].Confidence,
                             dnaTime: presetJSON[3].Time,
+                            ifOutput: false,
                           });
                         }}>
                         SAMPLE 4
@@ -395,6 +404,7 @@ export class DrawingBoard extends Component {
                       dnaName: presetJSON[4].Name,
                       dnaConfidence: presetJSON[4].Confidence,
                       dnaTime: presetJSON[4].Time,
+                      ifOutput: false,
                     });
                   }}>
                   <View style={styles.modalView5}>
@@ -419,6 +429,7 @@ export class DrawingBoard extends Component {
                             dnaName: presetJSON[4].Name,
                             dnaConfidence: presetJSON[4].Confidence,
                             dnaTime: presetJSON[4].Time,
+                            ifOutput: false,
                           });
                         }}>
                         SAMPLE 5
@@ -440,6 +451,7 @@ export class DrawingBoard extends Component {
                     dnaName: null,
                     dnaConfidence: null,
                     dnaTime: null,
+                    ifOutput: false,
                   });
                 }}>
                 <View
@@ -468,6 +480,7 @@ export class DrawingBoard extends Component {
                         dnaName: null,
                         dnaConfidence: null,
                         dnaTime: null,
+                        ifOutput: false,
                       });
                     }}
                   />
@@ -502,7 +515,7 @@ export class DrawingBoard extends Component {
                   onPressIn={() => {
                   this.canvas.addPath(this.state.outputPath[0]);
                   console.log('Output Overlay is closed by choosing Output1 Text View',);
-                  this.setState({outputOverlay_visible: false, chosenOutput: 1});
+                  this.setState({outputOverlay_visible: false, chosenOutput: 1, ifOutput: true,});
                 }}>
                 <View style={{marginTop: 15, width: 720, height: 120, flexDirection: 'column', alignContent: 'center'}}>
               <Text style={{color: 'black', fontSize: 30, fontWeight: 'bold', textAlign: 'center',}}>{this.state.OP1_Name}</Text>
@@ -546,7 +559,7 @@ export class DrawingBoard extends Component {
                     this.canvas.addPath(this.state.outputPath[1]);
                     console.log('id of path '+this.state.outputPath[1].path.id);
                   console.log('Output Overlay is closed by choosing Output2 Text View',);
-                  this.setState({outputOverlay_visible: false, chosenOutput: 2});
+                  this.setState({outputOverlay_visible: false, chosenOutput: 2, ifOutput: true,});
                 }}>
                 <View style={{marginTop: 15, width: 720, height: 120, flexDirection: 'column', alignContent: 'center'}}>
                   <Text style={{color: 'black', fontSize: 30, fontWeight: 'bold', textAlign: 'center',}}>{this.state.OP2_Name}</Text>
@@ -590,7 +603,7 @@ export class DrawingBoard extends Component {
                     this.canvas.addPath(this.state.outputPath[2]);
                     console.log('id of path '+this.state.outputPath[2].path.id);
                   console.log('Output Overlay is closed by choosing Output3 Text View',);
-                  this.setState({outputOverlay_visible: false, chosenOutput: 3});
+                  this.setState({outputOverlay_visible: false, chosenOutput: 3, ifOutput: true,});
                 }}>
                 <View style={{marginTop: 15, width: 720, height: 120, flexDirection: 'column', alignContent: 'center'}}>
                 <Text style={{color: 'black', fontSize: 30, fontWeight: 'bold', textAlign: 'center',}}>{this.state.OP3_Name}</Text>
@@ -634,7 +647,7 @@ export class DrawingBoard extends Component {
                     this.canvas.addPath(this.state.outputPath[3]);
                     console.log('id of path '+this.state.outputPath[3].path.id);
                   console.log('Output Overlay is closed by choosing Output4 Text View',);
-                  this.setState({outputOverlay_visible: false, chosenOutput: 4});
+                  this.setState({outputOverlay_visible: false, chosenOutput: 4, ifOutput: true,});
                 }}>
                 <View style={{marginTop: 15, width: 720, height: 120, flexDirection: 'column', alignContent: 'center'}}>
                 <Text style={{color: 'black', fontSize: 30, fontWeight: 'bold', textAlign: 'center',}}>{this.state.OP4_Name}</Text>
@@ -678,7 +691,7 @@ export class DrawingBoard extends Component {
                     this.canvas.addPath(this.state.outputPath[4]);
                     console.log('id of path '+this.state.outputPath[4].path.id);
                   console.log('Output Overlay is closed by choosing Output5 Text View',);
-                  this.setState({outputOverlay_visible: false, chosenOutput: 5});
+                  this.setState({outputOverlay_visible: false, chosenOutput: 5, ifOutput: true,});
                 }}>
                 <View style={{marginTop: 15, width: 720, height: 120, flexDirection: 'column', alignContent: 'center'}}>
                 <Text style={{color: 'black', fontSize: 30, fontWeight: 'bold', textAlign: 'center',}}>{this.state.OP5_Name}</Text>
@@ -724,6 +737,7 @@ export class DrawingBoard extends Component {
               this.setState({
                 outputOverlay_visible: false,
                 chosenOutput: null,
+                ifOutput: false,
               });
             }}>
             <View
@@ -744,6 +758,7 @@ export class DrawingBoard extends Component {
                   this.setState({
                     outputOverlay_visible: false,
                     chosenOutput: null,
+                    ifOutput: false,
                   });
                 }}
               />
@@ -776,7 +791,7 @@ export class DrawingBoard extends Component {
                   );
                 }
                 this.canvas.clear();
-                this.setState({chosenOutput: null, chosenSample: null,});
+                this.setState({chosenOutput: null, chosenSample: null,ifOutput: false});
               }}
             />
           </View>
