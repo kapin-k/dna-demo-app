@@ -34,14 +34,18 @@
     Edit Preset.json (Make sure the formatting is maintained and has 6 sample values)
 
 2. Styling and Formatting
+
     Go to folder '/dnademo/Components/SampleScreens'
+
     Open Drawing Board.js
+    
     ~~~Mention line numbers or code blocks to be edited~~~
 
 ### BUILD AND DEPLOYMENT
 -------------
 
 1. To build complete react native package (has to be done to make changes to formatting)
+
     ** Make sure node.js and npm is installed // download and install from official website **
 
     - Step 1: Clone complete repository from git
