@@ -7,11 +7,11 @@ The project is about developing an interactive Android/iOS app which takes a ran
 ## FRONT END
 -------------
 
-1. Change preset/sample data
+- 1. Change preset/sample data
     Go to folder /dnademo/Components/SampleScreens
     Edit Preset.json (Make sure the formatting is maintained and has 6 sample values)
 
-2. Styling and Formatting
+- 2. Styling and Formatting
     Go to folder /dnademo/Components/SampleScreens
     Open Drawing Board.js
     // Mention line numbers or code blocks to be edited
@@ -22,22 +22,22 @@ The project is about developing an interactive Android/iOS app which takes a ran
 1. To build complete react native package (has to be done to make changes to formatting)
     ** Make sure node.js and npm is installed // download and install from official website **
 
-    Step 1: Clone complete repository from git
-    Step 2: Go to folder 'dnademo'
+    - Step 1: Clone complete repository from git
+    - Step 2: Go to folder 'dnademo'
             ```bash
             npm install --save
             npm build
             npm start (or) react-native start 
             ```
-    Step 3: Go to 'ios' folder inside /dnademo
+    - Step 3: Go to 'ios' folder inside /dnademo
             ```bash
             pod install // This step will install all the dependencies into ios workspace
             ```
 
 2. Testing application on virtual simulator
 
-    Step 1: Move to 'dnademo' folder
-    Step 2: Run command below to open console log for your simulator
+    - Step 1: Move to 'dnademo' folder
+    - Step 2: Run command below to open console log for your simulator
 
         IOS:
             ```bash
@@ -54,9 +54,9 @@ The project is about developing an interactive Android/iOS app which takes a ran
             ```
         *You will now see a Metro Bundler console and a simulator ruuning. Wait for it to load completely. Once it is done loading, close the simulator.*
 
-    Step 3: Go to the 'ios' folder
-    Step 4: Open 'dnademo.xcworkspace' using your Xcode
-    Step 5: Click on the run button on the top-left corner of the screen.
+    - Step 3: Go to the 'ios' folder
+    - Step 4: Open 'dnademo.xcworkspace' using your Xcode
+    - Step 5: Click on the run button on the top-left corner of the screen.
         -> Choose target simulator by clicking on available devices dropdown option near your project name. (next to the run button)
             (or) Xcode Menu -- Product -- Destination -- *choose available device*
 
