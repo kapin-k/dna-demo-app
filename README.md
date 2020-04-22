@@ -1,22 +1,44 @@
 # dna-demo-app
 ===================
-- The project is about developing an interactive Android/iOS app which takes a random scribble as an input and returns a list of organisms with DNA sequence that closely matches the input scribble. The app is developed as an powerful, interactive tool to demo the newly developed DNA sequencer device to the public in a fun and interesting manner.
+- This project is about developing an interactive Android/iOS app which takes a random scribble as an input and returns a list of organisms with DNA sequence that closely matches the input scribble. The app is developed as a powerful, interactive tool to demo the newly developed DNA sequencer device to the public in a fun and interesting manner.
 
-### DOCUMENTATION
+## DOCUMENTATION
 
-## FRONT END
+### PREREQUISITES
+-------------
+- Node
+
+    ```bash
+    brew install node
+    ```
+
+- Watchman
+
+    ```bash
+    brew install watchman
+    ```
+
+- Cocopods
+
+    ```bash
+    sudo gem install cocoapods
+    ```
+
+### FRONT END
 -------------
 
 1. Change preset/sample data
-    Go to folder /dnademo/Components/SampleScreens
+
+    Go to folder '/dnademo/Components/SampleScreens'
+
     Edit Preset.json (Make sure the formatting is maintained and has 6 sample values)
 
 2. Styling and Formatting
-    Go to folder /dnademo/Components/SampleScreens
+    Go to folder '/dnademo/Components/SampleScreens'
     Open Drawing Board.js
-    // Mention line numbers or code blocks to be edited
+    ~~~Mention line numbers or code blocks to be edited~~~
 
-## BUILD AND DEPLOYMENT
+### BUILD AND DEPLOYMENT
 -------------
 
 1. To build complete react native package (has to be done to make changes to formatting)
@@ -41,7 +63,7 @@
     - Step 1: Move to 'dnademo' folder
     - Step 2: Run command below to open console log for your simulator
 
-        IOS:
+        - IOS:
 
             ```bash
             react-native run-ios
@@ -57,19 +79,24 @@
             Select a device from list:
 
             ```bash
-            react-native run-ios --simulator="iPad Pro (12.9-inch) (3rd generation)"
+            npm react-native run-ios --simulator="iPad Pro (12.9-inch) (3rd generation)"
             ```
 
+        - ANDROID: (Needs Android Studio with JDK path set to respective environment variable)
+
+            ```bash
+            react-native run-android
+            ```
         *You will now see a Metro Bundler console and a simulator ruuning. Wait for it to load completely. Once it is done loading, close the simulator.*
 
     - Step 3: Go to the 'ios' folder
     - Step 4: Open 'dnademo.xcworkspace' using your Xcode
     - Step 5: Click on the run button on the top-left corner of the screen.
-    
+
         -> Choose target simulator by clicking on available devices dropdown option near your project name. (next to the run button)
-            (or) Xcode Menu -- Product -- Destination -- *choose available device*
+            (or) Xcode Menu -- Product -- Destination -- *choose from available device*
 
 3. Deploying on actual device
 
-## BACK END
+### BACK END
 -------------
