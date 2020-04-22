@@ -31,7 +31,7 @@
 
     Go to folder '/dnademo/Components/SampleScreens'
 
-    Edit Preset.json (Make sure the formatting is maintained and has 6 sample values)
+    Edit 'Preset.json' (Make sure the formatting is maintained and has 6 sample values)
 
 2. **Styling and Formatting**
 
@@ -96,7 +96,7 @@
 
     - Step 3: Go to the 'ios' folder
     - Step 4: Open 'dnademo.xcworkspace' using your Xcode
-    - Step 5: Click on the run button on the top-left corner of the screen.
+    - Step 5: Click on the run button on the top-left corner of the screen
 
         -> Choose target simulator by clicking on available devices dropdown option near your project name. (next to the run button)
             (or) Xcode Menu -- Product -- Destination -- *choose from available device*
@@ -105,14 +105,26 @@
 
     - Step 1: Go to folder 'dnademo'
         > Open 'dnademo.xcworkspace' using your Xcode
-
-    - Step 2: Request your certificates
+    - Step 2: Request your certificates/ Code Signing
         > Go to 'Preferences' menu in Xcode and navigate to 'Accounts' tab
             >  Fill in your Apple iOS account details here
             >  Click on 'Manage Certificates'
-            >  If you click the “+” icon below the certificates pane, you can request a new iOS Development Certificate. and an iOS             Distribution Certificate
+            >  If you click the “+” icon below the certificates pane, you can request a new iOS Development Certificate and an iOS             Distribution Certificate
+    - Step 3: Connect your device to the computer
+    - Step 4: Select 'dnademo' from the project navigator in Xcode
+    - Step 5: Go to 'General' tab
+    - Step 6: Makes the following changes under the 'Signing' section
+        - Check the 'Automaticaly Manage Signing' checkbox
+        - __Team:__ : Choose your newly added account from the dropdown
+        - Make sure the 'Signing Certificate' is iOS Developer
+    - Step 7: Choose your connected device
+        > Go to'Product' menu on Xcode
+        > Destination > *select your connected device*
+    - Step 8: Run your application
+        > *If your device prompts you whether you trust the computer -> Click on 'Trust' {This process might take a while. Wait patiently}*
 
-    - Step 2: Go to folder 'dnademo'
+        {Should check whether this works and add more steps}
+    
 
 ### BACK END
 -------------
