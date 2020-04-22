@@ -1,5 +1,5 @@
 # dna-demo-app
-===================
+======================
 - This project is about developing an interactive Android/iOS app which takes a random scribble as an input and returns a list of organisms with DNA sequence that closely matches the input scribble. The app is developed as a powerful, interactive tool to demo the newly developed DNA sequencer device to the public in a fun and interesting manner.
 
 ## DOCUMENTATION
@@ -27,13 +27,13 @@
 ### FRONT END
 -------------
 
-1. Change preset/sample data
+1. **Change preset/sample data**
 
     Go to folder '/dnademo/Components/SampleScreens'
 
     Edit Preset.json (Make sure the formatting is maintained and has 6 sample values)
 
-2. Styling and Formatting
+2. **Styling and Formatting**
 
     Go to folder '/dnademo/Components/SampleScreens'
 
@@ -44,7 +44,7 @@
 ### BUILD AND DEPLOYMENT
 -------------
 
-1. To build complete react native package (has to be done to make changes to formatting)
+1. **To build complete react native package (has to be done to make changes to formatting)**
 
     ** Make sure node.js and npm is installed // download and install from official website **
 
@@ -62,7 +62,7 @@
             pod install // This step will install all the dependencies into ios workspace
             ```
 
-2. Testing application on virtual simulator
+2. **Testing application on virtual simulator**
 
     - Step 1: Move to 'dnademo' folder
     - Step 2: Run command below to open console log for your simulator
@@ -101,7 +101,7 @@
         -> Choose target simulator by clicking on available devices dropdown option near your project name. (next to the run button)
             (or) Xcode Menu -- Product -- Destination -- *choose from available device*
 
-3. Deploying on actual device
+3. **Deploying on actual device**
 
 ### BACK END
 -------------
