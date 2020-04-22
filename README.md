@@ -101,7 +101,18 @@
         -> Choose target simulator by clicking on available devices dropdown option near your project name. (next to the run button)
             (or) Xcode Menu -- Product -- Destination -- *choose from available device*
 
-3. **Deploying on actual device**
+3. **Deploying on physical device**
+
+    - Step 1: Go to folder 'dnademo'
+        > Open 'dnademo.xcworkspace' using your Xcode
+
+    - Step 2: Request your certificates
+        > Go to 'Preferences' menu in Xcode and navigate to 'Accounts' tab
+            >  Fill in your Apple iOS account details here
+            >  Click on 'Manage Certificates'
+            >  If you click the “+” icon below the certificates pane, you can request a new iOS Development Certificate. and an iOS             Distribution Certificate
+
+    - Step 2: Go to folder 'dnademo'
 
 ### BACK END
 -------------
