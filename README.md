@@ -73,18 +73,19 @@
             react-native run-ios
             ```
 
-        -> To specify target device simulator
-            List all available simulator:
+            * -> To specify target device simulator
 
-            ```bash
-            xcrun simctl list devices
-            ```
+                List all available simulator:
 
-            Select a device from list:
+                ```bash
+                xcrun simctl list devices
+                ```
 
-            ```bash
-            npm react-native run-ios --simulator="iPad Pro (12.9-inch) (3rd generation)"
-            ```
+                Select a device from list:
+
+                ```bash
+                npm react-native run-ios --simulator="iPad Pro (12.9-inch) (3rd generation)"
+                ```
 
         - ANDROID: (Needs Android Studio with JDK path set to respective environment variable)
 
