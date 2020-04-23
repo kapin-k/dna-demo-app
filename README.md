@@ -35,7 +35,7 @@
 
 2. **Styling and Formatting**
 
-    Go to folder '/dnademo/Components/SampleScreens'
+    Go to folder '/dnademo/Components'
 
     Open Drawing Board.js
     
