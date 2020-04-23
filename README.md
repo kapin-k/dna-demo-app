@@ -54,7 +54,6 @@
             ```bash
             npm install --save
             npm build
-            npm start (or) react-native start 
             ```
     - Step 3: Go to 'ios' folder inside /dnademo
 
@@ -86,6 +85,11 @@
                 ```bash
                 npm react-native run-ios --simulator="iPad Pro (12.9-inch) (3rd generation)"
                 ```
+            OR
+
+            ```bash
+            npm start
+            ```
 
         - ANDROID: (Needs Android Studio with JDK path set to respective environment variable)
 

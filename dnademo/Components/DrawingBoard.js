@@ -277,7 +277,7 @@ export class DrawingBoard extends Component {
                             ifOutput: false,
                           });
                         }}>
-                        SAMPLE 1
+                        CORONA VIRUS
                       </AwesomeButtonRick>
                     </View>
                   </View>
@@ -325,7 +325,7 @@ export class DrawingBoard extends Component {
                             ifOutput: false,
                           });
                         }}>
-                        SAMPLE 2
+                        DOG
                       </AwesomeButtonRick>
                     </View>
                   </View>
@@ -373,7 +373,7 @@ export class DrawingBoard extends Component {
                             ifOutput: false,
                           });
                         }}>
-                        SAMPLE 3
+                        SNAKE
                       </AwesomeButtonRick>
                     </View>
                   </View>
@@ -423,7 +423,7 @@ export class DrawingBoard extends Component {
                             ifOutput: false,
                           });
                         }}>
-                        SAMPLE 4
+                        MOSQUITO
                       </AwesomeButtonRick>
                     </View>
                   </View>
@@ -471,7 +471,7 @@ export class DrawingBoard extends Component {
                             ifOutput: false,
                           });
                         }}>
-                        SAMPLE 5
+                        DINOSAUR
                       </AwesomeButtonRick>
                     </View>
                   </View>
@@ -519,7 +519,7 @@ export class DrawingBoard extends Component {
                             ifOutput: false,
                           });
                         }}>
-                        SAMPLE 6
+                        FROG
                       </AwesomeButtonRick>
                     </View>
                   </View>
