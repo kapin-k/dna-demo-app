@@ -51,15 +51,16 @@
     - Step 1: Clone complete repository from git
     - Step 2: Go to folder 'dnademo'
 
-            ```bash
-            npm install --save
-            npm build
-            ```
-    - Step 3: Go to 'ios' folder inside /dnademo
+        ```bash
+        npm install --save
+        npm build
+        ```
 
-            ```bash
-            pod install // This step will install all the dependencies into ios workspace
-            ```
+    - Step 3: Go to 'ios' folder inside /dnademo (This step will install all the dependencies into ios workspace)
+
+        ```bash
+        pod install 
+        ```
 
 2. **Testing application on virtual simulator**
 
