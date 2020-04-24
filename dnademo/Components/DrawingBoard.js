@@ -1695,7 +1695,29 @@ export class DrawingBoard extends Component {
                     fontSize: 18,
                     color: '#8e8e93',
                   }}>
+                  0.1s
+                </Text>
+              </View>
+              <View style={{width: 250, height: 0}}>
+                <Text
+                  style={{
+                    width: 50,
+                    height: 20,
+                    fontSize: 18,
+                    color: '#8e8e93',
+                  }}>
                   0.2s
+                </Text>
+              </View>
+              <View style={{width: 250, height: 0}}>
+                <Text
+                  style={{
+                    width: 50,
+                    height: 20,
+                    fontSize: 18,
+                    color: '#8e8e93',
+                  }}>
+                  0.3s
                 </Text>
               </View>
               <View style={{width: 250, height: 0}}>
@@ -1717,29 +1739,7 @@ export class DrawingBoard extends Component {
                     fontSize: 18,
                     color: '#8e8e93',
                   }}>
-                  0.6s
-                </Text>
-              </View>
-              <View style={{width: 250, height: 0}}>
-                <Text
-                  style={{
-                    width: 50,
-                    height: 20,
-                    fontSize: 18,
-                    color: '#8e8e93',
-                  }}>
-                  0.8s
-                </Text>
-              </View>
-              <View style={{width: 250, height: 0}}>
-                <Text
-                  style={{
-                    width: 50,
-                    height: 20,
-                    fontSize: 18,
-                    color: '#8e8e93',
-                  }}>
-                  1s
+                  0.5s
                 </Text>
               </View>
             </View>
@@ -1852,6 +1852,18 @@ export class DrawingBoard extends Component {
                         {
                           text: 'Okay',
                           onPress: () => console.log('OK Pressed'),
+                        },
+                        {
+                          text: 'Show me some samples!',
+                          onPress: () => {
+                            console.log('Show me some samples - Pressed');
+                            this.setState({
+                              outputOverlay_visible: false,
+                              sampleOverlay_visible: true,
+                              chosenOutput: null,
+                            });
+                          },
+                          style: 'cancel',
                         },
                       ],
                       {cancelable: false},
@@ -2069,33 +2081,34 @@ export class DrawingBoard extends Component {
                       })
                       .catch(error => {
                         console.log(error);
+                        {
+                          Alert.alert(
+                            'Network Error',
+                            'Make sure you are connected to the internet!',
+                            [
+                              {
+                                text: 'Okay',
+                                onPress: () => {
+                                  this.canvas.clear(),
+                                    console.log(
+                                      'Okay Pressed-From Network Error Alert',
+                                    ),
+                                    this.setState({
+                                      outputOverlay_visible: false,
+                                      chosenOutput: null,
+                                    });
+                                },
+                              },
+                            ],
+                            {cancelable: false},
+                          );
+                          this.setState({
+                            responseJSON: responsefromServer,
+                            chosenOutput: null,
+                          });
+                        }
                       });
-                    {
-                      Alert.alert(
-                        'Network Error',
-                        'Make sure you are connected to the internet!',
-                        [
-                          {
-                            text: 'Okay',
-                            onPress: () => {
-                              this.canvas.clear(),
-                                console.log(
-                                  'Okay Pressed-From Network Error Alert',
-                                ),
-                                this.setState({
-                                  outputOverlay_visible: false,
-                                  chosenOutput: null,
-                                });
-                            },
-                          },
-                        ],
-                        {cancelable: false},
-                      );
-                      this.setState({
-                        responseJSON: responsefromServer,
-                        chosenOutput: null,
-                      });
-                    }
+                    
                   }
                 }}
               />
