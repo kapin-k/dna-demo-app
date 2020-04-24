@@ -116,7 +116,7 @@
         > Go to 'Preferences' menu in Xcode and navigate to 'Accounts' tab
             >  Fill in your Apple iOS account details here
             >  Click on 'Manage Certificates'
-            >  If you click the “+” icon below the certificates pane, you can request a new iOS Development Certificate and an iOS             Distribution Certificate
+            >  If you click the “+” icon below the certificates pane, you can request a new iOS Development Certificate and an iOS             Distribution Certificate(not mandatory)
     - Step 3: Connect your device to the computer
     - Step 4: Select 'dnademo' from the project navigator in Xcode
     - Step 5: Go to 'General' tab
