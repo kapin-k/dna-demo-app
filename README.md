@@ -74,6 +74,8 @@
 
             * -> To specify target device simulator
 
+                * Go to Xcode > 'Preferences' menu > 'Location' section > Add your Xcode version to the 'Command Line Tools'. Continue executing commands below in the terminal.
+
                 List all available simulator:
 
                 ```bash
