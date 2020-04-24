@@ -26,12 +26,12 @@ const my_proxy = axios.create({
 
 // COLOUR SCHEME
 // ios-black #1C1C1E
-// ios-blue #007AFF  --> Sample 1
-// ios-pink #FF2D55  --> Sample 2
-// ios-purple #AF52DE  --> Sample 3
-// ios-orange #FF9500  --> Sample 4
-// ios-green #34C759  --> Sample 5
-//ios-indigo #5856d6 --> Sample 6
+// ios-blue #007AFF --> Sample 1
+// ios-pink #FF2D55 --> Sample 2
+// ios-purple #AF52DE --> Sample 3
+// ios-orange #FF9500 --> Sample 4
+// ios-green #34C759 --> Sample 5
+// ios-indigo #5856d6 --> Sample 6
 
 const initialState = null;
 
@@ -47,18 +47,18 @@ export class DrawingBoard extends Component {
       path: null,
       // Trace for sample is calculated only once
       firstClickonSample: true,
-      //Use these state variables to display
+      // Use these state variables to display
       dnaName: null,
       dnaConfidence: null,
       dnaTime: null,
       ifOutput: false,
-      //Overlay visibility
+      // Overlay visibility
       sampleOverlay_visible: false,
       outputOverlay_visible: false,
-      //Stores the path to be added to the drawing board
+      // Stores the path to be added to the drawing board
       tracePath: null,
       outputPath: null,
-      //Has the response data stored accordingly (Upto 5 results)
+      // Has the response data stored accordingly (Upto 5 results)
       responseJSON: null,
       OP1_Name: '',
       OP2_Name: '',
@@ -122,7 +122,7 @@ export class DrawingBoard extends Component {
 
   updateState = () => {
     console.log('updateState called');
-    // let pathChange = JSON.stringify(this.canvas.getPaths());
+    // Let pathChange = JSON.stringify(this.canvas.getPaths());
     this.setState(previousState => {
       return {
         path: JSON.stringify(this.canvas.getPaths()),
@@ -148,7 +148,7 @@ export class DrawingBoard extends Component {
       if (yCoordinates[y] >= 0) {
         var newCoordinate = '"' + x + ',' + yCoordinates[y] + '"';
         sampleData.push(newCoordinate);
-        x = x + 20;
+        x = x + 5;
       }
     }
     var Path = start + sampleData + end;
@@ -176,7 +176,7 @@ export class DrawingBoard extends Component {
       if (yCoordinates[y] >= 0) {
         var newCoordinate = '"' + x + ',' + yCoordinates[y] + '"';
         sampleData.push(newCoordinate);
-        x = x + 20;
+        x = x + 5;
       }
     }
     var Path = start + sampleData + end;
@@ -185,6 +185,7 @@ export class DrawingBoard extends Component {
 
   loadPresetData(addTrace) {
     if (this.state.firstClickonSample) {
+      
       //    -------- READING PROXY FROM FILE --------
       //   my_proxy.get('/config') //,{Read})
       // .then((responseSample) => {
@@ -204,7 +205,7 @@ export class DrawingBoard extends Component {
         var value = (item + 2) * 200;
         presetJSON[i].Read[index] = Math.round(value * 10) / 10;
       }
-      for (var i = 0; i < 5; i++) { //Change to i=6 when sample 6 is added
+      for (var i = 0; i < 4; i++) { //Change to i=6 when sample 6 is added
         presetJSON[i].Read.forEach(scaleYaxis);
         switch (i) {
           case 0:
@@ -377,7 +378,7 @@ export class DrawingBoard extends Component {
                             ifOutput: false,
                           });
                         }}>
-                        CORONA VIRUS
+                        {presetJSON[0].Name}
                       </AwesomeButtonRick>
                     </View>
                   </View>
@@ -425,7 +426,7 @@ export class DrawingBoard extends Component {
                             ifOutput: false,
                           });
                         }}>
-                        DOG
+                        {presetJSON[1].Name}
                       </AwesomeButtonRick>
                     </View>
                   </View>
@@ -473,7 +474,7 @@ export class DrawingBoard extends Component {
                             ifOutput: false,
                           });
                         }}>
-                        SNAKE
+                        {presetJSON[2].Name}
                       </AwesomeButtonRick>
                     </View>
                   </View>
@@ -523,7 +524,7 @@ export class DrawingBoard extends Component {
                             ifOutput: false,
                           });
                         }}>
-                        MOSQUITO
+                        {presetJSON[3].Name}
                       </AwesomeButtonRick>
                     </View>
                   </View>
@@ -571,7 +572,7 @@ export class DrawingBoard extends Component {
                             ifOutput: false,
                           });
                         }}>
-                        DINOSAUR
+                        {/* {presetJSON[4].Name} */}
                       </AwesomeButtonRick>
                     </View>
                   </View>
@@ -584,13 +585,13 @@ export class DrawingBoard extends Component {
                       'Sample Overlay is closed by pressing on Sample 5',
                     );
                     this.canvas.clear();
-                    this.canvas.addPath(this.state.tracePath[4]);
+                    this.canvas.addPath(this.state.tracePath[5]);
                     this.setState({
                       sampleOverlay_visible: false,
                       chosenSample: 6,
-                      dnaName: presetJSON[4].Name,
-                      dnaConfidence: presetJSON[4].Confidence,
-                      dnaTime: presetJSON[4].Time,
+                      dnaName: presetJSON[5].Name,
+                      dnaConfidence: presetJSON[5].Confidence,
+                      dnaTime: presetJSON[5].Time,
                       ifOutput: false,
                     });
                   }}>
@@ -609,17 +610,17 @@ export class DrawingBoard extends Component {
                         elevation={3}
                         onPress={() => {
                           this.canvas.clear();
-                          this.canvas.addPath(this.state.tracePath[4]);
+                          this.canvas.addPath(this.state.tracePath[5]);
                           this.setState({
                             sampleOverlay_visible: false,
                             chosenSample: 6,
-                            dnaName: presetJSON[4].Name, //Should be changed to 5; Now we dont have that value set
-                            dnaConfidence: presetJSON[4].Confidence,
-                            dnaTime: presetJSON[4].Time,
+                            dnaName: presetJSON[5].Name,
+                            dnaConfidence: presetJSON[5].Confidence,
+                            dnaTime: presetJSON[5].Time,
                             ifOutput: false,
                           });
                         }}>
-                        FROG
+                        {/* {presetJSON[5].Name} */}
                       </AwesomeButtonRick>
                     </View>
                   </View>
