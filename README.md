@@ -132,7 +132,8 @@
         > *If your device prompts you whether you trust the computer -> Click on 'Trust' {This process might take a while. Wait patiently}*
     - Step 10: When prompted with an alert/error saying "Could not launch dnademo", follow these steps:
         > In your iPad > Go to General Setting > Device Management > Choose the development application
-        > Click on trust and re-build application from Xcode.
+        > Click on the 'Trust' option
+        > Re-build application from Xcode.
 
 ### BACK END
 -------------
