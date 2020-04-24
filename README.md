@@ -124,14 +124,12 @@
         - Check the 'Automaticaly Manage Signing' checkbox
         - __Team:__ : Choose your newly added account from the dropdown
         - Make sure the 'Signing Certificate' is iOS Developer
-    - Step 7: Choose your connected device
+    - Step 7: In the pane to the left of 'General' tab > Select 'dnademoTests' > Repeat the signing process as done in Step 6
+    - Step 8: Choose your connected device
         > Go to'Product' menu on Xcode
         > Destination > *select your connected device*
-    - Step 8: Run your application
+    - Step 9: Run your application
         > *If your device prompts you whether you trust the computer -> Click on 'Trust' {This process might take a while. Wait patiently}*
-
-        {Should check whether this works and add more steps}
-    
 
 ### BACK END
 -------------
