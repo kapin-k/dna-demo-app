@@ -183,9 +183,10 @@ export class DrawingBoard extends Component {
     return Path;
   }
 
+  // LOADING PRESET DATA FROM JSON
   loadPresetData(addTrace) {
     if (this.state.firstClickonSample) {
-      
+
       //    -------- READING PROXY FROM FILE --------
       //   my_proxy.get('/config') //,{Read})
       // .then((responseSample) => {
@@ -205,7 +206,7 @@ export class DrawingBoard extends Component {
         var value = (item + 2) * 200;
         presetJSON[i].Read[index] = Math.round(value * 10) / 10;
       }
-      for (var i = 0; i < 4; i++) { //Change to i=6 when sample 6 is added
+      for (var i = 0; i < presetJSON.length; i++) {
         presetJSON[i].Read.forEach(scaleYaxis);
         switch (i) {
           case 0:
