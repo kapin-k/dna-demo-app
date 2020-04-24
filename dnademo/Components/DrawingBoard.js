@@ -183,6 +183,111 @@ export class DrawingBoard extends Component {
     return Path;
   }
 
+  loadPresetData(addTrace) {
+    if (this.state.firstClickonSample) {
+      //    -------- READING PROXY FROM FILE --------
+      //   my_proxy.get('/config') //,{Read})
+      // .then((responseSample) => {
+      //     var convertJSON = responseSample.data.replace(/'/g, '"');
+      //     var dataToJSON = JSON.parse(convertJSON);
+      //     presetJSON.splice(0, 0, dataToJSON[0]);
+      //     presetJSON.splice(1, 0, dataToJSON[1]);
+      //     presetJSON.splice(2, 0, dataToJSON[2]);
+      //     presetJSON.splice(3, 0, dataToJSON[3]);
+      //     presetJSON.splice(4, 0, dataToJSON[4]);
+      //     console.log('presetJSON' + presetJSON[0].Read);
+      //   }
+      //  ).catch(error => {console.log(error)});
+
+      //Preset data initialization / Occurs only once
+      function scaleYaxis(item, index) {
+        var value = (item + 2) * 200;
+        presetJSON[i].Read[index] = Math.round(value * 10) / 10;
+      }
+      for (var i = 0; i < 5; i++) { //Change to i=6 when sample 6 is added
+        presetJSON[i].Read.forEach(scaleYaxis);
+        switch (i) {
+          case 0:
+            sample_color = '#007AFF';
+            var sample1_tracePath = this.prepareTraceData(
+              presetJSON[i].Read,
+              i,
+              sample_color,
+            );
+            addTrace.splice(i, 0, JSON.parse(sample1_tracePath));
+            this.setState({
+              tracePath: addTrace,
+            });
+            break;
+          case 1:
+            sample_color = '#FF2D55';
+            var sample2_tracePath = this.prepareTraceData(
+              presetJSON[i].Read,
+              i,
+              sample_color,
+            );
+            addTrace.splice(i, 0, JSON.parse(sample2_tracePath));
+            this.setState({
+              tracePath: addTrace,
+            });
+            break;
+          case 2:
+            sample_color = '#AF52DE';
+            var sample3_tracePath = this.prepareTraceData(
+              presetJSON[i].Read,
+              i,
+              sample_color,
+            );
+            addTrace.splice(i, 0, JSON.parse(sample3_tracePath));
+            this.setState({
+              tracePath: addTrace,
+            });
+            break;
+          case 3:
+            sample_color = '#FF9500';
+            var sample4_tracePath = this.prepareTraceData(
+              presetJSON[i].Read,
+              i,
+              sample_color,
+            );
+            addTrace.splice(i, 0, JSON.parse(sample4_tracePath));
+            this.setState({
+              tracePath: addTrace,
+            });
+            break;
+          case 4:
+            sample_color = '#34C759';
+            var sample5_tracePath = this.prepareTraceData(
+              presetJSON[i].Read,
+              i,
+              sample_color,
+            );
+            addTrace.splice(i, 0, JSON.parse(sample5_tracePath));
+            this.setState({
+              tracePath: addTrace,
+            });
+            break;
+          case 5:
+            sample_color = '#5856d6';
+            var sample6_tracePath = this.prepareTraceData(
+              presetJSON[i].Read,
+              i,
+              sample_color,
+            );
+            addTrace.splice(i, 0, JSON.parse(sample6_tracePath));
+            this.setState({
+              tracePath: addTrace,
+            });
+            break;
+        }
+      }
+      this.setState({
+        firstClickonSample: false,
+      });
+      return addTrace;
+    }
+  }
+
   render() {
     var RNFS = require('react-native-fs');
     var _ = require('lodash');
@@ -198,6 +303,7 @@ export class DrawingBoard extends Component {
     };
     var sample_color = '';
     var addTrace = [];
+    {this.loadPresetData(addTrace)};
     var addOutput = [];
     var responsefromServer = [];
     var isOutput = this.state.ifOutput;
@@ -1649,111 +1755,9 @@ export class DrawingBoard extends Component {
                 icon={<Icon name="book" size={65} color="#007AFF" />}
                 onPress={() => {
                   console.log('Sample Overlay is opened');
-                  if (this.state.firstClickonSample) {
-                    //    -------- READING PROXY FROM FILE --------
-                    //   my_proxy.get('/config') //,{Read})
-                    // .then((responseSample) => {
-                    //     var convertJSON = responseSample.data.replace(/'/g, '"');
-                    //     var dataToJSON = JSON.parse(convertJSON);
-                    //     presetJSON.splice(0, 0, dataToJSON[0]);
-                    //     presetJSON.splice(1, 0, dataToJSON[1]);
-                    //     presetJSON.splice(2, 0, dataToJSON[2]);
-                    //     presetJSON.splice(3, 0, dataToJSON[3]);
-                    //     presetJSON.splice(4, 0, dataToJSON[4]);
-                    //     console.log('presetJSON' + presetJSON[0].Read);
-                    //   }
-                    //  ).catch(error => {console.log(error)});
-
-                    //enters only once to initialize the preset data
-                    //Preset data initialization
-                    function scaleYaxis(item, index) {
-                      var value = (item + 2) * 200;
-                      presetJSON[i].Read[index] = Math.round(value * 10) / 10;
-                    }
-                    for (var i = 0; i < 5; i++) {
-                      presetJSON[i].Read.forEach(scaleYaxis);
-                      switch (i) {
-                        case 0:
-                          sample_color = '#007AFF';
-                          var sample1_tracePath = this.prepareTraceData(
-                            presetJSON[i].Read,
-                            i,
-                            sample_color,
-                          );
-                          // addTrace.push(JSON.parse(sample1_tracePath));
-                          addTrace.splice(i, 0, JSON.parse(sample1_tracePath));
-                          this.setState({
-                            tracePath: addTrace,
-                          });
-                          break;
-                        case 1:
-                          sample_color = '#FF2D55';
-                          var sample2_tracePath = this.prepareTraceData(
-                            presetJSON[i].Read,
-                            i,
-                            sample_color,
-                          );
-                          addTrace.splice(i, 0, JSON.parse(sample2_tracePath));
-                          this.setState({
-                            tracePath: addTrace,
-                          });
-                          break;
-                        case 2:
-                          sample_color = '#AF52DE';
-                          var sample3_tracePath = this.prepareTraceData(
-                            presetJSON[i].Read,
-                            i,
-                            sample_color,
-                          );
-                          addTrace.splice(i, 0, JSON.parse(sample3_tracePath));
-                          this.setState({
-                            tracePath: addTrace,
-                          });
-                          break;
-                        case 3:
-                          sample_color = '#FF9500';
-                          var sample4_tracePath = this.prepareTraceData(
-                            presetJSON[i].Read,
-                            i,
-                            sample_color,
-                          );
-                          addTrace.splice(i, 0, JSON.parse(sample4_tracePath));
-                          this.setState({
-                            tracePath: addTrace,
-                          });
-                          break;
-                        case 4:
-                          sample_color = '#34C759';
-                          var sample5_tracePath = this.prepareTraceData(
-                            presetJSON[i].Read,
-                            i,
-                            sample_color,
-                          );
-                          addTrace.splice(i, 0, JSON.parse(sample5_tracePath));
-                          this.setState({
-                            tracePath: addTrace,
-                          });
-                          break;
-                        case 5:
-                          sample_color = '#5856d6';
-                          var sample6_tracePath = this.prepareTraceData(
-                            presetJSON[i].Read,
-                            i,
-                            sample_color,
-                          );
-                          addTrace.splice(i, 0, JSON.parse(sample6_tracePath));
-                          this.setState({
-                            tracePath: addTrace,
-                          });
-                          break;
-                      }
-                    }
-                    this.setState({
-                      firstClickonSample: false,
-                    });
-                  }
                   this.setState({
                     sampleOverlay_visible: true,
+                    chosenSample: null,
                   });
                 }}
               />
