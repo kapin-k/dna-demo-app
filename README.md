@@ -39,17 +39,18 @@
 
     Open Drawing Board.js
     
-        For Ouput Screen: 
+        For Results from Output Screen: 
         
-        Line No: 39 changes stroke thickness
-        Line No: 40 changes stroke color
-        Line No: 41 changes font-type of text content(name, time and confidence)
-        Line No: 42 changes color of text content(name, time and confidence)
+        Line No: 37 Change Stroke Thickness for the output and sample traces
+        Line No: 38 Change Stroke Color for the 5 results displayed
+        Line No: 39 Change Font Face of text content(name, time and confidence) for results from output
+        Line No: 40 Change Color of text content(name, time and confidence) for results from output
        
         For Drawing_Board:
         
-        Line No: 45 changes stroke color
-        Line No: 46 changes stroke thickness
+        Line No: 43 Change Stroke Color for user input
+        Line No: 44 Change Stroke Thickness for the user input
+        Line No: 45 Change Stroke Color for the 6 preset sample data
     
     
 
