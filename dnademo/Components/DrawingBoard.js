@@ -26,32 +26,30 @@ const my_proxy = axios.create({
 
 // COLOUR SCHEME
 // ios-black #1C1C1E
-// ios-blue #007AFF --> Sample 1
-// ios-pink #FF2D55 --> Sample 2
-// ios-purple #AF52DE --> Sample 3
-// ios-orange #FF9500 --> Sample 4
-// ios-green #34C759 --> Sample 5
-// ios-indigo #5856d6 --> Sample 6
+// ios-blue #007AFF
+// ios-pink #FF2D55
+// ios-purple #AF52DE
+// ios-orange #FF9500
+// ios-green #34C759
+// ios-indigo #5856d6
 
-const initialState = null;
-
-// Parameter to change the stroke hickness, strokecolor, font, font_color of ouput
-const strokethickness_op = 15;  
-const samplecol = ['#007AFF','#FF2D55', '#AF52DE', '#FF9500', '#34C759', '#5856d6' ];
+// Parameters to change the Stroke Thickness, Stroke Color, Font Face and Font Color of the output display
+const strokethickness_op = 18;  
+const resultcol = ['#007AFF','#FF2D55', '#AF52DE', '#FF9500', '#34C759'];
 const font_op = 'AmericanTypewriter-Bold'; 
 const color_op ='#1C1C1E';
 
-// Parameter to change the strokecolor and strokethicness of drawing board
+// Parameters to change the Stroke Color and Stroke Thickness of the Drawing Board for User Input
 const strokecolor_main = '#1C1C1E';
 const strokethickness_main = 12;
+const samplecol = ['#007AFF','#FF2D55', '#AF52DE', '#FF9500', '#34C759', '#5856d6'];
 
+const initialState = null;
 export class DrawingBoard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       color: '#1C1C1E',
-      thickness: 12,
-      trace_thickness: 18,
       message: '',
       chosenSample: null,
       chosenOutput: null,
@@ -1977,7 +1975,7 @@ export class DrawingBoard extends Component {
                             responsefromServer[i].Read.forEach(scaleYaxis);
                             switch (i) {
                               case 0:
-                                sample_color = '#007AFF';
+                                sample_color = sample_col[i];
                                 var name_string = responsefromServer[i].Name;
                                 var time_string = responsefromServer[i].Time;
                                 var confidence_string =
@@ -1999,7 +1997,7 @@ export class DrawingBoard extends Component {
                                 });
                                 break;
                               case 1:
-                                sample_color = '#FF2D55';
+                                sample_color = resultcol[i];
                                 var name_string = responsefromServer[i].Name;
                                 var time_string = responsefromServer[i].Time;
                                 var confidence_string =
@@ -2021,7 +2019,7 @@ export class DrawingBoard extends Component {
                                 });
                                 break;
                               case 2:
-                                sample_color = '#AF52DE';
+                                sample_color = resultcol[i];
                                 var name_string = responsefromServer[i].Name;
                                 var time_string = responsefromServer[i].Time;
                                 var confidence_string =
@@ -2043,7 +2041,7 @@ export class DrawingBoard extends Component {
                                 });
                                 break;
                               case 3:
-                                sample_color = '#FF9500';
+                                sample_color = resultcol[i];
                                 var name_string = responsefromServer[i].Name;
                                 var time_string = responsefromServer[i].Time;
                                 var confidence_string =
@@ -2065,7 +2063,7 @@ export class DrawingBoard extends Component {
                                 });
                                 break;
                               case 4:
-                                sample_color = '#34C759';
+                                sample_color = resultcol[i];
                                 var name_string = responsefromServer[i].Name;
                                 var time_string = responsefromServer[i].Time;
                                 var confidence_string =
