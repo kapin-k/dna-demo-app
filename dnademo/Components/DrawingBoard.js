@@ -35,19 +35,15 @@ const my_proxy = axios.create({
 
 const initialState = null;
 
-// Parameter to change the tstroke hickness, strokecolor, font, font_color of ouput
+// Parameter to change the stroke hickness, strokecolor, font, font_color of ouput
 const strokethickness_op = 15;  
-const strokecolor_op = 15; 
+const samplecol = ['#007AFF','#FF2D55', '#AF52DE', '#FF9500', '#34C759', '#5856d6' ];
 const font_op = 'AmericanTypewriter-Bold'; 
 const color_op ='#1C1C1E';
 
 // Parameter to change the strokecolor and strokethicness of drawing board
 const strokecolor_main = '#1C1C1E';
 const strokethickness_main = 12;
-
-//Parameter for sample stroke color
-
-const samplecol = ['#007AFF','#FF2D55', '#AF52DE', '#FF9500', '#34C759', '#5856d6' ];
 
 export class DrawingBoard extends Component {
   constructor(props) {
