@@ -46,7 +46,7 @@
         Line No: 39 Change Font Face of text content(name, time and confidence) for results from output
         Line No: 40 Change Color of text content(name, time and confidence) for results from output
        
-        For Drawing_Board:
+        For User Inputs/Samples from Drawing Board and Preset Screen:
         
         Line No: 43 Change Stroke Color for user input
         Line No: 44 Change Stroke Thickness for the user input
