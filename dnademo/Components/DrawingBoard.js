@@ -35,12 +35,27 @@ const my_proxy = axios.create({
 
 const initialState = null;
 
+// Parameter to change the tstroke hickness, strokecolor, font, font_color of ouput
+const strokethickness_op = 15;  
+const strokecolor_op = 15; 
+const font_op = 'AmericanTypewriter-Bold'; 
+const color_op ='#1C1C1E';
+
+// Parameter to change the strokecolor and strokethicness of drawing board
+const strokecolor_main = '#1C1C1E';
+const strokethickness_main = 12;
+
+//Parameter for sample stroke color
+
+const samplecol = ['#007AFF','#FF2D55', '#AF52DE', '#FF9500', '#34C759', '#5856d6' ];
+
 export class DrawingBoard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       color: '#1C1C1E',
       thickness: 12,
+      trace_thickness: 18,
       message: '',
       chosenSample: null,
       chosenOutput: null,
@@ -140,7 +155,7 @@ export class DrawingBoard extends Component {
       Number +
       ',"color":"' +
       sampleColor +
-      '","width":18,"data":[';
+      '","width":'+ strokethickness_op +',"data":[';
     var end = ']},"size":{"width":1366,"height":925},"drawer":null}';
     var x = 0;
     var sampleData = [];
@@ -168,7 +183,7 @@ export class DrawingBoard extends Component {
       Number +
       ',"color":"' +
       sampleColor +
-      '","width":18,"data":[';
+      '","width":' + strokethickness_op +',"data":[';
     var end = ']},"size":{"width":1366,"height":925},"drawer":null}';
     var x = 0;
     var sampleData = [];
@@ -210,7 +225,7 @@ export class DrawingBoard extends Component {
         presetJSON[i].Read.forEach(scaleYaxis);
         switch (i) {
           case 0:
-            sample_color = '#007AFF';
+            sample_color = samplecol[i];
             var sample1_tracePath = this.prepareTraceData(
               presetJSON[i].Read,
               i,
@@ -222,7 +237,7 @@ export class DrawingBoard extends Component {
             });
             break;
           case 1:
-            sample_color = '#FF2D55';
+            sample_color = samplecol[i];
             var sample2_tracePath = this.prepareTraceData(
               presetJSON[i].Read,
               i,
@@ -234,7 +249,7 @@ export class DrawingBoard extends Component {
             });
             break;
           case 2:
-            sample_color = '#AF52DE';
+            sample_color = samplecol[i];
             var sample3_tracePath = this.prepareTraceData(
               presetJSON[i].Read,
               i,
@@ -246,7 +261,7 @@ export class DrawingBoard extends Component {
             });
             break;
           case 3:
-            sample_color = '#FF9500';
+            sample_color = samplecol[i];
             var sample4_tracePath = this.prepareTraceData(
               presetJSON[i].Read,
               i,
@@ -258,7 +273,7 @@ export class DrawingBoard extends Component {
             });
             break;
           case 4:
-            sample_color = '#34C759';
+            sample_color = samplecol[i];
             var sample5_tracePath = this.prepareTraceData(
               presetJSON[i].Read,
               i,
@@ -270,7 +285,7 @@ export class DrawingBoard extends Component {
             });
             break;
           case 5:
-            sample_color = '#5856d6';
+            sample_color = samplecol[i];
             var sample6_tracePath = this.prepareTraceData(
               presetJSON[i].Read,
               i,
@@ -1540,8 +1555,8 @@ export class DrawingBoard extends Component {
                   fontSize: 22,
                   marginTop: -25,
                   paddingLeft: 10,
-                  fontFamily: 'AmericanTypewriter-Bold',
-                  color: '#696969',
+                  fontFamily: font_op,
+                  color: {color_op},
                 }}
                 onPress={() => Linking.openURL(Link)}>
                 DNA Name : {this.state.dnaName}{' '}
@@ -1552,9 +1567,9 @@ export class DrawingBoard extends Component {
                 style={{
                   textAlign: 'center',
                   fontSize: 22,
-                  fontFamily: 'AmericanTypewriter-Bold',
+                  fontFamily: font_op,
                   marginTop: -25,
-                  color: '#696969',
+                  color: {color_op},
                 }}>
                 Confidence: {this.state.dnaConfidence}{' '}
               </Text>
@@ -1563,9 +1578,9 @@ export class DrawingBoard extends Component {
                 style={{
                   textAlign: 'center',
                   fontSize: 22,
-                  fontFamily: 'AmericanTypewriter-Bold',
+                  fontFamily: font_op,
                   marginTop: -25,
-                  color: '#696969',
+                  color: {color_op},
                   paddingRight: 50,
                 }}>
                 Time: {this.state.dnaTime} sec
@@ -1650,8 +1665,8 @@ export class DrawingBoard extends Component {
               // }}
               ref={ref => (this.canvas = ref)}
               style={{flex: 1}}
-              strokeColor={this.state.color}
-              strokeWidth={this.state.thickness}
+              strokeColor={strokecolor_main}
+              strokeWidth={strokethickness_main}
               onStrokeStart={(x, y) => {
                 console.log('x: ', x, ', y: ', y);
                 this.setState({message: 'Start'});
