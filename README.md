@@ -39,7 +39,19 @@
 
     Open Drawing Board.js
     
-    ~~~Mention line numbers or code blocks to be edited~~~
+        For Ouput Screen: 
+        
+        Line No: 39 changes stroke thickness
+        Line No: 40 changes stroke color
+        Line No: 41 changes font-type of text content(name, time and confidence)
+        Line No: 42 changes color of text content(name, time and confidence)
+       
+        For Drawing_Board:
+        
+        Line No: 45 changes stroke color
+        Line No: 46 changes stroke thickness
+    
+    
 
 ### BUILD AND DEPLOYMENT
 -------------
