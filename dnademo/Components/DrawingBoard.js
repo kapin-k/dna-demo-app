@@ -19,7 +19,7 @@ import presetJSON from './Sample_Screens/Preset.json';
 
 // Imports and constants for backend
 import axios from 'axios';
-const serv = 'http://127.0.0.1:5000';
+const serv = 'http://127.0.0.1:5000'; //Configure with the IP Address of Proxy Server
 const my_proxy = axios.create({
   baseURL: serv,
 });
@@ -1977,7 +1977,7 @@ export class DrawingBoard extends Component {
                             responsefromServer[i].Read.forEach(scaleYaxis);
                             switch (i) {
                               case 0:
-                                sample_color = sample_col[i];
+                                sample_color = resultcol[i];
                                 var name_string = responsefromServer[i].Name;
                                 var time_string = responsefromServer[i].Time;
                                 var confidence_string =
