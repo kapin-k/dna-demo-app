@@ -1896,9 +1896,10 @@ export class DrawingBoard extends Component {
                   split2 = split2.replace(']]', ']');
                   split2 = split2.replace('[[', '[');
                   split2 = split2.replace('[*', '[[');
-
-                  var Read = JSON.stringify(split2);
-                  console.log('dataToServer : ' + Read);
+                  var dataToServer = split2.concat(']'); // data to proxy, coordinates of the path marked in [x,y] format
+                  var Read = JSON.parse(dataToServer)
+                  // var Read = JSON.stringify(dataToServer);
+                  console.log('dataToServer : ' + Read); 
 
                   //Incase we need to write a json file for the output recieved from the Server
                   RNFS.writeFile(filePath, userInput, 'utf8')
@@ -1923,6 +1924,7 @@ export class DrawingBoard extends Component {
                     my_proxy
                       .post('/analyze',{Read})
                       .then(response => {
+                        console.log('respone.data' + response.data);
                         var convertJSON = response.data.replace(/'/g, '"');
                         var dataToJSON = JSON.parse(convertJSON);
                         resetResponse();
