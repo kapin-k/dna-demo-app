@@ -185,7 +185,7 @@ export class DrawingBoard extends Component {
       if (yCoordinates[y] >= 0) {
         var newCoordinate = '"' + x + ',' + yCoordinates[y] + '"';
         sampleData.push(newCoordinate);
-        x = x + 15;
+        x = x + 20;
       }
     }
     var Path = start + sampleData + end;
