@@ -185,7 +185,7 @@ export class DrawingBoard extends Component {
       if (yCoordinates[y] >= 0) {
         var newCoordinate = '"' + x + ',' + yCoordinates[y] + '"';
         sampleData.push(newCoordinate);
-        x = x + 5;
+        x = x + 15;
       }
     }
     var Path = start + sampleData + end;
@@ -582,7 +582,7 @@ export class DrawingBoard extends Component {
                             ifOutput: false,
                           });
                         }}>
-                        {/* {presetJSON[4].Name} */}
+                        {presetJSON[4].Name}
                       </AwesomeButtonRick>
                     </View>
                   </View>
@@ -630,7 +630,7 @@ export class DrawingBoard extends Component {
                             ifOutput: false,
                           });
                         }}>
-                        {/* {presetJSON[5].Name} */}
+                        {presetJSON[5].Name}
                       </AwesomeButtonRick>
                     </View>
                   </View>
