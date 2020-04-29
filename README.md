@@ -83,7 +83,7 @@
         - IOS:
 
             ```bash
-            react-native run-ios
+            npx react-native run-ios
             ```
 
             * -> To specify target device simulator
