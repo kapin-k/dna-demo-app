@@ -607,7 +607,7 @@ export class DrawingBoard extends Component {
                   }}>
                   <View style={styles.modalView6}>
                     <Image
-                      source={require('./Sample_Screens/Sample5.png')}
+                      source={require('./Sample_Screens/Sample6.png')}
                       style={{width: 370, height: 330}}
                     />
                     <View style={{marginTop: 10}}>
