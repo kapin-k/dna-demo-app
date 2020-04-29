@@ -31,6 +31,8 @@
 		85290472CF7A448A87197AFB /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E799BC327004E4189C74AC5 /* FontAwesome5_Regular.ttf */; };
 		8D8B353A9107A5618A4E7AB3 /* libPods-dnademo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF85D5DF1F9DDDBFEA6B607B /* libPods-dnademo.a */; };
 		95A30C576A2444FFA81AC442 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3F880664F1240DFB27615B3 /* Zocial.ttf */; };
+		ACE970802459BEDF00CD1F36 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = ACE9707F2459BEDF00CD1F36 /* main.jsbundle */; };
+		ACE970812459BEDF00CD1F36 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = ACE9707F2459BEDF00CD1F36 /* main.jsbundle */; };
 		B4E3A0C22D70459E87F41C12 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5687C51F45D4470490D405D5 /* AntDesign.ttf */; };
 		B95366585DCA4F4086B7C40E /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A7DAA67E45C4D35858DB64D /* Feather.ttf */; };
 		C742387402DF6C20C4056DBA /* libPods-dnademoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14CDD52AC1623401745ADE56 /* libPods-dnademoTests.a */; };
@@ -57,7 +59,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* dnademoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dnademoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* dnademoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dnademoTests.m; sourceTree = "<group>"; };
@@ -91,6 +92,7 @@
 		998616C35C20C9D72CDE7151 /* Pods-dnademo-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dnademo-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-dnademo-tvOSTests/Pods-dnademo-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9C4B8FC58023E15F68522EEB /* Pods-dnademo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dnademo.debug.xcconfig"; path = "Target Support Files/Pods-dnademo/Pods-dnademo.debug.xcconfig"; sourceTree = "<group>"; };
 		9DB1AC75B7DFB0D8FF7089E0 /* Pods-dnademo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dnademo.release.xcconfig"; path = "Target Support Files/Pods-dnademo/Pods-dnademo.release.xcconfig"; sourceTree = "<group>"; };
+		ACE9707F2459BEDF00CD1F36 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		AF85D5DF1F9DDDBFEA6B607B /* libPods-dnademo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-dnademo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F880664F1240DFB27615B3 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		C7E9BA3C561D4426A16EA0E3 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
@@ -159,7 +161,6 @@
 		13B07FAE1A68108700A75B9A /* dnademo */ = {
 			isa = PBXGroup;
 			children = (
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -167,6 +168,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				ACE9707F2459BEDF00CD1F36 /* main.jsbundle */,
 			);
 			name = dnademo;
 			sourceTree = "<group>";
@@ -349,7 +351,7 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 2L873WC538;
+						DevelopmentTeam = 5UT7YKK623;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
@@ -393,6 +395,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACE970812459BEDF00CD1F36 /* main.jsbundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +410,7 @@
 				57EEC33C2B1D486EBCF1371C /* EvilIcons.ttf in Resources */,
 				B95366585DCA4F4086B7C40E /* Feather.ttf in Resources */,
 				7178E7F7DA214938B85264B2 /* FontAwesome.ttf in Resources */,
+				ACE970802459BEDF00CD1F36 /* main.jsbundle in Resources */,
 				765E65923D824E44AF915BBD /* FontAwesome5_Brands.ttf in Resources */,
 				85290472CF7A448A87197AFB /* FontAwesome5_Regular.ttf in Resources */,
 				118AE9EF02894450B125259C /* FontAwesome5_Solid.ttf in Resources */,
@@ -442,7 +446,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -450,7 +454,7 @@
 			name = "Bundle React Native code and images";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
@@ -712,7 +716,8 @@
 			baseConfigurationReference = 3CD7543FC74EA4ED61FF9603 /* Pods-dnademoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 2L873WC538;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				DEVELOPMENT_TEAM = 5UT7YKK623;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -736,8 +741,9 @@
 			baseConfigurationReference = C7FAE51B359B89BB3C9747F8 /* Pods-dnademoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 2L873WC538;
+				DEVELOPMENT_TEAM = 5UT7YKK623;
 				INFOPLIST_FILE = dnademoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -770,7 +776,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.react-native.dnademo2020";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.react-native.dnademo2020";
 				PRODUCT_NAME = dnademo;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -795,7 +801,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.react-native.dnademo2020";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.react-native.dnademo2020";
 				PRODUCT_NAME = dnademo;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
