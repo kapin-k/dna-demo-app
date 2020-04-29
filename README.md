@@ -150,3 +150,40 @@
 
 ### BACK END
 -------------
+- The back end is made of a proxy server which calls the smarten-demo server to analyze input given by the user. The proxy-server runs on Flask api from python3. 
+- As mentioned above backend is made of two components:
+    1. `smarten-demo-srv.py`, used for analyzing and returning search results 
+    2. `srv.py`, the reverse-proxy used between the app and server. 
+- It is recommended that the `smarten-demo-srv.py` and the `srv.py` files be in the same folder. 
+
+1 **Setting up Smarten-Demo app server**
+-------------
+- `smarten-demo-srv.py` must be configured such that `EXEC` variable points to the location of `db-search`. It is recommeded that `db-search` resides in the same directory as the database files and `smarten-demo-srv.py` itself.
+- Navigate to /Backend/Server/venv/src 
+    ```bash
+        make
+    ```
+
+
+
+2 **Setting up proxy-server**
+-------------
+- Installing Flask API, navigate to /Backend/Server/venv
+    
+    ```bash
+    pip3 install flask
+    ```
+
+3 **Starting the proxy-server**
+-------------
+- Navigate to /Backend/Server/venv/src 
+    ```bash
+    python3 srv.py
+    ```
+- The server will be up and running with IP address of the host on port 5000 in default. If you wish to change the IP or/and port number, open `srv.py` file: 
+    
+      For changing IP and port no : 
+        
+        Line No: 37 Change  `app.run(host = '0.0.0.0')` to `app.run(host = 'desired IP', port = <desired port no>)`
+        
+    
