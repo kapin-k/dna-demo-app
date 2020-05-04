@@ -1919,7 +1919,7 @@ export class DrawingBoard extends Component {
                       .post('/analyze',{Read})
                       .then(response => {
                         console.log('respone.data: ' + response.data);
-                        if(response.data == 'error: query to short\n'){
+                        if(userInput != '[]' && response.data == 'error: query to short\n'){
                           Alert.alert(
                             'Scribble too short!',
                             'Just draw a longer one!',
