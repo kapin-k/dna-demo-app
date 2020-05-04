@@ -46,7 +46,7 @@
 - It is recommended that the `smarten-demo-srv.py` and the `proxy-server.py` files be in the same folder. 
 
 1 **Setting up Smarten-Demo app server**
--------------
+
 - `smarten-demo-srv.py` must be configured such that `EXEC` variable points to the location of `db-search`. It is recommeded that `db-search` resides in the same directory as the database files and `smarten-demo-srv.py` itself.
 - Navigate to /Backend/Server/venv/src 
     ```bash
@@ -54,7 +54,7 @@
     ```
 
 2 **Setting up proxy-server**
--------------
+
 - Installing Flask API, navigate to /Backend/Server/venv
     
     ```bash
@@ -62,7 +62,7 @@
     ```
 
 3 **Making changes to proxy-server to connect with DNA-DEMO app**
--------------
+
 - The proxy-server is currently configured in such a way that when it is launched it takes the IP address of the host it is running on and accepts connections on port `5000` by default. 
 - If you wish to make changes to the IP or/and port number, open `proxy-server.py` file in directory /Backend/Server/venv/src : 
     
@@ -75,7 +75,7 @@
         <Port_No>    => Port number on which you which you want the proxy-server accepting the connections
 
 4 **Starting the proxy-server**
--------------
+
 - Navigate to /Backend/Server/venv/src 
     ```bash
     python3 proxy-server.py
@@ -102,8 +102,8 @@
         - Know the IP address and Port number on which the server is currently running as it will be required in the following steps if you have made changes to them. 
         - If no changes has been made then we can obtain the IP address of the host following the steps mentioned above and the port number is by default `5000`.   
         
-4 **Connecting the front end app with backend proxy-server**
--------------
+5 **Connecting the front end app with backend proxy-server**
+
 - Once we have the backend proxy server up and running, we will need to connect the DNA Demo app with the back-end. 
 - Currently the IP address of the proxy-server is configured as localhost in the DNA-Demo app, this has to be changed before we import the app on to a device without which the app will fail to connect to the proxy-server.
 - We know the IP address and the port number on which our proxy-server is listening to requests on. 
