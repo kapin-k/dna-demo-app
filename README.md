@@ -196,9 +196,9 @@
 
 2. **Styling and Formatting**
 
-    > Go to folder '/dnademo/Components'
+    Go to folder '/dnademo/Components'
 
-    > Open Drawing Board.js
+    Open Drawing Board.js
     
     - For Results from Output Screen: 
         
