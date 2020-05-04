@@ -1918,7 +1918,34 @@ export class DrawingBoard extends Component {
                     my_proxy
                       .post('/analyze',{Read})
                       .then(response => {
-                        console.log('respone.data' + response.data);
+                        console.log('respone.data: ' + response.data);
+                        if(response.data == 'error: query to short\n'){
+                          Alert.alert(
+                            'Scribble too short!',
+                            'Just draw a longer one!',
+                            [
+                              {
+                                text: 'Okay',
+                                onPress: () => {
+                                  this.canvas.clear(),
+                                    console.log(
+                                      'Okay Pressed-Scribble too short',
+                                    ),
+                                    this.setState({
+                                      outputOverlay_visible: false,
+                                      chosenOutput: null,
+                                    });
+                                },
+                              },
+                            ],
+                            {cancelable: false},
+                          );
+                          this.setState({
+                            responseJSON: responsefromServer,
+                            chosenOutput: null,
+                          });
+                          // break;
+                        }
                         var convertJSON = response.data.replace(/'/g, '"');
                         var dataToJSON = JSON.parse(convertJSON);
                         resetResponse();
@@ -2085,8 +2112,8 @@ export class DrawingBoard extends Component {
                         }
                       })
                       .catch(error => {
-                        console.log(error);
-                        if(userInput != '['){
+                        console.log('Error Type: '+ error);
+                        if(userInput != '[]'){
                           Alert.alert(
                             'Network Error',
                             'Make sure you are connected to the internet!',
