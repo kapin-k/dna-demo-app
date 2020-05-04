@@ -7,6 +7,10 @@ host = '0.0.0.0'    #IP address on which this server has to run
 port_no = 5000      #Port number for the server
 
 app = Flask(__name__)
+@app.route("/", methods=["GET"])
+def welcome():
+    return "DNA Demo Proxy Server is Running"
+
 @app.route("/config", methods=["GET"])
 def preset():
     f = open("output.json")
