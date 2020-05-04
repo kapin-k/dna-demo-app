@@ -77,16 +77,18 @@
 ### BUILD AND DEPLOYMENT
 -------------
 
-1. **To build complete 'dnademo' react native package (This step has to be repeated everytime changes are made to the formatting in the frontend)**
+1. **To build complete 'dnademo' react native package**
 
     - Step 1: Clone this repository from GitHub. Link: [DNA DEMO APPLICATION REPOSITORY](https://github.com/kapin-k/dna-demo-app)
-        - Move to the desired repository in your file system and use this command
+        - Move to the desired directory in your file system and use this command
 
             ```bash
                 git clone https://github.com/kapin-k/dna-demo-app.git
             ```
 
     - Step 2: Move to folder 'dnademo' inside cloned repository and execute:
+    **This step has to be repeated everytime changes are made to the formatting in the frontend**
+
         - Execute command below to install all the dependencies needed for building the react native application
 
         ```bash
@@ -202,7 +204,7 @@
         
         Line No: 37 Change Stroke Thickness for the output and sample traces
         Line No: 38 Change Stroke Color for the 5 results displayed
-        Line No: 39 Change Font Face of text content(name, time and confidence) for results from output
+        Line No: 39 Change Font Face of text content(name, time and confidence) for results from output ([List of available font families](https://github.com/react-native-training/react-native-fonts/blob/master/README.md))
         Line No: 40 Change Color of text content(name, time and confidence) for results from output
        
         For User Inputs/Samples from Drawing Board and Preset Screen:
