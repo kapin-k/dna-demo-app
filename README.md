@@ -120,139 +120,141 @@
 - After this we can proceed to the next steps. 
     
     
-### BUILD AND DEPLOYMENT
+### BUILD AND DEPLOYMENT
 -------------
 
-1. **To build complete 'dnademo' react native package (This step has to be repeated everytime changes are made to the formatting in the frontend)**
+1. **To build complete 'dnademo' react native package**
 
-    - Step 1: Clone this repository from GitHub. Link: [DNA DEMO APPLICATION REPOSITORY](https://github.com/kapin-k/dna-demo-app)
-        - Move to the desired repository in your file system and use this command
+    - Step 1: Clone this repository from GitHub. Link: [dna-demo-app repository](https://github.com/kapin-k/dna-demo-app)
+        - Move to the desired directory in your file system and use this command
 
-            ```bash
-                git clone https://github.com/kapin-k/dna-demo-app.git
-            ```
+            ```bash
+                git clone https://github.com/kapin-k/dna-demo-app.git
+            ```
 
-    - Step 2: Move to folder 'dnademo' inside cloned repository and execute:
-        - Execute command below to install all the dependencies needed for building the react native application
+    - Step 2: Move to folder 'dnademo' inside cloned repository and execute:
+    **This step has to be repeated everytime changes are made to the formatting in the frontend**
 
-        ```bash
-        npm install --save
-        npm build
-        ```
+        - Execute command below to install all the dependencies needed for building the react native application
 
-    - Step 3: Go to '/ios' folder inside '/dnademo'
-        - Execute command below to install all the dependencies needed for deploying on an iOS device
+        ```bash
+        npm install --save
+        npm build
+        ```
 
-        ```bash
-        pod install 
-        ```
+    - Step 3: Go to '/ios' folder inside '/dnademo'
+        - Execute command below to install all the dependencies needed for deploying on an iOS device
 
-2. **Testing application on virtual simulator (OPTIONAL)**
+        ```bash
+        pod install 
+        ```
 
-    - Step 1: Go to '/dnademo' folder inside cloned repository
-    - Step 2: Run command below to open console log for your simulator
+2. **Testing application on virtual simulator (OPTIONAL)**
 
-        - IOS:
+    - Step 1: Go to '/dnademo' folder inside cloned repository
+    - Step 2: Run command below to open console log for your simulator
 
-            ```bash
-            npm start
-            ```
+        - IOS:
 
-            OR
+            ```bash
+            npm start
+            ```
 
-            ```bash
-            npx react-native run-ios
-            ```
+            OR
 
-            * To specify target device simulator
+            ```bash
+            npx react-native run-ios
+            ```
 
-                > Go to 'Xcode' menu > Select 'Preferences' > 'Location' section > Add your Xcode version to the 'Command Line Tools'. Continue executing commands below in the terminal.
+            * To specify target device simulator
 
-                List all available simulator:
+                > Go to 'Xcode' menu > Select 'Preferences' > 'Location' section > Add your Xcode version to the 'Command Line Tools'. Continue executing commands below in the terminal.
 
-                ```bash
-                xcrun simctl list devices
-                ```
+                List all available simulator:
 
-                Select a device from list:
+                ```bash
+                xcrun simctl list devices
+                ```
 
-                ```bash
-                npm react-native run-ios --simulator="iPad Pro (12.9-inch) (3rd generation)"
-                ```
+                Select a device from list:
 
-        - ANDROID: (Needs Android Studio with JDK path set to respective environment variable)
+                ```bash
+                npm react-native run-ios --simulator="iPad Pro (12.9-inch) (3rd generation)"
+                ```
 
-            ```bash
-            react-native run-android
-            ```
-        *You will now see a Metro Bundler console and a simulator ruuning. Wait for it to load completely. Once it is done loading, close the simulator.*
+        - ANDROID: (Needs Android Studio with JDK path set to respective environment variable)
 
-    - Step 3: Go to the 'ios' folder
-    - Step 4: Open 'dnademo.xcworkspace' using your Xcode
-    - Step 5: Click on the run button on the top-left corner of the screen
+            ```bash
+            react-native run-android
+            ```
+        *You will now see a Metro Bundler console and a simulator ruuning. Wait for it to load completely. Once it is done loading, close the simulator.*
 
-        -> Choose target simulator by clicking on available devices dropdown option near your project name. (next to the run button)
-            (or) Xcode Menu -- Product -- Destination -- *choose from available device*
+    - Step 3: Go to the 'ios' folder
+    - Step 4: Open 'dnademo.xcworkspace' using your Xcode
+    - Step 5: Click on the run button on the top-left corner of the screen
 
-3. **Deploying on a physical device**
+        -> Choose target simulator by clicking on available devices dropdown option near your project name. (next to the run button)
+            (or) Xcode Menu -- Product -- Destination -- *choose from available device*
 
-    - Step 1: Move to '/dnademo/ios/' directory inside the cloned repository
-        > Open 'dnademo.xcworkspace' using your Xcode
-    - Step 2: Code Signing / Requesting your certificates
-        - From your Xcode, go to the 'Xcode' menu and click on 'Preferences'
-            - Navigate to the 'Accounts' tab
-            - Click on the '+' button on the bottom left corner of the Accounts panel to add your Apple account
-                > Fill in your Apple iOS account credentials
-            - Select the account you just added
-                > Click on 'Manage Certificates'
-                > Click the “+” icon below the certificates pane, and request a new iOS Development Certificate (Apple Development Certificate).
-    - Step 3: Now, connect your device to the computer
-    - Step 4: Go back to your Xcode's main screen and select 'dnademo' from the project navigator in Xcode
-    - Step 5: To the right of the project navigator pane, you will now see a list with title 'TARGETS' with 4 options, namely: dnademo, dnademoTests, dnademo-tvOS, dnademo-tvOSTests
-    - Step 6: Select 'dnademo' from the TARGETS list then navigate to the 'Signing & Capabilities' Tab and do the following steps:
-        - Make sure the 'Automaticaly Manage Signing' checkbox is checked.
-        - __Team:__ : Choose your newly added account from the dropdown
-        - The 'Signing Certificate' should now say : 'Apple Development'
-        > Ignore any warning or errors for now
-    - Step 7: Now, move to 'Build Settings' Tab
-        - Go to 'Signing' section and change 'Code Signing Identity' to iOS Developer.
-    - Step 8: Now, select 'dnademoTests' from the 'Targets' section > Repeat the signing process as done in Step 6
-    - Step 8: Choose your connected device
-        > Go to'Product' menu on Xcode
-        > Destination > *select your connected device*
-    - Step 9: Build application by clicking on the 'Play' button on the top left corner of the Xcode screen.
-        > *If your device prompts you with whether you trust the computer -> Click on 'Trust' {This process might take a while. Wait patiently}*
-    - Step 10: In your iPad, when prompted with an alert/error saying "Could not launch dnademo" or "Untrusted Developer", follow these steps:
-        > In your iPad > Go to General Setting > Device Management > Choose the development application
-        > Click on the 'Trust' option
-        > Re-build application from Xcode.
+3. **Deploying on a physical device**
+
+    - Step 1: Move to '/dnademo/ios/' directory inside the cloned repository
+        > Open 'dnademo.xcworkspace' using your Xcode
+    - Step 2: Code Signing / Requesting your certificates
+        - From your Xcode, go to the 'Xcode' menu and click on 'Preferences'
+            - Navigate to the 'Accounts' tab
+            - Click on the '+' button on the bottom left corner of the Accounts panel to add your Apple account
+                > Fill in your Apple iOS account credentials
+            - Select the account you just added
+                > Click on 'Manage Certificates' > 
+                > Click the “+” icon below the certificates pane, and request a new iOS Development Certificate (Apple Development Certificate).
+    - Step 3: Now, connect your device to the computer
+    - Step 4: Go back to your Xcode's main screen and select 'dnademo' from the project navigator in Xcode
+    - Step 5: To the right of the project navigator pane, you will now see a list with title 'TARGETS' with 4 options, namely: dnademo, dnademoTests, dnademo-tvOS, dnademo-tvOSTests
+    - Step 6: Select 'dnademo' from the TARGETS list then navigate to the 'Signing & Capabilities' Tab and do the following steps:
+        - Make sure the 'Automaticaly Manage Signing' checkbox is checked.
+        - __Team__: Choose your newly added account from the dropdown
+        - The 'Signing Certificate' should now say : 'Apple Development'
+        > Ignore any warning or errors for now
+    - Step 7: Now, move to 'Build Settings' Tab
+        - Go to 'Signing' section and change 'Code Signing Identity' to iOS Developer.
+    - Step 8: Now, select 'dnademoTests' from the 'Targets' section > Repeat the signing process as done in Step 6
+    - Step 8: Choose your connected device
+        > Go to'Product' menu on Xcode
+        > Destination > *select your connected device*
+    - Step 9: Build application by clicking on the 'Play' button on the top left corner of the Xcode screen.
+        > *If your device prompts you with whether you trust the computer -> Click on 'Trust' {This process might take a while. Wait patiently}*
+    - Step 10: In your iPad, when prompted with an alert/error saying "Could not launch dnademo" or "Untrusted Developer", follow these steps:
+        > In your iPad > Go to General Setting > Device Management > Choose the development application
+        > Click on the 'Trust' option
+        > Re-build application from Xcode.
 
 
-### FRONT END
+### FRONT END
 -------------
-**Change the Look & Feel of the application to suit your style**
+**Change the Look & Feel of the application to suit your style**
 
-1. **Change preset/sample data**
+1. **Change preset/sample data**
 
-    Go to folder '/dnademo/Components/SampleScreens'
+    Go to folder '/dnademo/Components/SampleScreens'
 
-    Edit 'Preset.json' (Make sure the formatting is maintained and has 6 sample values)
+    Edit 'Preset.json' (Make sure the formatting is maintained and has 6 sample values)
 
-2. **Styling and Formatting**
+2. **Styling and Formatting**
 
-    Go to folder '/dnademo/Components'
+    Go to folder '/dnademo/Components'
 
-    Open Drawing Board.js
-    
-        For Results from Output Screen: 
-        
-        Line No: 37 Change Stroke Thickness for the output and sample traces
-        Line No: 38 Change Stroke Color for the 5 results displayed
-        Line No: 39 Change Font Face of text content(name, time and confidence) for results from output
-        Line No: 40 Change Color of text content(name, time and confidence) for results from output
-       
-        For User Inputs/Samples from Drawing Board and Preset Screen:
-        
-        Line No: 43 Change Stroke Color for user input
-        Line No: 44 Change Stroke Thickness for the user input
-        Line No: 45 Change Stroke Color for the 6 preset sample data
+    Open Drawing Board.js
+    
+    - For Results from Output Screen: 
+        
+        * Line No: 37 Change Stroke Thickness for the output and sample traces
+        * Line No: 38 Change Stroke Color for the 5 results displayed
+        * Line No: 39 Change Font Face of text content(name, time and confidence) for results from output [(List of available font families)](https://github.com/react-native-training/react-native-fonts/blob/master/README.md)
+        * Line No: 40 Change Color of text content(name, time and confidence) for results from output
+       
+    - For User Inputs/Samples from Drawing Board and Preset Screen:
+        
+        * Line No: 43 Change Stroke Color for user input
+        * Line No: 44 Change Stroke Thickness for the user input
+        * Line No: 45 Change Stroke Color for the 6 preset sample data
