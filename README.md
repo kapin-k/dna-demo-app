@@ -89,18 +89,18 @@
         * Debug mode: off
         * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
     
-   - If you have made changes to the IP address and port number, then last message will be as follows
+- If you have made changes to the IP address and port number, then last message will be as follows
         `* Running on http://'IP address':<Port_no>/ (Press CTRL+C to quit)`
         where 'IP address' is the IP address you specified before on which server accepts the request and <Port_no> is the   port number you specified on which the server handles connections. 
    
-   - If you have not made any changes then:
-            - open terminal:
-                    -`ipconfig` for windows machine
-                    -`ifconfig` for linux macine
-              this to obtain the IP address of the host machine.
-   - IMPORTANT:
-        -Know the IP address and Port number on which the server is currently running as it will be required in the following steps if you have made changes to them. 
-        -If no changes has been made then we can obtain the IP address of the host following the steps mentioned above and the port number is by default `5000`.   
+- If you have not made any changes then:
+    - open terminal:
+        -`ipconfig` for windows machine
+        -`ifconfig` for linux macine
+        this to obtain the IP address of the host machine.
+- IMPORTANT:
+    -Know the IP address and Port number on which the server is currently running as it will be required in the following steps if you have made changes to them. 
+    -If no changes has been made then we can obtain the IP address of the host following the steps mentioned above and the port number is by default `5000`.   
         
 4 **Connecting the front end app with backend proxy-server**
 -------------
@@ -114,8 +114,8 @@
         * Line No: 22 const serv = 'http://127.0.0.1:5000'; //Configure with the IP Address of Proxy Server 
            
     - change the `const serv = 'http://127.0.0.1:5000'` to: 
-                - `const serv = 'http://<IP address>:5000'`, if you have not made any changes to IP and Port number in the proxy server, the `<IP address>` is the IP of the host machine you obtained by running the command `ipconfig` or `ifconfig`.
-                - `const serv = 'http://<IP address>:<Port_No>'`, if you have made changes to IP and Port number in the proxy server, the `<IP address>` is the IP you specifed for the server in `proxy-server.py` and the `<Port_No>` is the port number specifed for the server to listen for connections and request in the `proxy-server.py` file. 
+        - `const serv = 'http://<IP address>:5000'`, if you have not made any changes to IP and Port number in the proxy server, the `<IP address>` is the IP of the host machine you obtained by running the command `ipconfig` or `ifconfig`.
+        - `const serv = 'http://<IP address>:<Port_No>'`, if you have made changes to IP and Port number in the proxy server, the `<IP address>` is the IP you specifed for the server in `proxy-server.py` and the `<Port_No>` is the port number specifed for the server to listen for connections and request in the `proxy-server.py` file. 
 
 - After this we can proceed to the next steps. 
     
