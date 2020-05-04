@@ -39,23 +39,28 @@
 
 ### BACK END
 -------------
+
 - The back end is made of a proxy server which calls the smarten-demo server to analyze input given by the user. The proxy-server runs on Flask api from python3. 
+
 - The backend is made of two components:
     1. `smarten-demo-srv.py`, used for analyzing and returning search results 
     2. `proxy-server.py`, the reverse-proxy used between the app and server. 
+
 - It is recommended that the `smarten-demo-srv.py` and the `proxy-server.py` files be in the same folder. 
 
 1 **Setting up Smarten-Demo app server**
 
 - `smarten-demo-srv.py` must be configured such that `EXEC` variable points to the location of `db-search`. It is recommeded that `db-search` resides in the same directory as the database files and `smarten-demo-srv.py` itself.
-- Navigate to /Backend/Server/venv/src 
+
+- Navigate to '/Backend/Server/venv/src' and execute the following command:
+
     ```bash
         make
     ```
 
 2 **Setting up proxy-server**
 
-- Installing Flask API, navigate to /Backend/Server/venv
+- Installing Flask API, navigate to '/Backend/Server/venv', then execute this command:
     
     ```bash
     pip3 install flask
@@ -64,6 +69,7 @@
 3 **Making changes to proxy-server to connect with DNA-DEMO app**
 
 - The proxy-server is currently configured in such a way that when it is launched it takes the IP address of the host it is running on and accepts connections on port `5000` by default. 
+
 - If you wish to make changes to the IP or/and port number, open `proxy-server.py` file in directory /Backend/Server/venv/src : 
     
       For changing IP and port number : 
@@ -76,31 +82,37 @@
 
 4 **Starting the proxy-server**
 
-- Navigate to /Backend/Server/venv/src 
+- Navigate to '/Backend/Server/venv/src' and execute: 
+
     ```bash
     python3 proxy-server.py
     ```
+
 - When you run the proxy-server, you get the following message if the proxy-server is running successfully: 
 
-        * Serving Flask app "proxy-server" (lazy loading)
-        * Environment: production
-          WARNING: This is a development server. Do not use it in a production deployment.
-          Use a production WSGI server instead.
-        * Debug mode: off
-        * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+    > Serving Flask app "proxy-server" (lazy loading)
+    > Environment: production
+        WARNING: This is a development server. Do not use it in a production deployment.
+        Use a production WSGI server instead.
+    > Debug mode: off
+    > Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
     
 - If you have made changes to the IP address and port number, then last message will be as follows
         `* Running on http://'IP address':<Port_no>/ (Press CTRL+C to quit)`
         where 'IP address' is the IP address you specified before on which server accepts the request and <Port_no> is the   port number you specified on which the server handles connections. 
    
 - If you have not made any changes then:
-    - open terminal:
+
+    - Open terminal:
         - `ipconfig` for windows machine
         - `ifconfig` for linux macine
       this to obtain the IP address of the host machine.
-- IMPORTANT:
-        - Know the IP address and Port number on which the server is currently running as it will be required in the following steps if you have made changes to them. 
-        - If no changes has been made then we can obtain the IP address of the host following the steps mentioned above and the port number is by default `5000`.   
+
+- **IMPORTANT:**
+
+    - Know the IP address and Port number on which the server is currently running as it will be required in the following steps if you have made changes to them. 
+
+    - If no changes has been made then we can obtain the IP address of the host following the steps mentioned above and the port number is by default `5000`.   
         
 5 **Connecting the front end app with backend proxy-server**
 
