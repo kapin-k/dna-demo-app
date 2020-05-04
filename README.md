@@ -95,12 +95,12 @@
    
 - If you have not made any changes then:
     - open terminal:
-        -`ipconfig` for windows machine
-        -`ifconfig` for linux macine
-        this to obtain the IP address of the host machine.
+        - `ipconfig` for windows machine
+        - `ifconfig` for linux macine
+      this to obtain the IP address of the host machine.
 - IMPORTANT:
-    -Know the IP address and Port number on which the server is currently running as it will be required in the following steps if you have made changes to them. 
-    -If no changes has been made then we can obtain the IP address of the host following the steps mentioned above and the port number is by default `5000`.   
+        - Know the IP address and Port number on which the server is currently running as it will be required in the following steps if you have made changes to them. 
+        - If no changes has been made then we can obtain the IP address of the host following the steps mentioned above and the port number is by default `5000`.   
         
 4 **Connecting the front end app with backend proxy-server**
 -------------
