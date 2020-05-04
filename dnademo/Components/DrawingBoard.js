@@ -2086,7 +2086,7 @@ export class DrawingBoard extends Component {
                       })
                       .catch(error => {
                         console.log(error);
-                        {
+                        if(userInput != '['){
                           Alert.alert(
                             'Network Error',
                             'Make sure you are connected to the internet!',
