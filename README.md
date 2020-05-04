@@ -111,7 +111,7 @@
 - To connect nagivate to `'dna-demo-app/dnademo/Components'` 
     - Open `DrawingBoard.js`
         
-        * Line No: 22 const serv = 'http://127.0.0.1:5000'; //Configure with the IP Address of Proxy Server 
+        `* Line No: 22 const serv = 'http://127.0.0.1:5000'; //Configure with the IP Address of Proxy Server` 
            
     - change the `const serv = 'http://127.0.0.1:5000'` to: 
         - `const serv = 'http://<IP address>:5000'`, if you have not made any changes to IP and Port number in the proxy server, the `<IP address>` is the IP of the host machine you obtained by running the command `ipconfig` or `ifconfig`.
