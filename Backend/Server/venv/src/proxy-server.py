@@ -11,9 +11,6 @@ app = Flask(__name__)
 def preset():
     f = open("output.json")
     preset_data = f.read()
-    #data_to_srv = json.dumps(data)
-    #output_frm_srv = Popen([sys.executable,"smarten-demo-srv.py", data_to_srv],shell = True, stdout=PIPE, universal_newlines=True).stdout
-    #data_frm_server = output_frm_srv.read()
     return jsonify(preset_data)
 
 @app.route("/analyze", methods=["POST"])
@@ -36,5 +33,4 @@ def rev_proxy():
     return data_frm_server
     
 if __name__ == '__main__':
-    app.run(host = '0.0.0.0')
-
+    app.run(host = host, port = port_no)  
