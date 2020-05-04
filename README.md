@@ -165,7 +165,7 @@
     - Step 5: To the right of the project navigator pane, you will now see a list with title 'TARGETS' with 4 options, namely: dnademo, dnademoTests, dnademo-tvOS, dnademo-tvOSTests
     - Step 6: Select 'dnademo' from the TARGETS list then navigate to the 'Signing & Capabilities' Tab and do the following steps:
         - Make sure the 'Automaticaly Manage Signing' checkbox is checked.
-        - __Team:__ : Choose your newly added account from the dropdown
+        - __Team__: Choose your newly added account from the dropdown
         - The 'Signing Certificate' should now say : 'Apple Development'
         > Ignore any warning or errors for now
     - Step 7: Now, move to 'Build Settings' Tab
