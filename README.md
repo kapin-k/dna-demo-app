@@ -48,7 +48,7 @@
 
 - It is recommended that the `smarten-demo-srv.py` and the `proxy-server.py` files be in the same folder. 
 
-1 **Setting up Smarten-Demo app server**
+1. **Setting up Smarten-Demo app server**
 
 - `smarten-demo-srv.py` must be configured such that `EXEC` variable points to the location of `db-search`. It is recommeded that `db-search` resides in the same directory as the database files and `smarten-demo-srv.py` itself.
 
@@ -58,7 +58,7 @@
         make
     ```
 
-2 **Setting up proxy-server**
+2. **Setting up proxy-server**
 
 - Installing Flask API, navigate to '/Backend/Server/venv', then execute this command:
     
@@ -66,11 +66,11 @@
     pip3 install flask
     ```
 
-3 **Making changes to proxy-server to connect with DNA-DEMO app**
+3. **Making changes to proxy-server to connect with DNA-DEMO app**
 
 - The proxy-server is currently configured in such a way that when it is launched it takes the IP address of the host it is running on and accepts connections on port `5000` by default. 
 
-- If you wish to make changes to the IP or/and port number, open `proxy-server.py` file in directory /Backend/Server/venv/src : 
+- If you wish to make changes to the IP or/and port number, open `proxy-server.py` file in directory '/Backend/Server/venv/src' : 
     
       For changing IP and port number : 
         
@@ -80,7 +80,7 @@
         'IP Address' => the IP address at which the server should accept incoming requests and connections
         <Port_No>    => Port number on which you which you want the proxy-server accepting the connections
 
-4 **Starting the proxy-server**
+4. **Starting the proxy-server**
 
 - Navigate to '/Backend/Server/venv/src' and execute: 
 
@@ -114,7 +114,7 @@
 
     - If no changes has been made then we can obtain the IP address of the host following the steps mentioned above and the port number is by default `5000`.   
         
-5 **Connecting the front end app with backend proxy-server**
+5. **Connecting the front end app with backend proxy-server**
 
 - Once we have the backend proxy server up and running, we will need to connect the DNA Demo app with the back-end. 
 - Currently the IP address of the proxy-server is configured as localhost in the DNA-Demo app, this has to be changed before we import the app on to a device without which the app will fail to connect to the proxy-server.
