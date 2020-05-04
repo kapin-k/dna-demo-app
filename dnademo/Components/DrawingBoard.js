@@ -1840,17 +1840,33 @@ export class DrawingBoard extends Component {
                   }
 
                   var userInput = '[';
+                  console.log('Number of lines drawn: ' + this.canvas.getPaths().length);
                   for (var k = 0; k < this.canvas.getPaths().length; k++) {
-                    if (k != 0) {
-                      userInput = userInput.concat(',');
-                    }
+                    var j = k +1;
+                      if(j < this.canvas.getPaths().length){
+                        if (userInput != '[' && this.canvas.getPaths()[j].path.color == '#1C1C1E' && this.canvas.getPaths()[k].path.color != '#1C1C1E') {
+                          userInput = userInput.concat(',');
+                        }
+                      }
                     if (this.canvas.getPaths()[k].path.color == '#1C1C1E') {
-                      userInput = userInput.concat(
-                        JSON.stringify(this.canvas.getPaths()[k]),
-                      );
+                      for (var dataLength = 0; dataLength < this.canvas.getPaths()[k].path.data.length; dataLength++ ){
+                        userInput = userInput.concat('[').concat(this.canvas.getPaths()[k].path.data[dataLength]).concat(']')
+                        if(dataLength != this.canvas.getPaths()[k].path.data.length - 1){
+                          userInput = userInput.concat(',');
+                        }
+                      }
+                      var j = k +1;
+                      if(j < this.canvas.getPaths().length){
+                        if (this.canvas.getPaths()[j].path.color == '#1C1C1E') {
+                        userInput = userInput.concat(',');
+                        }
+                      }
                     }
                   }
                   userInput = userInput.concat(']');
+                  console.log('userInput: '+ userInput);
+                  var Read = JSON.parse(userInput);
+                  console.log('dataToServer : ' + Read);
 
                   //var userInput = JSON.stringify(this.canvas.getPaths());
                   if (userInput == '[]') {
@@ -1877,29 +1893,7 @@ export class DrawingBoard extends Component {
                       ],
                       {cancelable: false},
                     );
-                  }
-
-                  console.log('userInput : ' + userInput);
-                  var split1 = userInput.split('data":');
-                  for (var i = 1; i < split1.length; i++) {
-                    var temp_split = split1[i].split('},"s');
-                    split2 = split2.concat(temp_split[0]);
-                    split2 = split2.replace(/",/g, '],');
-                    split2 = split2.replace(/"/g, '[');
-                    split2 = split2.replace('[]', ']]');
-                    split2 = split2.replace('][', '],[');
-                  }
-                  //var readSplit = '"Read":' + split2;
-                  //var dataToServer = "'{".concat(readSplit).concat("}'");
-
-                  split2 = split2.replace('[[', '[*');
-                  split2 = split2.replace(']]', ']');
-                  split2 = split2.replace('[[', '[');
-                  split2 = split2.replace('[*', '[[');
-                  var dataToServer = split2.concat(']'); // data to proxy, coordinates of the path marked in [x,y] format
-                  var Read = JSON.parse(dataToServer)
-                  // var Read = JSON.stringify(dataToServer);
-                  console.log('dataToServer : ' + Read); 
+                  } 
 
                   //Incase we need to write a json file for the output recieved from the Server
                   RNFS.writeFile(filePath, userInput, 'utf8')
