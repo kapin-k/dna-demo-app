@@ -158,7 +158,7 @@
             - Click on the '+' button on the bottom left corner of the Accounts panel to add your Apple account
                 > Fill in your Apple iOS account credentials
             - Select the account you just added
-                > Click on 'Manage Certificates'
+                > Click on 'Manage Certificates' > 
                 > Click the “+” icon below the certificates pane, and request a new iOS Development Certificate (Apple Development Certificate).
     - Step 3: Now, connect your device to the computer
     - Step 4: Go back to your Xcode's main screen and select 'dnademo' from the project navigator in Xcode
