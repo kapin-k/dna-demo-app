@@ -108,8 +108,8 @@
 - Currently the IP address of the proxy-server is configured as localhost in the DNA-Demo app, this has to be changed before we import the app on to a device without which the app will fail to connect to the proxy-server.
 - We know the IP address and the port number on which our proxy-server is listening to requests on. 
 
-- To connect nagivate to 'dna-demo-app/dnademo/Components' 
-    Open `DrawingBoard.js`
+- To connect nagivate to `'dna-demo-app/dnademo/Components'` 
+    - Open `DrawingBoard.js`
         
         * Line No: 22 const serv = 'http://127.0.0.1:5000'; //Configure with the IP Address of Proxy Server 
            
