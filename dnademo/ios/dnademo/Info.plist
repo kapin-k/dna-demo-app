@@ -30,7 +30,7 @@
 		<true/>
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
-    <key>NSExceptionDomains</key>-->
+    <key>NSExceptionDomains</key>
         <dict>
           <key>localhost</key>
           <dict>
