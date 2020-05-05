@@ -1865,7 +1865,10 @@ export class DrawingBoard extends Component {
                   }
                   userInput = userInput.concat(']');
                   console.log('userInput: '+ userInput);
-                  var Read = JSON.parse(userInput);
+                  if(userInput != '[]'){
+                    var Read = JSON.parse(userInput);
+                  }
+                  else{var Read = '[]'}
                   console.log('dataToServer : ' + Read);
 
                   //var userInput = JSON.stringify(this.canvas.getPaths());
