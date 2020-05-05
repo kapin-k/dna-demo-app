@@ -36,7 +36,7 @@ const my_proxy = axios.create({
 // Parameters to change the Stroke Thickness, Stroke Color, Font Face and Font Color of the output display
 const strokethickness_op = 18;  
 const resultcol = ['#007AFF','#FF2D55', '#AF52DE', '#FF9500', '#34C759'];
-const font_op = 'AmericanTypewriter-Bold'; 
+const font_op = 'Helvetica Neue'; 
 const color_op ='#1C1C1E';
 
 // Parameters to change the Stroke Color and Stroke Thickness of the Drawing Board for User Input
@@ -1546,7 +1546,7 @@ export class DrawingBoard extends Component {
               <Text
                 style={{
                   textAlign: 'center',
-                  fontSize: 22,
+                  fontSize: 18,
                   marginTop: -25,
                   paddingLeft: 10,
                   fontFamily: font_op,
@@ -1560,7 +1560,7 @@ export class DrawingBoard extends Component {
               <Text
                 style={{
                   textAlign: 'center',
-                  fontSize: 22,
+                  fontSize: 16,
                   fontFamily: font_op,
                   marginTop: -25,
                   color: {color_op},
@@ -1571,7 +1571,7 @@ export class DrawingBoard extends Component {
               <Text
                 style={{
                   textAlign: 'center',
-                  fontSize: 22,
+                  fontSize: 16,
                   fontFamily: font_op,
                   marginTop: -25,
                   color: {color_op},
