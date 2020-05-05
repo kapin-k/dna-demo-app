@@ -227,7 +227,7 @@
         - Make sure the 'Automaticaly Manage Signing' checkbox is checked.
         - __Team__: Choose your newly added account from the dropdown
         - The 'Signing Certificate' should now say : 'Apple Development'
-        > Ignore any warning or errors for now
+        - Change the 'Bundle Identifier' name to something unique. (Good start would be adding the date at the end) Example: `org.react-native.dnademo2020-May6`
     - Step 7: Now, move to 'Build Settings' Tab
         - Go to 'Signing' section and change 'Code Signing Identity' to iOS Developer.
     - Step 8: Now, select 'dnademoTests' from the 'Targets' section > Repeat the signing process as done in Step 6
