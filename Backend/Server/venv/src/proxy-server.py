@@ -3,7 +3,7 @@ from subprocess import *
 import sys
 import json
 
-host = '0.0.0.0'    #IP address on which this server has to run 
+host = '192.168.1.80'    #IP address on which this server has to run 
 port_no = 5000      #Port number for the server
 
 app = Flask(__name__)
