@@ -19,7 +19,7 @@ import presetJSON from './Sample_Screens/Preset.json';
 
 // Imports and constants for backend
 import axios from 'axios';
-const serv = 'http://127.0.0.1:5000'; //Configure with the IP Address of Proxy Server
+const serv = 'http://71.186.229.67:8956'; //Configure with the IP Address of Proxy Server
 const my_proxy = axios.create({
   baseURL: serv,
 });
@@ -743,7 +743,7 @@ export class DrawingBoard extends Component {
                         <Text
                           style={{
                             color: 'black',
-                            fontSize: 30,
+                            fontSize: 22,
                             fontWeight: 'bold',
                             textAlign: 'center',
                           }}>
@@ -771,7 +771,7 @@ export class DrawingBoard extends Component {
                           <Text
                             style={{
                               color: 'black',
-                              fontSize: 25,
+                              fontSize: 22,
                               fontWeight: '500',
                               textAlign: 'left',
                             }}>
@@ -780,7 +780,7 @@ export class DrawingBoard extends Component {
                           <Text
                             style={{
                               color: 'black',
-                              fontSize: 25,
+                              fontSize: 22,
                               fontWeight: '500',
                               textAlign: 'left',
                             }}>
@@ -891,7 +891,7 @@ export class DrawingBoard extends Component {
                         <Text
                           style={{
                             color: 'black',
-                            fontSize: 30,
+                            fontSize: 22,
                             fontWeight: 'bold',
                             textAlign: 'center',
                           }}>
@@ -919,7 +919,7 @@ export class DrawingBoard extends Component {
                           <Text
                             style={{
                               color: 'black',
-                              fontSize: 25,
+                              fontSize: 22,
                               fontWeight: '500',
                               textAlign: 'left',
                             }}>
@@ -928,7 +928,7 @@ export class DrawingBoard extends Component {
                           <Text
                             style={{
                               color: 'black',
-                              fontSize: 25,
+                              fontSize: 22,
                               fontWeight: '500',
                               textAlign: 'left',
                             }}>
@@ -950,7 +950,7 @@ export class DrawingBoard extends Component {
                         style={{
                           color: 'black',
                           fontStyle: 'italic',
-                          fontSize: 25,
+                          fontSize: 22,
                           fontWeight: 'bold',
                           textAlign: 'center',
                           marginBottom: 10,
@@ -1038,7 +1038,7 @@ export class DrawingBoard extends Component {
                         <Text
                           style={{
                             color: 'black',
-                            fontSize: 30,
+                            fontSize: 22,
                             fontWeight: 'bold',
                             textAlign: 'center',
                           }}>
@@ -1066,7 +1066,7 @@ export class DrawingBoard extends Component {
                           <Text
                             style={{
                               color: 'black',
-                              fontSize: 25,
+                              fontSize: 22,
                               fontWeight: '500',
                               textAlign: 'left',
                             }}>
@@ -1075,7 +1075,7 @@ export class DrawingBoard extends Component {
                           <Text
                             style={{
                               color: 'black',
-                              fontSize: 25,
+                              fontSize: 22,
                               fontWeight: '500',
                               textAlign: 'left',
                             }}>
@@ -1097,7 +1097,7 @@ export class DrawingBoard extends Component {
                         style={{
                           color: 'black',
                           fontStyle: 'italic',
-                          fontSize: 25,
+                          fontSize: 22,
                           fontWeight: 'bold',
                           textAlign: 'center',
                           marginBottom: 10,
@@ -1185,7 +1185,7 @@ export class DrawingBoard extends Component {
                         <Text
                           style={{
                             color: 'black',
-                            fontSize: 30,
+                            fontSize: 22,
                             fontWeight: 'bold',
                             textAlign: 'center',
                           }}>
@@ -1213,7 +1213,7 @@ export class DrawingBoard extends Component {
                           <Text
                             style={{
                               color: 'black',
-                              fontSize: 25,
+                              fontSize: 22,
                               fontWeight: '500',
                               textAlign: 'left',
                             }}>
@@ -1222,7 +1222,7 @@ export class DrawingBoard extends Component {
                           <Text
                             style={{
                               color: 'black',
-                              fontSize: 25,
+                              fontSize: 22,
                               fontWeight: '500',
                               textAlign: 'left',
                             }}>
@@ -1244,7 +1244,7 @@ export class DrawingBoard extends Component {
                         style={{
                           color: 'black',
                           fontStyle: 'italic',
-                          fontSize: 25,
+                          fontSize: 22,
                           fontWeight: 'bold',
                           textAlign: 'center',
                           marginBottom: 10,
@@ -1332,7 +1332,7 @@ export class DrawingBoard extends Component {
                         <Text
                           style={{
                             color: 'black',
-                            fontSize: 30,
+                            fontSize: 22,
                             fontWeight: 'bold',
                             textAlign: 'center',
                           }}>
@@ -1360,7 +1360,7 @@ export class DrawingBoard extends Component {
                           <Text
                             style={{
                               color: 'black',
-                              fontSize: 25,
+                              fontSize: 22,
                               fontWeight: '500',
                               textAlign: 'left',
                             }}>
@@ -1369,7 +1369,7 @@ export class DrawingBoard extends Component {
                           <Text
                             style={{
                               color: 'black',
-                              fontSize: 25,
+                              fontSize: 22,
                               fontWeight: '500',
                               textAlign: 'left',
                             }}>
@@ -1391,7 +1391,7 @@ export class DrawingBoard extends Component {
                         style={{
                           color: 'black',
                           fontStyle: 'italic',
-                          fontSize: 25,
+                          fontSize: 22,
                           fontWeight: 'bold',
                           textAlign: 'center',
                           marginBottom: 10,
