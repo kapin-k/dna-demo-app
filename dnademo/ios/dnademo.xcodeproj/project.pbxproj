@@ -15,6 +15,8 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		1816CF7F244951D900CF8A8C /* background.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1816CF7E244951D900CF8A8C /* background.PNG */; };
+		18FE334824630B89008935F1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB61A68108700A75B9A /* Info.plist */; };
+		18FE334924630B8A008935F1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB61A68108700A75B9A /* Info.plist */; };
 		19AD5BE5E6D14537B6AF39B4 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 523E2C0C64AE4205A3ABB3B0 /* Octicons.ttf */; };
 		1D122B8095C8B308D5B81ED6 /* libPods-dnademo-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 498501708342B78979901574 /* libPods-dnademo-tvOS.a */; };
 		2485211855DD9E16D56B9273 /* libPods-dnademo-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A9F0C209D9DC12926DC6E6E /* libPods-dnademo-tvOSTests.a */; };
@@ -395,6 +397,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18FE334924630B8A008935F1 /* Info.plist in Resources */,
 				ACE970812459BEDF00CD1F36 /* main.jsbundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +426,7 @@
 				D8B8A9E90A504B17B8228A08 /* SimpleLineIcons.ttf in Resources */,
 				95A30C576A2444FFA81AC442 /* Zocial.ttf in Resources */,
 				1816CF7F244951D900CF8A8C /* background.PNG in Resources */,
+				18FE334824630B89008935F1 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
