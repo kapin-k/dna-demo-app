@@ -19,7 +19,7 @@ import presetJSON from './Sample_Screens/Preset.json';
 
 // Imports and constants for backend
 import axios from 'axios';
-const serv = 'http://71.186.229.67:8956'; //Configure with the IP Address of Proxy Server
+const serv = 'http://192.168.1.80:5000'; //Configure with the IP Address of Proxy Server
 const my_proxy = axios.create({
   baseURL: serv,
 });
@@ -701,7 +701,7 @@ export class DrawingBoard extends Component {
                 'Output Overlay is closed wihtout choosing any output',
               );
               this.canvas.clear();
-              this.setState({outputOverlay_visible: false, chosenOutput: null});
+              this.setState({outputOverlay_visible: false, ifOutput: false ,chosenOutput: null});
             }}>
             <View style={styles.mainModalView1}>
               <View style={styles.centeredView1}>
