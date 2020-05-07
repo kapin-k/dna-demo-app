@@ -24,7 +24,8 @@ import sample5 from './Sample_Screens/Sample5.png';
 
 // Imports and constants for backend
 import axios from 'axios';
-const serv = 'http://dnademoserver.us-east-2.elasticbeanstalk.com/'; //Configure with the IP Address of Proxy Server
+// http://127.0.0.1:5000/ http://smarten-env.eba-9hfjufww.us-east-2.elasticbeanstalk.com/
+const serv = 'http://smarten-env.eba-9hfjufww.us-east-2.elasticbeanstalk.com'; //Configure with the IP Address of Proxy Server
 const my_proxy = axios.create({
   baseURL: serv,
 });
