@@ -260,13 +260,13 @@
     
     - For Results from Output Screen: 
         
-        * Line No: 37 Change Stroke Thickness for the output and sample traces
-        * Line No: 38 Change Stroke Color for the 5 results displayed
-        * Line No: 39 Change Font Face of text content(name, time and confidence) for results from output [(List of available font families)](https://github.com/react-native-training/react-native-fonts/blob/master/README.md)
-        * Line No: 40 Change Color of text content(name, time and confidence) for results from output
+        * Line No: 42 Change Stroke Thickness for the output and sample traces
+        * Line No: 43 Change Stroke Color for the 5 results displayed
+        * Line No: 44 Change Font Face of text content(name, time and confidence) for results from output [(List of available font families)](https://github.com/react-native-training/react-native-fonts/blob/master/README.md)
+        * Line No: 45 Change Color of text content(name, time and confidence) for results from output
        
     - For User Inputs/Samples from Drawing Board and Preset Screen:
         
-        * Line No: 43 Change Stroke Color for user input
-        * Line No: 44 Change Stroke Thickness for the user input
-        * Line No: 45 Change Stroke Color for the 6 preset sample data
+        * Line No: 48 Change Stroke Color for user input
+        * Line No: 49 Change Stroke Thickness for the user input
+        * Line No: 50 Change Stroke Color for the 6 preset sample data

@@ -1947,7 +1947,7 @@ export class DrawingBoard extends Component {
                       .post('/analyze', {Read})
                       .then(response => {
                         console.log(
-                          'respone.data: ' + JSON.stringify(response),
+                          'respone.data: ' + JSON.stringify(response.data),
                         );
                         if (
                           userInput != '[]' &&
