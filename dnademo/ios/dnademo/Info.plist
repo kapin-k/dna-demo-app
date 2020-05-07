@@ -32,7 +32,7 @@
 		<true/>
     <key>NSExceptionDomains</key>
         <dict>
-          <key>localhost</key>
+          <key>dnademoserver.us-east-2.elasticbeanstalk.com</key>
           <dict>
             <key>NSExceptionAllowsInsecureHTTPLoads</key>
             <true/>
