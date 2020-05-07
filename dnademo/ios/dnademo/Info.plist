@@ -34,6 +34,8 @@
         <dict>
           <key>smarten-env.eba-9hfjufww.us-east-2.elasticbeanstalk.com</key>
           <dict>
+            <key>NSIncludesSubdomains</key>
+            <true/>
             <key>NSExceptionAllowsInsecureHTTPLoads</key>
             <true/>
           </dict>
