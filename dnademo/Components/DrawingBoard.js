@@ -24,8 +24,7 @@ import sample5 from './Sample_Screens/Sample5.png';
 
 // Imports and constants for backend
 import axios from 'axios';
-// http://127.0.0.1:5000/ http://dnademoserver.us-east-2.elasticbeanstalk.com/
-const serv = 'http://127.0.0.1:5000/'; //Configure with the IP Address of Proxy Server
+const serv = 'http://dnademoserver.us-east-2.elasticbeanstalk.com/'; //Configure with the IP Address of Proxy Server
 const my_proxy = axios.create({
   baseURL: serv,
 });
