@@ -24,7 +24,8 @@ import sample5 from './Sample_Screens/Sample5.png';
 
 // Imports and constants for backend
 import axios from 'axios';
-const serv = 'http://dnademoserver.us-east-2.elasticbeanstalk.com/'; //Configure with the IP Address of Proxy Server
+// http://127.0.0.1:5000/ http://dnademoserver.us-east-2.elasticbeanstalk.com/
+const serv = 'http://127.0.0.1:5000/'; //Configure with the IP Address of Proxy Server
 const my_proxy = axios.create({
   baseURL: serv,
 });
@@ -1513,7 +1514,12 @@ export class DrawingBoard extends Component {
                     [
                       {
                         text: 'Start Sketching',
-                        onPress: () => console.log('OK Pressed'),
+                        onPress: () => {console.log('Start Sketching! Pressed');
+                        this.setState({
+                            outputOverlay_visible: false,
+                            sampleOverlay_visible: false,
+                            chosenOutput: null,
+                          });},
                       },
                       {
                         text: 'Show me some samples!',
@@ -1903,9 +1909,14 @@ export class DrawingBoard extends Component {
                       'If you dont know where to start, please checkout the sample traces by clicking on the blue icon. Happy tracing!!!',
                       [
                         {
-                          text: 'Okay',
-                          onPress: () => console.log('OK Pressed'),
-                        },
+                        text: 'Start Sketching',
+                        onPress: () => {console.log('Start Sketching! Pressed');
+                        this.setState({
+                            outputOverlay_visible: false,
+                            sampleOverlay_visible: false,
+                            chosenOutput: null,
+                          });},
+                      },
                         {
                           text: 'Show me some samples!',
                           onPress: () => {
@@ -1947,7 +1958,7 @@ export class DrawingBoard extends Component {
                       .post('/analyze', {Read})
                       .then(response => {
                         console.log(
-                          'respone.data: ' + JSON.stringify(response.data),
+                          'respone.data: ' + response.data,
                         );
                         if (
                           userInput != '[]' &&
