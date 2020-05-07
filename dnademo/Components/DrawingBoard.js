@@ -16,10 +16,15 @@ import ProgressBarAnimated from 'react-native-progress-bar-animated';
 import AwesomeButtonRick from 'react-native-really-awesome-button/src/themes/rick';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import presetJSON from './Sample_Screens/Preset.json';
+import sample1 from './Sample_Screens/Sample1.png';
+import sample2 from './Sample_Screens/Sample2.png';
+import sample3 from './Sample_Screens/Sample3.png';
+import sample4 from './Sample_Screens/Sample4.png';
+import sample5 from './Sample_Screens/Sample5.png';
 
 // Imports and constants for backend
 import axios from 'axios';
-const serv = 'http://192.168.1.80:5000'; //Configure with the IP Address of Proxy Server
+const serv = 'http://dnademoserver.us-east-2.elasticbeanstalk.com/'; //Configure with the IP Address of Proxy Server
 const my_proxy = axios.create({
   baseURL: serv,
 });
@@ -34,15 +39,22 @@ const my_proxy = axios.create({
 // ios-indigo #5856d6
 
 // Parameters to change the Stroke Thickness, Stroke Color, Font Face and Font Color of the output display
-const strokethickness_op = 18;  
-const resultcol = ['#007AFF','#FF2D55', '#AF52DE', '#FF9500', '#34C759'];
-const font_op = 'Helvetica Neue'; 
-const color_op ='#1C1C1E';
+const strokethickness_op = 18;
+const resultcol = ['#007AFF', '#FF2D55', '#AF52DE', '#FF9500', '#34C759'];
+const font_op = 'Helvetica Neue';
+const color_op = '#1C1C1E';
 
 // Parameters to change the Stroke Color and Stroke Thickness of the Drawing Board for User Input
 const strokecolor_main = '#1C1C1E';
 const strokethickness_main = 12;
-const samplecol = ['#007AFF','#FF2D55', '#AF52DE', '#FF9500', '#34C759', '#5856d6'];
+const samplecol = [
+  '#007AFF',
+  '#FF2D55',
+  '#AF52DE',
+  '#FF9500',
+  '#34C759',
+  '#5856d6',
+];
 
 const initialState = null;
 export class DrawingBoard extends Component {
@@ -149,7 +161,9 @@ export class DrawingBoard extends Component {
       Number +
       ',"color":"' +
       sampleColor +
-      '","width":'+ strokethickness_op +',"data":[';
+      '","width":' +
+      strokethickness_op +
+      ',"data":[';
     var end = ']},"size":{"width":1366,"height":925},"drawer":null}';
     var x = 0;
     var sampleData = [];
@@ -177,7 +191,9 @@ export class DrawingBoard extends Component {
       Number +
       ',"color":"' +
       sampleColor +
-      '","width":' + strokethickness_op +',"data":[';
+      '","width":' +
+      strokethickness_op +
+      ',"data":[';
     var end = ']},"size":{"width":1366,"height":925},"drawer":null}';
     var x = 0;
     var sampleData = [];
@@ -195,7 +211,6 @@ export class DrawingBoard extends Component {
   // LOADING PRESET DATA FROM JSON
   loadPresetData(addTrace) {
     if (this.state.firstClickonSample) {
-
       //    -------- READING PROXY FROM FILE --------
       //   my_proxy.get('/config') //,{Read})
       // .then((responseSample) => {
@@ -314,7 +329,9 @@ export class DrawingBoard extends Component {
     };
     var sample_color = '';
     var addTrace = [];
-    {this.loadPresetData(addTrace)};
+    {
+      this.loadPresetData(addTrace);
+    }
     var addOutput = [];
     var responsefromServer = [];
     var isOutput = this.state.ifOutput;
@@ -364,10 +381,7 @@ export class DrawingBoard extends Component {
                     });
                   }}>
                   <View style={styles.modalView1}>
-                    <Image
-                      source={require('./Sample_Screens/Sample1.png')}
-                      style={{width: 370, height: 330}}
-                    />
+                    <Image source={sample1} style={{width: 370, height: 330}} />
                     <View style={{marginTop: 10}}>
                       <AwesomeButtonRick
                         type="secondary"
@@ -412,10 +426,7 @@ export class DrawingBoard extends Component {
                     });
                   }}>
                   <View style={styles.modalView2}>
-                    <Image
-                      source={require('./Sample_Screens/Sample2.png')}
-                      style={{width: 370, height: 330}}
-                    />
+                    <Image source={sample2} style={{width: 370, height: 330}} />
                     <View style={{marginTop: 10}}>
                       <AwesomeButtonRick
                         type="secondary"
@@ -460,10 +471,7 @@ export class DrawingBoard extends Component {
                     });
                   }}>
                   <View style={styles.modalView3}>
-                    <Image
-                      source={require('./Sample_Screens/Sample3.png')}
-                      style={{width: 370, height: 330}}
-                    />
+                    <Image source={sample3} style={{width: 370, height: 330}} />
                     <View style={{marginTop: 10}}>
                       <AwesomeButtonRick
                         type="secondary"
@@ -510,10 +518,7 @@ export class DrawingBoard extends Component {
                     });
                   }}>
                   <View style={styles.modalView4}>
-                    <Image
-                      source={require('./Sample_Screens/Sample4.png')}
-                      style={{width: 370, height: 330}}
-                    />
+                    <Image source={sample4} style={{width: 370, height: 330}} />
                     <View style={{marginTop: 10}}>
                       <AwesomeButtonRick
                         type="secondary"
@@ -558,10 +563,7 @@ export class DrawingBoard extends Component {
                     });
                   }}>
                   <View style={styles.modalView5}>
-                    <Image
-                      source={require('./Sample_Screens/Sample5.png')}
-                      style={{width: 370, height: 330}}
-                    />
+                    <Image source={sample5} style={{width: 370, height: 330}} />
                     <View style={{marginTop: 10}}>
                       <AwesomeButtonRick
                         type="secondary"
@@ -701,7 +703,11 @@ export class DrawingBoard extends Component {
                 'Output Overlay is closed wihtout choosing any output',
               );
               this.canvas.clear();
-              this.setState({outputOverlay_visible: false, ifOutput: false ,chosenOutput: null});
+              this.setState({
+                outputOverlay_visible: false,
+                ifOutput: false,
+                chosenOutput: null,
+              });
             }}>
             <View style={styles.mainModalView1}>
               <View style={styles.centeredView1}>
@@ -1796,14 +1802,14 @@ export class DrawingBoard extends Component {
                       this.canvas.deletePath(4);
                       break;
                   }
-                  if(this.state.chosenOutput == null){
+                  if (this.state.chosenOutput == null) {
                     this.setState({
-                    OP1: false,
-                    OP2: false,
-                    OP3: false,
-                    OP4: false,
-                    OP5: false,
-                  });
+                      OP1: false,
+                      OP2: false,
+                      OP3: false,
+                      OP4: false,
+                      OP5: false,
+                    });
                   }
                   this.setState({
                     outputOverlay_visible: true,
@@ -1840,35 +1846,54 @@ export class DrawingBoard extends Component {
                   }
 
                   var userInput = '[';
-                  console.log('Number of lines drawn: ' + this.canvas.getPaths().length);
+                  console.log(
+                    'Number of lines drawn: ' + this.canvas.getPaths().length,
+                  );
                   for (var k = 0; k < this.canvas.getPaths().length; k++) {
-                    var j = k +1;
-                      if(j < this.canvas.getPaths().length){
-                        if (userInput != '[' && this.canvas.getPaths()[j].path.color == '#1C1C1E' && this.canvas.getPaths()[k].path.color != '#1C1C1E') {
-                          userInput = userInput.concat(',');
-                        }
-                      }
-                    if (this.canvas.getPaths()[k].path.color == '#1C1C1E') {
-                      for (var dataLength = 0; dataLength < this.canvas.getPaths()[k].path.data.length; dataLength++ ){
-                        userInput = userInput.concat('[').concat(this.canvas.getPaths()[k].path.data[dataLength]).concat(']')
-                        if(dataLength != this.canvas.getPaths()[k].path.data.length - 1){
-                          userInput = userInput.concat(',');
-                        }
-                      }
-                      var j = k +1;
-                      if(j < this.canvas.getPaths().length){
-                        if (this.canvas.getPaths()[j].path.color == '#1C1C1E') {
+                    var j = k + 1;
+                    if (j < this.canvas.getPaths().length) {
+                      if (
+                        userInput != '[' &&
+                        this.canvas.getPaths()[j].path.color == '#1C1C1E' &&
+                        this.canvas.getPaths()[k].path.color != '#1C1C1E'
+                      ) {
                         userInput = userInput.concat(',');
+                      }
+                    }
+                    if (this.canvas.getPaths()[k].path.color == '#1C1C1E') {
+                      for (
+                        var dataLength = 0;
+                        dataLength < this.canvas.getPaths()[k].path.data.length;
+                        dataLength++
+                      ) {
+                        userInput = userInput
+                          .concat('[')
+                          .concat(
+                            this.canvas.getPaths()[k].path.data[dataLength],
+                          )
+                          .concat(']');
+                        if (
+                          dataLength !=
+                          this.canvas.getPaths()[k].path.data.length - 1
+                        ) {
+                          userInput = userInput.concat(',');
+                        }
+                      }
+                      var j = k + 1;
+                      if (j < this.canvas.getPaths().length) {
+                        if (this.canvas.getPaths()[j].path.color == '#1C1C1E') {
+                          userInput = userInput.concat(',');
                         }
                       }
                     }
                   }
                   userInput = userInput.concat(']');
-                  console.log('userInput: '+ userInput);
-                  if(userInput != '[]'){
+                  console.log('userInput: ' + userInput);
+                  if (userInput != '[]') {
                     var Read = JSON.parse(userInput);
+                  } else {
+                    var Read = '[]';
                   }
-                  else{var Read = '[]'}
                   console.log('dataToServer : ' + Read);
 
                   //var userInput = JSON.stringify(this.canvas.getPaths());
@@ -1896,16 +1921,16 @@ export class DrawingBoard extends Component {
                       ],
                       {cancelable: false},
                     );
-                  } 
+                  }
 
                   //Incase we need to write a json file for the output recieved from the Server
-                  RNFS.writeFile(filePath, userInput, 'utf8')
-                    .then(success => {
-                      console.log('File written to device filesystem!');
-                    })
-                    .catch(err => {
-                      console.log(err.message);
-                    });
+                  // RNFS.writeFile(filePath, userInput, 'utf8')
+                  //   .then(success => {
+                  //     console.log('File written to device filesystem!');
+                  //   })
+                  //   .catch(err => {
+                  //     console.log(err.message);
+                  //   });
 
                   this.setState({
                     path: userInput,
@@ -1916,13 +1941,18 @@ export class DrawingBoard extends Component {
                   }
 
                   //Fetch results from server only when user clears screen or doesn't want any output; else show already fetched result
-                  if (this.state.chosenOutput == null) {
+                  if (this.state.chosenOutput == null && userInput != '[]') {
                     console.log('Server is being hit!');
                     my_proxy
-                      .post('/analyze',{Read})
+                      .post('/analyze', {Read})
                       .then(response => {
-                        console.log('respone.data: ' + response.data);
-                        if(userInput != '[]' && response.data == 'error: query to short\n'){
+                        console.log(
+                          'respone.data: ' + JSON.stringify(response),
+                        );
+                        if (
+                          userInput != '[]' &&
+                          response.data == 'error: query to short\n'
+                        ) {
                           Alert.alert(
                             'Scribble too short!',
                             'Just draw a longer one!',
@@ -1948,178 +1978,187 @@ export class DrawingBoard extends Component {
                             chosenOutput: null,
                           });
                           // break;
-                        }
-                        var convertJSON = response.data.replace(/'/g, '"');
-                        var dataToJSON = JSON.parse(convertJSON);
-                        resetResponse();
-                        for (var i = 0; i < dataToJSON.length; i++) {
-                          responsefromServer.splice(i, 0, dataToJSON[i]);
-                        }
-                        console.log(
-                          'length of dataToJSON(responseFromServer)' +
-                            dataToJSON.length,
-                        );
-                        //No results -> Handling
-                        if (dataToJSON.length == 0) {
-                          Alert.alert(
-                            'No Match Found',
-                            'Go back and try again or checkout some example traces!',
-                            [
-                              {
-                                text: "Okay, I'll try again",
-                                onPress: () => {
-                                  this.canvas.clear(),
-                                    console.log('OK Pressed'),
+                        } else {
+                          var dataToJSON = '';
+                          if (response.data != '') {
+                            var convertJSON = response.data.replace(/'/g, '"');
+                            dataToJSON = JSON.parse(convertJSON);
+                          } else {
+                            console.log('Empty response from server!');
+                          }
+                          resetResponse();
+                          for (var i = 0; i < dataToJSON.length; i++) {
+                            responsefromServer.splice(i, 0, dataToJSON[i]);
+                          }
+                          // console.log(
+                          //   'length of dataToJSON(responseFromServer): ' +
+                          //     dataToJSON.length,
+                          // );
+
+                          //No results -> Handling
+                          if (dataToJSON.length == 0) {
+                            Alert.alert(
+                              'No Match Found',
+                              'Go back and try again or checkout some example traces!',
+                              [
+                                {
+                                  text: "Okay, I'll try again",
+                                  onPress: () => {
+                                    this.canvas.clear(),
+                                      console.log('OK Pressed'),
+                                      this.setState({
+                                        outputOverlay_visible: false,
+                                        chosenOutput: null,
+                                      });
+                                  },
+                                },
+                                {
+                                  text: 'Show me some samples!',
+                                  onPress: () => {
+                                    console.log(
+                                      'Show me some samples - Pressed',
+                                    );
                                     this.setState({
                                       outputOverlay_visible: false,
+                                      sampleOverlay_visible: true,
                                       chosenOutput: null,
                                     });
+                                  },
+                                  style: 'cancel',
                                 },
-                              },
-                              {
-                                text: 'Show me some samples!',
-                                onPress: () => {
-                                  console.log('Show me some samples - Pressed');
+                              ],
+                              {cancelable: false},
+                            );
+                          } else {
+                            function scaleYaxis(item, index) {
+                              var value = (item + 2) * 200;
+                              responsefromServer[i].Read[index] =
+                                Math.round(value * 10) / 10;
+                            }
+                            for (var i = 0; i < dataToJSON.length; i++) {
+                              responsefromServer[i].Read.forEach(scaleYaxis);
+                              switch (i) {
+                                case 0:
+                                  sample_color = resultcol[i];
+                                  var name_string = responsefromServer[i].Name;
+                                  var time_string = responsefromServer[i].Time;
+                                  var confidence_string =
+                                    responsefromServer[i].Confidence;
+                                  var meter_string = confidence_string * 100;
+                                  var outPut1 = this.preparePathData(
+                                    responsefromServer[i].Read,
+                                    i,
+                                    sample_color,
+                                  );
+                                  addOutput.splice(i, 0, JSON.parse(outPut1));
                                   this.setState({
-                                    outputOverlay_visible: false,
-                                    sampleOverlay_visible: true,
-                                    chosenOutput: null,
+                                    outputPath: addOutput,
+                                    OP1_Name: name_string,
+                                    OP1_Time: time_string,
+                                    OP1_Confidence: confidence_string,
+                                    OP1_Meter: meter_string,
+                                    OP1: true,
                                   });
-                                },
-                                style: 'cancel',
-                              },
-                            ],
-                            {cancelable: false},
-                          );
-                        } else {
-                          function scaleYaxis(item, index) {
-                            var value = (item + 2) * 200;
-                            responsefromServer[i].Read[index] =
-                              Math.round(value * 10) / 10;
-                          }
-                          for (var i = 0; i < dataToJSON.length; i++) {
-                            responsefromServer[i].Read.forEach(scaleYaxis);
-                            switch (i) {
-                              case 0:
-                                sample_color = resultcol[i];
-                                var name_string = responsefromServer[i].Name;
-                                var time_string = responsefromServer[i].Time;
-                                var confidence_string =
-                                  responsefromServer[i].Confidence;
-                                var meter_string = confidence_string * 100;
-                                var outPut1 = this.preparePathData(
-                                  responsefromServer[i].Read,
-                                  i,
-                                  sample_color,
-                                );
-                                addOutput.splice(i, 0, JSON.parse(outPut1));
-                                this.setState({
-                                  outputPath: addOutput,
-                                  OP1_Name: name_string,
-                                  OP1_Time: time_string,
-                                  OP1_Confidence: confidence_string,
-                                  OP1_Meter: meter_string,
-                                  OP1: true,
-                                });
-                                break;
-                              case 1:
-                                sample_color = resultcol[i];
-                                var name_string = responsefromServer[i].Name;
-                                var time_string = responsefromServer[i].Time;
-                                var confidence_string =
-                                  responsefromServer[i].Confidence;
-                                var meter_string = confidence_string * 100;
-                                var outPut2 = this.preparePathData(
-                                  responsefromServer[i].Read,
-                                  i,
-                                  sample_color,
-                                );
-                                addOutput.splice(i, 0, JSON.parse(outPut2));
-                                this.setState({
-                                  outputPath: addOutput,
-                                  OP2_Name: name_string,
-                                  OP2_Time: time_string,
-                                  OP2_Confidence: confidence_string,
-                                  OP2_Meter: meter_string,
-                                  OP2: true,
-                                });
-                                break;
-                              case 2:
-                                sample_color = resultcol[i];
-                                var name_string = responsefromServer[i].Name;
-                                var time_string = responsefromServer[i].Time;
-                                var confidence_string =
-                                  responsefromServer[i].Confidence;
-                                var meter_string = confidence_string * 100;
-                                var outPut3 = this.preparePathData(
-                                  responsefromServer[i].Read,
-                                  i,
-                                  sample_color,
-                                );
-                                addOutput.splice(i, 0, JSON.parse(outPut3));
-                                this.setState({
-                                  outputPath: addOutput,
-                                  OP3_Name: name_string,
-                                  OP3_Time: time_string,
-                                  OP3_Confidence: confidence_string,
-                                  OP3_Meter: meter_string,
-                                  OP3: true,
-                                });
-                                break;
-                              case 3:
-                                sample_color = resultcol[i];
-                                var name_string = responsefromServer[i].Name;
-                                var time_string = responsefromServer[i].Time;
-                                var confidence_string =
-                                  responsefromServer[i].Confidence;
-                                var meter_string = confidence_string * 100;
-                                var outPut4 = this.preparePathData(
-                                  responsefromServer[i].Read,
-                                  i,
-                                  sample_color,
-                                );
-                                addOutput.splice(i, 0, JSON.parse(outPut4));
-                                this.setState({
-                                  outputPath: addOutput,
-                                  OP4_Name: name_string,
-                                  OP4_Time: time_string,
-                                  OP4_Confidence: confidence_string,
-                                  OP4_Meter: meter_string,
-                                  OP4: true,
-                                });
-                                break;
-                              case 4:
-                                sample_color = resultcol[i];
-                                var name_string = responsefromServer[i].Name;
-                                var time_string = responsefromServer[i].Time;
-                                var confidence_string =
-                                  responsefromServer[i].Confidence;
-                                var meter_string = confidence_string * 100;
-                                var outPut5 = this.preparePathData(
-                                  responsefromServer[i].Read,
-                                  i,
-                                  sample_color,
-                                );
-                                addOutput.splice(i, 0, JSON.parse(outPut5));
-                                this.setState({
-                                  outputPath: addOutput,
-                                  OP5_Name: name_string,
-                                  OP5_Time: time_string,
-                                  OP5_Confidence: confidence_string,
-                                  OP5_Meter: meter_string,
-                                  OP5: true,
-                                });
-                                break;
+                                  break;
+                                case 1:
+                                  sample_color = resultcol[i];
+                                  var name_string = responsefromServer[i].Name;
+                                  var time_string = responsefromServer[i].Time;
+                                  var confidence_string =
+                                    responsefromServer[i].Confidence;
+                                  var meter_string = confidence_string * 100;
+                                  var outPut2 = this.preparePathData(
+                                    responsefromServer[i].Read,
+                                    i,
+                                    sample_color,
+                                  );
+                                  addOutput.splice(i, 0, JSON.parse(outPut2));
+                                  this.setState({
+                                    outputPath: addOutput,
+                                    OP2_Name: name_string,
+                                    OP2_Time: time_string,
+                                    OP2_Confidence: confidence_string,
+                                    OP2_Meter: meter_string,
+                                    OP2: true,
+                                  });
+                                  break;
+                                case 2:
+                                  sample_color = resultcol[i];
+                                  var name_string = responsefromServer[i].Name;
+                                  var time_string = responsefromServer[i].Time;
+                                  var confidence_string =
+                                    responsefromServer[i].Confidence;
+                                  var meter_string = confidence_string * 100;
+                                  var outPut3 = this.preparePathData(
+                                    responsefromServer[i].Read,
+                                    i,
+                                    sample_color,
+                                  );
+                                  addOutput.splice(i, 0, JSON.parse(outPut3));
+                                  this.setState({
+                                    outputPath: addOutput,
+                                    OP3_Name: name_string,
+                                    OP3_Time: time_string,
+                                    OP3_Confidence: confidence_string,
+                                    OP3_Meter: meter_string,
+                                    OP3: true,
+                                  });
+                                  break;
+                                case 3:
+                                  sample_color = resultcol[i];
+                                  var name_string = responsefromServer[i].Name;
+                                  var time_string = responsefromServer[i].Time;
+                                  var confidence_string =
+                                    responsefromServer[i].Confidence;
+                                  var meter_string = confidence_string * 100;
+                                  var outPut4 = this.preparePathData(
+                                    responsefromServer[i].Read,
+                                    i,
+                                    sample_color,
+                                  );
+                                  addOutput.splice(i, 0, JSON.parse(outPut4));
+                                  this.setState({
+                                    outputPath: addOutput,
+                                    OP4_Name: name_string,
+                                    OP4_Time: time_string,
+                                    OP4_Confidence: confidence_string,
+                                    OP4_Meter: meter_string,
+                                    OP4: true,
+                                  });
+                                  break;
+                                case 4:
+                                  sample_color = resultcol[i];
+                                  var name_string = responsefromServer[i].Name;
+                                  var time_string = responsefromServer[i].Time;
+                                  var confidence_string =
+                                    responsefromServer[i].Confidence;
+                                  var meter_string = confidence_string * 100;
+                                  var outPut5 = this.preparePathData(
+                                    responsefromServer[i].Read,
+                                    i,
+                                    sample_color,
+                                  );
+                                  addOutput.splice(i, 0, JSON.parse(outPut5));
+                                  this.setState({
+                                    outputPath: addOutput,
+                                    OP5_Name: name_string,
+                                    OP5_Time: time_string,
+                                    OP5_Confidence: confidence_string,
+                                    OP5_Meter: meter_string,
+                                    OP5: true,
+                                  });
+                                  break;
+                              }
                             }
                           }
                         }
                       })
                       .catch(error => {
-                        console.log('Error Type: '+ error);
-                        if(userInput != '[]'){
+                        console.log('Error from Response: ' + error);
+                        if (userInput != '[]') {
                           Alert.alert(
                             'Network Error',
-                            'Make sure you are connected to the internet!',
+                            'Make sure you are connected to the internet or check if the server is running!',
                             [
                               {
                                 text: 'Okay',
@@ -2143,7 +2182,6 @@ export class DrawingBoard extends Component {
                           });
                         }
                       });
-                    
                   }
                 }}
               />
