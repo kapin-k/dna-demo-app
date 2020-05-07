@@ -335,7 +335,7 @@ export class DrawingBoard extends Component {
     var addOutput = [];
     var responsefromServer = [];
     var isOutput = this.state.ifOutput;
-    var Link = 'https://wikipedia.com/'.concat(this.state.dnaName);
+    var Link = 'https://en.wikipedia.org/wiki/'.concat(this.state.dnaName);
     return (
       <View style={{flex: 1, flexDirection: 'row'}}>
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<SAMPLE MODAL DISPLAY />~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
