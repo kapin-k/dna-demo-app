@@ -1518,6 +1518,7 @@ export class DrawingBoard extends Component {
                             outputOverlay_visible: false,
                             sampleOverlay_visible: false,
                             chosenOutput: null,
+                            chosenSample: null,
                           });},
                       },
                       {
@@ -1528,6 +1529,7 @@ export class DrawingBoard extends Component {
                             outputOverlay_visible: false,
                             sampleOverlay_visible: true,
                             chosenOutput: null,
+                            chosenSample: null,
                           });
                         },
                         style: 'cancel',
@@ -1847,7 +1849,9 @@ export class DrawingBoard extends Component {
                     );
                   }
                   for (var i = 0; i < path_json.length; i++) {
+                    if(path_json[i].path.color == '#1C1C1E'){
                     path_json[i].path.data.forEach(scaleYaxistoDrawingValue);
+                    }
                   }
 
                   var userInput = '[';
@@ -1910,20 +1914,24 @@ export class DrawingBoard extends Component {
                         {
                         text: 'Start Sketching',
                         onPress: () => {console.log('Start Sketching! Pressed');
+                        this.canvas.clear();
                         this.setState({
                             outputOverlay_visible: false,
                             sampleOverlay_visible: false,
                             chosenOutput: null,
+                            chosenSample:null,
                           });},
                       },
                         {
                           text: 'Show me some samples!',
                           onPress: () => {
+                            this.canvas.clear();
                             console.log('Show me some samples - Pressed');
                             this.setState({
                               outputOverlay_visible: false,
                               sampleOverlay_visible: true,
                               chosenOutput: null,
+                              chosenSample:null,
                             });
                           },
                           style: 'cancel',
@@ -1977,6 +1985,7 @@ export class DrawingBoard extends Component {
                                     this.setState({
                                       outputOverlay_visible: false,
                                       chosenOutput: null,
+                                      chosenSample: null,
                                     });
                                 },
                               },
@@ -1986,6 +1995,7 @@ export class DrawingBoard extends Component {
                           this.setState({
                             responseJSON: responsefromServer,
                             chosenOutput: null,
+                            chosenSample: null,
                           });
                           // break;
                         } else {
@@ -2019,6 +2029,7 @@ export class DrawingBoard extends Component {
                                       this.setState({
                                         outputOverlay_visible: false,
                                         chosenOutput: null,
+                                        chosenSample: null,
                                       });
                                   },
                                 },
@@ -2032,6 +2043,7 @@ export class DrawingBoard extends Component {
                                       outputOverlay_visible: false,
                                       sampleOverlay_visible: true,
                                       chosenOutput: null,
+                                      chosenSample: null,
                                     });
                                   },
                                   style: 'cancel',
@@ -2180,6 +2192,7 @@ export class DrawingBoard extends Component {
                                     this.setState({
                                       outputOverlay_visible: false,
                                       chosenOutput: null,
+                                      chosenSample: null,
                                     });
                                 },
                               },
@@ -2189,6 +2202,7 @@ export class DrawingBoard extends Component {
                           this.setState({
                             responseJSON: responsefromServer,
                             chosenOutput: null,
+                            chosenSample: null,
                           });
                         }
                       });
