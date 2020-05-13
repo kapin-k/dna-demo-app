@@ -37,7 +37,7 @@
     npm --version
     ```
 
-### BACK END
+### BACK END (DEPRICATED - SEE BELOW FOR LATEST INSTRUCTIONS ON BACKEND)
 -------------
 
 - The back end is made of a proxy server which calls the smarten-demo server to analyze input given by the user. The proxy-server runs on Flask api from python3. 
@@ -130,6 +130,29 @@
         - `const serv = 'http://<IP address>:<Port_No>'`, if you have made changes to IP and Port number in the proxy server, the `<IP address>` is the IP you specifed for the server in `proxy-server.py` and the `<Port_No>` is the port number specifed for the server to listen for connections and request in the `proxy-server.py` file. 
 
 - After this we can proceed to the next steps. 
+
+ ### BACK END
+-------------
+
+**The server is currently runnning on AWS instance**  _Contact developers for credentials_
+
+- **Follow the below steps to make the application run on custom server:**
+
+1. After cloning this project, move to directory '/dnademo/Components' and do the following:
+
+    * Open 'DrawingBoard.js' file
+    * Go to Line 27: Where you may see an URL for the Server (http://smarten-env.eba-9hfjufww.us-east-2.elasticbeanstalk.com)
+    * Change the URL to the URL of the desired Server
+
+2. Navigate to directory '/dnademo/ios' and perform the following steps:
+
+    * i) Open 'dnademo.xcworkspace' using your Xcode
+    * ii) In the project navigator, expand the 'dnademo' project. You will now see a list of folders. Expand the folder 'dnademo', within which you will find a file called Info.plist.
+    * iii) Right click on 'Info.plist' --> 'Open As' --> 'Source Code'.
+    * iv) In Line 35, you may find the following - <key>smarten-env.eba-9hfjufww.us-east-2.elasticbeanstalk.com</key>
+    * Replace the existing domain name with the domain name of the desired server. (Dont include IP address or port number) Eg: <key>github.com</key>
+
+**Happy Searching! The application will now be connceted to the desired server. :)**
 
 
 ### BUILD AND DEPLOYMENT
