@@ -131,7 +131,7 @@
 
 - After this we can proceed to the next steps. 
 
- ### BACK END
+ ### BACK END (UPDATED)
 -------------
 
 **The server is currently runnning on AWS instance**  _Contact developers for credentials_
