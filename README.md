@@ -3,6 +3,14 @@
 **Description:**
 - This project is about developing an interactive Android/iOS app which takes a scribble as an input from the user and returns a list of organisms with DNA sequence that closely matches the input scribble. The app is developed as a powerful, interactive tool to demo the newly developed DNA sequencer device to the public in a fun and interesting manner.
 
+<img src="https://github.com/kapin-k/DNA-DEMO-DEPLOY/blob/master/AppIcons/appstore.png" width="200" height="200" />
+
+**Screenshots**<br>
+<img src="https://github.com/kapin-k/DNA-DEMO-DEPLOY/blob/master/dnademo/Components/Sample_Screens/Sample1.png" width="700" height="500" />
+
+**Demo**<br>
+https://drive.google.com/file/d/1lXqGF64bk4jo7x_5gQvA7WVorO5ceZ9j/view?usp=sharing
+
 ## DOCUMENTATION
 
 ### PREREQUISITES
